@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('wali_kelass', function (Blueprint $table) {
             $table->id();
+            $table->string('nip', 30);
+            $table->string('nama_guru', 50);
+            $table->integer('guru_kelas');
+            $table->string('jenis_kelamin', 10);
+            $table->bigInteger('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

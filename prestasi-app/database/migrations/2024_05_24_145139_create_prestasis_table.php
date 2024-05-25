@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rapots', function (Blueprint $table) {
+        Schema::create('prestasis', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_wali_kelas')->unsigned();
+            $table->integer('kode_prestasi');
+            $table->string('kategori_prestasi', 25);
             $table->bigInteger('id_siswa')->unsigned();
-            $table->bigInteger('id_kriteria')->unsigned();
-            $table->foreign('id_wali_kelas')->references('id')->on('wali_kelass')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('id_akademik')->unsigned();
+            $table->bigInteger('id_non_akademik')->unsigned();
             $table->foreign('id_siswa')->references('id')->on('siswas')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_kriteria')->references('id')->on('kriterias')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_akademik')->references('id')->on('akademiks')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_non_akademik')->references('id')->on('non_akademiks')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rapots');
+        Schema::dropIfExists('prestasis');
     }
 };

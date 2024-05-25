@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('akademiks', function (Blueprint $table) {
             $table->id();
+            $table->integer('jumlah_nilai_rapot');
+            $table->integer('rangking');
             $table->timestamps();
         });
     }

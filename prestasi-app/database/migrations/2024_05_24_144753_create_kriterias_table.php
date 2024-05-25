@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('kriterias', function (Blueprint $table) {
             $table->id();
+            $table->integer('nilai_pengetahuan');
+            $table->integer('nilai_keterampilan');
             $table->timestamps();
         });
     }
