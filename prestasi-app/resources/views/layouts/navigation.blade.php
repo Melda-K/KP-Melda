@@ -18,6 +18,16 @@
                 </div>
             </div>
 
+            
+            @hasrole('WaliKelas')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('walikelas.index')" :active="request()->routeIs('walikelas.index')">
+                        {{ __('Wali Kelas') }}
+                    </x-nav-link>
+                </div>
+               
+            @endhasrole
+
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
