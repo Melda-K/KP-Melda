@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rapot;
 use App\Models\User;
 use App\Models\WaliKelas;
 use Illuminate\Http\Request;
@@ -10,13 +11,13 @@ class WaliKelasController extends Controller
 {
     public function index()
     {
-        $data['wali_kelass'] = WaliKelas::with('walikelas')->get();
+        $data['wali_kelas'] = WaliKelas::with('walikelas')->get();
         return view('walikelas.index', $data);
     }
 
     public function create()
     {
-        $data['walikelass'] = User::pluck('name', 'id');
+        $data['wali_kelas'] = User::pluck('name', 'id');
         return view('walikelas.create', $data);
     }
 
@@ -30,26 +31,26 @@ class WaliKelasController extends Controller
         ]);
 
        
-    //     Doktor::create($valiated);
+        WaliKelas::create($valiated);
 
-    //     $notificaton = array(
-    //         'message' => 'Data Doktor berhasil ditambahkan! :D',
-    //         'allert-type' => 'success'
-    //     );
+        $notificaton = array(
+            'message' => 'Data Wali kelas berhasil ditambahkan!',
+            'allert-type' => 'success'
+        );
 
-    //     if ($request->save == true) {
-    //         return redirect()->route('doktor')->with($notificaton);
-    //     } else
-    //         return redirect()->route('doktor.create')->with($notificaton);
-    // }
+        if ($request->save == true) {
+            return redirect()->route('walikelas')->with($notificaton);
+        } else
+            return redirect()->route('walikelas.create')->with($notificaton);
+    }
 
-    // public function edit(string $id)
-    // {
-    //     $data['doktor'] = Doktor::findOrFail($id);
-    //     $data['praktek'] = Praktek::pluck('name', 'id');
+    public function edit(string $id)
+    {
+        $data['walikelas'] = WaliKelas::findOrFail($id);
+        $data['rapot'] = Rapot::pluck('name', 'id');
 
-    //     return view('doktors.edit', $data);
-    // }
+        return view('walikelas.edit', $data);
+    }
 
     // public function update(Request $request, string $id)
     // {
@@ -99,5 +100,5 @@ class WaliKelasController extends Controller
     // {
     //     return Excel::download(new DoktorExport, 'doktors.xlsx');
     //}
-    }
 }
+

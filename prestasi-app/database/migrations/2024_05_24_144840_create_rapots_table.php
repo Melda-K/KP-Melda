@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigInteger('id_wali_kelas')->unsigned();
             $table->bigInteger('id_siswa')->unsigned();
             $table->bigInteger('id_kriteria')->unsigned();
-            $table->foreign('id_wali_kelas')->references('id')->on('wali_kelass')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_wali_kelas')->references('id')->on('wali_kelas')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_siswa')->references('id')->on('siswas')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_kriteria')->references('id')->on('kriterias')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

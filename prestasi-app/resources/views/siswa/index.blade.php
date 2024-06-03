@@ -1,9 +1,7 @@
-@include('walikelas.create')
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('DATA WALI KELAS') }}
+            {{ __('Dashboard') }}
         </h2>
     </x-slot>
 
@@ -16,10 +14,10 @@
                     <x-slot name="header">
                         <tr>
                             <th>NO</th>
-                            <th>NIP</th>
+                            <th>NIS</th>
                             <th>NAMA</th>
-                            <th>GURU KELAS</th>
-                            <th>JENIS KELAMIN</th>
+                            <th>KELAS</th>
+                            <th>TAHUN PELAJARAN</th>
                             <th>AKSI</th>
                         </tr>
                     </x-slot>
@@ -27,14 +25,14 @@
                         @foreach ($wali_kelas as $data)
                             <tr class="text-center">
                                 <td>{{ $num++ }}</td>
-                                <td>{{ $data->nip }}</td>
-                                <td>{{ $data->nama_guru }}</td>
-                                <td>{{ $data->guru_kelas }}</td>
-                                <td>{{ $data->jenis_kelamin }}</td>
+                                <td>{{ $data->nis }}</td>
+                                <td>{{ $data->nama_siswa }}</td>
+                                <td>{{ $data->kelas }}</td>
+                                <td>{{ $data->tahun_pelajaran }}</td>
                                 <td>
-                                    <button tag="a" type="button" class="btn btn-outline-warning"data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $data->id }}"><i class="fa-solid fa-pen-to-square"></i>
+                                    <button tag="a" type="button" class="btn btn-outline-warning"data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $data->id }}"><i class="fa-solid fa-pencil"></i>
                                     </button>
-                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"data-bs-target="#hapusModal_{{ $data->id }}"><i class="fa-solid fa-trash-can"></i>
+                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"data-bs-target="#hapusModal_{{ $data->id }}"><i class="fa-solid fa-trash"></i>
                                     </button>
                                 </td>
                             </tr>

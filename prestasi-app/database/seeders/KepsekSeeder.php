@@ -38,7 +38,7 @@ class KepsekSeeder extends Seeder
                 'password' => $item['password'],
             ]);
             
-            DB::table('wali_kelass')->insert([
+            DB::table('wali_kelas')->insert([
                 [
                     'nip' => $item['nip'],
                     'nama_guru' => $item['nama_guru'],

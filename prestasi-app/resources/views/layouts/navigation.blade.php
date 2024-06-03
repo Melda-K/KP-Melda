@@ -17,15 +17,26 @@
                     </x-nav-link>
                 </div>
             </div>
-
-            
+ 
             @hasrole('WaliKelas')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('walikelas.index')" :active="request()->routeIs('walikelas.index')">
                         {{ __('Wali Kelas') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('siswa.index')" :active="request()->routeIs('siswa.index')|| request()->routeIs('siswa.create')">
+                        {{ __('Siswa') }}
+                    </x-nav-link>
+                </div>
                
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('nonakademik.index')" :active="request()->routeIs('nonakademik.index')|| request()->routeIs('nonakademik.create')">
+                        {{ __('Non Akademik') }}
+                    </x-nav-link>
+                </div>
+               
+                               
             @endhasrole
 
             <!-- Settings Dropdown -->

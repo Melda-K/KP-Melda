@@ -18,7 +18,7 @@ return new class extends Migration
             $table->char('kelas', 2);
             $table->integer('tahun_pelajaran');
             $table->bigInteger('id_wali_kelas')->unsigned();
-            $table->foreign('id_wali_kelas')->references('id')->on('wali_kelass')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_wali_kelas')->references('id')->on('wali_kelas')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

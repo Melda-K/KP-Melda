@@ -10,7 +10,7 @@ class WaliKelas extends Model
 {
     use HasFactory;
 
-    public function DataWaliKelas(): BelongsTo
+    public function walikelas(): BelongsTo
     {
         return $this->belongsTo(DataWaliKelas::class);
     }

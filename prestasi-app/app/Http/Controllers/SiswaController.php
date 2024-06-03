@@ -16,23 +16,23 @@ class SiswaController extends Controller
 {
     public function index()
     {
-        $data['doktors'] = Siswa::with('praktek')->get();
-        return view('doktors.index', $data);
+        $data['siswa'] = Siswa::with('siswa')->get();
+        return view('siswa.index', $data);
     }
 
     public function create()
     {
-        $data['praktek'] = Praktek::pluck('name', 'id');
-        return view('doktors.create', $data);
+        $data['siswa'] = Praktek::pluck('name', 'id');
+        return view('siswa.create', $data);
     }
 
     public function store(Request $request)
     {
         $valiated = $request->validate([
-            'nip' => 'required|max:255',
-            'nama_dokter' => 'required|max:150',
-            'spesialis' => 'required|digits:4|integer|min:1900|max:' . (date('Y')),
-            'jenis_kelamin' => 'required|max:100',
+            'nis' => 'required|max:255',
+            'nama_siswa' => 'required|max:150',
+            'kelas' => 'required|max:100',
+            'tahun_pelajaran' => 'required|max:100',
         ]);
 
        
