@@ -1,4 +1,6 @@
 @include('walikelas.create')
+@include('walikelas.edit')
+@include('walikelas.delete')
 
 <x-app-layout>
     <x-slot name="header">
@@ -14,7 +16,7 @@
                 <button type="button" class="btn btn-outline-secondary m-4" data-bs-toggle="modal" data-bs-target="#tambahModal">TAMBAH DATA</button>
                    <x-table>
                     <x-slot name="header">
-                        <tr>
+                        <tr class="bg-gray-400 text-center">
                             <th>NO</th>
                             <th>NIP</th>
                             <th>NAMA</th>

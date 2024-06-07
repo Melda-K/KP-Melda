@@ -36,15 +36,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/waliKelas', [WaliKelasController::class, 'index'])->name('walikelas.index');
     Route::get('/waliKelas/create', [WaliKelasController::class, 'create'])->name('walikelas.create');
     Route::post('/waliKelas', [WaliKelasController::class, 'store'])->name('walikelas.store');
-    // Route::get('/waliKelas/{id}/edit', [WaliKelasController::class, 'edit'])->name('walikelas.edit');
-    // Route::match(['put', 'patch'], '/walikelas/{id}', [WaliKelasController::class, 'update'])->name('walikelas.update');
-    // Route::delete('/waliKelas/{id}', [WaliKelasController::class, 'destroy'])->name('walikelas.destroy');
+    Route::get('/waliKelas/{id}/edit', [WaliKelasController::class, 'edit'])->name('walikelas.edit');
+    Route::match(['put', 'patch'], '/waliKelas/{id}', [WaliKelasController::class, 'update'])->name('walikelas.update');
+    Route::delete('/waliKelas/{id}', [WaliKelasController::class, 'destroy'])->name('walikelas.destroy');
 
     route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
     route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
+    Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
+    Route::get('/siswa/{id}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
+    Route::match(['put', 'patch'], '/siswa/{id}', [SiswaController::class, 'update'])->name('siswa.update');
+    Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
 
     route::get('/nonakademik', [NonAkademikController::class, 'index'])->name('nonakademik.index');
     route::get('/nonakademik/create', [NonAkademikController::class, 'create'])->name('nonakademik.create');
+    Route::post('/nonakademik', [NonAkademikController::class, 'store'])->name('nonakademik.store');
+    Route::get('/nonakademik/{id}/edit', [NonAkademikController::class, 'edit'])->name('nonakademik.edit');
+    Route::match(['put', 'patch'], '/nonakademik/{id}', [NonAkademikController::class, 'update'])->name('nonakademik.update');
+    Route::delete('/nonakademik/{id}', [NonAkademikController::class, 'destroy'])->name('nonakademik.destroy');
 });
 
 

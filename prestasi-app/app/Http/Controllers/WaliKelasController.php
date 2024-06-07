@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataWaliKelas;
 use App\Models\Rapot;
 use App\Models\User;
 use App\Models\WaliKelas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class WaliKelasController extends Controller
 {
@@ -23,70 +25,113 @@ class WaliKelasController extends Controller
 
     public function store(Request $request)
     {
-        $valiated = $request->validate([
+        $validate = $request->validate([
+            'email' => 'required|max:255',
             'nip' => 'required|max:255',
             'nama_guru' => 'required|max:150',
             'guru_kelas' => 'required|max:150',
             'jenis_kelamin' => 'required|max:100',
         ]);
+        
 
-       
-        WaliKelas::create($valiated);
+        $user = new User();
+        $user->name = $validate['nama_guru'];
+        $user->email = $validate['email'];
+        $user->password = Hash::make('Password2024');
+        $user->save();
+
+        $walikelas = WaliKelas::create([
+
+            'nip' => $validate['nip'],
+            'nama_guru' => $validate['nama_guru'],
+            'guru_kelas' => $validate['guru_kelas'],
+            'jenis_kelamin' => $validate['jenis_kelamin'],
+            'id_user' => $user->id,
+        ]);
+
+        $user->assignRole('WaliKelas');
+
 
         $notificaton = array(
-            'message' => 'Data Wali kelas berhasil ditambahkan!',
+            'message' => 'Data wali kelas berhasil ditambahkan!',
             'allert-type' => 'success'
         );
 
         if ($request->save == true) {
-            return redirect()->route('walikelas')->with($notificaton);
+            return redirect()->route('walikelas.index')->with($notificaton);
         } else
             return redirect()->route('walikelas.create')->with($notificaton);
     }
 
     public function edit(string $id)
     {
-        $data['walikelas'] = WaliKelas::findOrFail($id);
+        $data['walikelas'] = Walikelas::findOrFail($id);
+        $data['user'] = Walikelas::findOrFail($id);
         $data['rapot'] = Rapot::pluck('name', 'id');
 
         return view('walikelas.edit', $data);
     }
+    
+    public function update(Request $request, string $id)
+    {
+        $walikelas = WaliKelas::findOrFail($id);
 
-    // public function update(Request $request, string $id)
-    // {
-    //     $doktor = Dokter::findOrFail($id);
+        $validate = $request->validate([
+            'email' => 'required|max:255',
+            'nip' => 'required|max:255',
+            'nama_guru' => 'required|max:150',
+            'guru_kelas' => 'required|max:150',
+            'jenis_kelamin' => 'required|max:100',
+        ]);
 
-    //     $valiated = $request->validate([
-    //         'nip' => 'required|max:255',
-    //         'nama_dokter' => 'required|max:150',
-    //         'spesialis' => 'required|digits:4|integer|min:1900|max:' . (date('Y')),
-    //         'jenis_kelamin' => 'required|max:100',
-    //     ]);
+        // $user = new User();
+        // $dataUpdateWaliKelas = [
+        //     'nip' => $validate['nip'],
+        //     'nama_guru' => $validate['nama_guru'],
+        //     'guru_kelas' => $validate['guru_kelas'],
+        //     'jenis_kelamin' => $validate['jenis_kelamin'],
+        //     'id_user' => $user->id,
+        // ];
+        $walikelas = WaliKelas::findOrFail($id);
+        $user = User::find($walikelas->id_user);
 
+        $user->name = $validate['nama_guru'];
+        $user->email = $validate['email'];
+        $user->save();
 
-    //     Doktor::where('id', $id)->update($valiated);
+        $user->update([
+            'email' => $validate['email'],
+            'name' => $validate['nama_guru'],
+        ]);
 
-    //     $notificaton = array(
-    //         'message' => 'Data Doktor berhasil diperbahharui',
-    //         'alert-type' => 'success'
-    //     );
+        $walikelas->update([
+            'nip' => $validate['nip'],
+            'nama_guru' => $validate['nama_guru'],
+            'guru_kelas' => $validate['guru_kelas'],
+            'jenis_kelamin' => $validate['jenis_kelamin'],
+            'id_user' => $user->id,
+        ]);
 
-    //     return redirect()->route('doktor')->with($notificaton);
-    // }
+        $notificaton = array(
+            'message' => 'Data wali kelas berhasil ditambahkan!',
+            'allert-type' => 'success'
+        );
 
-    // public function destroy(string $id)
-    // {
-    //     $doktor = Dokter::findOrFail($id);
+        return redirect()->route('walikelas.index')->with($notificaton);
+    }
+    public function destroy(string $id)
+    {
+        $walikelas = WaliKelas::findOrFail($id);
 
-    //     $doktor->delete();
+        $walikelas->delete();
 
-    //     $notificaton = array(
-    //         'message' => 'Data Dokter telah berhasil dihapus',
-    //         'alert-type' => 'warning'
-    //     );
+        $notificaton = array(
+            'message' => 'Data wali kelas berhasil dihapus',
+            'alert-type' => 'warning'
+        );
 
-    //     return redirect()->route('doktor')->with($notificaton);
-    // }
+        return redirect()->route('walikelas.index')->with($notificaton);
+    }
 
     // public function print()
     // {

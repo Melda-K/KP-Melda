@@ -1,108 +1,153 @@
-<!-- 
 <?php
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Doktor;
-use App\Models\Praktek;
+use App\Models\DataSiswa;
+use App\Models\Rapot;
+use App\Models\User;
 use App\Models\Siswa;
-use Illuminate\Support\Facades\Storage;
-use Barryvdh\DomPDF\Facade\Pdf;
-use Maatwebsite\Excel\Facades\Excel;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class SiswaController extends Controller
 {
     public function index()
     {
-        $data['siswa'] = Siswa::with('siswa')->get();
+        $data['siswas'] = Siswa::with('siswa')->get();
         return view('siswa.index', $data);
     }
 
     public function create()
     {
-        $data['siswa'] = Praktek::pluck('name', 'id');
+        $data['siswas'] = User::pluck('name', 'id');
         return view('siswa.create', $data);
     }
 
     public function store(Request $request)
     {
-        $valiated = $request->validate([
+        $validate = $request->validate([
             'nis' => 'required|max:255',
-            'nama_siswa' => 'required|max:150',
-            'kelas' => 'required|max:100',
+            'nama' => 'required|max:150',
+            'kelas' => 'required|max:150',
+            'jenis_kelamin' => 'required|max:100',
             'tahun_pelajaran' => 'required|max:100',
         ]);
+        
 
-       
-        Doktor::create($valiated);
+        // $user = new User();
+        // $user->name = $validate['nama_guru'];
+        // $user->email = $validate['email'];
+        // $user->password = Hash::make('Password2024');
+        // $user->save();
+
+        $siswa = Siswa::create([
+
+            'nis' => $validate['nis'],
+            'nama' => $validate['nama'],
+            'kelas' => $validate['kelas'],
+            'jenis_kelamin' => $validate['jenis_kelamin'],
+            'tahun_pelajaran' => $validate['tahun_pelajaran'],
+            // 'id_wali_kelas' => $wali_kelas->id,
+        ]);
+
+        // $wali_kelas->assignRole('Siswa');
+
 
         $notificaton = array(
-            'message' => 'Data Doktor berhasil ditambahkan! :D',
+            'message' => 'Data wali kelas berhasil ditambahkan!',
             'allert-type' => 'success'
         );
 
         if ($request->save == true) {
-            return redirect()->route('doktor')->with($notificaton);
+            return redirect()->route('siswa.index')->with($notificaton);
         } else
-            return redirect()->route('doktor.create')->with($notificaton);
+            return redirect()->route('siswa.create')->with($notificaton);
     }
 
     public function edit(string $id)
     {
-        $data['doktor'] = Doktor::findOrFail($id);
-        $data['praktek'] = Praktek::pluck('name', 'id');
+        $data['siswa'] = Siswa::findOrFail($id);
+        $data['wali_kelas'] = Siswa::findOrFail($id);
+        $data['rapot'] = Rapot::pluck('name', 'id');
 
-        return view('doktors.edit', $data);
+        return view('siswa.edit', $data);
     }
-
+    
     public function update(Request $request, string $id)
     {
-        $doktor = Dokter::findOrFail($id);
+        $siswa = Siswa::findOrFail($id);
 
-        $valiated = $request->validate([
-            'nip' => 'required|max:255',
-            'nama_dokter' => 'required|max:150',
-            'spesialis' => 'required|digits:4|integer|min:1900|max:' . (date('Y')),
-            'jenis_kelamin' => 'required|max:100',
+        $validate = $request->validate([
+            'nis' => 'required|max:255',
+            'nama' => 'required|max:255',
+            'kelas' => 'required|max:150',
+            'jenis_kelamin' => 'required|max:150',
+            'tahun_pelajaran' => 'required|max:100',
         ]);
 
+        // $user = new User();
+        // $dataUpdateWaliKelas = [
+        //     'nip' => $validate['nip'],
+        //     'nama_guru' => $validate['nama_guru'],
+        //     'guru_kelas' => $validate['guru_kelas'],
+        //     'jenis_kelamin' => $validate['jenis_kelamin'],
+        //     'id_user' => $user->id,
+        // ];
 
-        Doktor::where('id', $id)->update($valiated);
+        // $siswa = Siswa::findOrFail($id);
+        // $user = User::find($siswa->id_user);
+
+        // $user->name = $validate['nama'];
+        // $user->email = $validate['email'];
+        // $user->save();
+
+        // $user->update([
+        //     'email' => $validate['email'],
+        //     'name' => $validate['nama_guru'],
+        // ]);
+
+        $siswa->update([
+            'nis' => $validate['nis'],
+            'nama' => $validate['nama'],
+            'kelas' => $validate['kelas'],
+            'jenis_kelamin' => $validate['jenis_kelamin'],
+            'tahun_pelajaran' => $validate['tahun_pelajaran'],
+            // 'id_wali_kelas' => $wali_kelas->id,
+        ]);
 
         $notificaton = array(
-            'message' => 'Data Doktor berhasil diperbahharui',
-            'alert-type' => 'success'
+            'message' => 'Data siswa berhasil ditambahkan!',
+            'allert-type' => 'success'
         );
 
-        return redirect()->route('doktor')->with($notificaton);
+        return redirect()->route('siswa.index')->with($notificaton);
     }
-
     public function destroy(string $id)
     {
-        $doktor = Dokter::findOrFail($id);
+        $siswa = Siswa::findOrFail($id);
 
-        $doktor->delete();
+        $siswa->delete();
 
         $notificaton = array(
-            'message' => 'Data Dokter telah berhasil dihapus',
+            'message' => 'Data siswa berhasil dihapus',
             'alert-type' => 'warning'
         );
 
-        return redirect()->route('doktor')->with($notificaton);
+        return redirect()->route('siswa')->with($notificaton);
     }
 
-    public function print()
-    {
-        $doktors = doktor::all();
+    // public function print()
+    // {
+    //     $doktors = doktor::all();
 
-        $pdf = Pdf::loadview('doktors.print', ['doktors' => $doktors]);
-        return $pdf->download('data_doktor.pdf');
-    }
+    //     $pdf = Pdf::loadview('doktors.print', ['doktors' => $doktors]);
+    //     return $pdf->download('data_doktor.pdf');
+    // }
 
-    public function export()
-    {
-        return Excel::download(new DoktorExport, 'doktors.xlsx');
-    }
-} -->
+    // public function export()
+    // {
+    //     return Excel::download(new DoktorExport, 'doktors.xlsx');
+    //}
+}
+
+
