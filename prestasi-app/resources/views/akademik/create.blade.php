@@ -2,11 +2,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="tambahModalLabel">TAMBAH DATA NON AKADEMIK</h1>
+                <h1 class="modal-title fs-5" id="tambahModalLabel">TAMBAH DATA AKADEMIK</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('nonakademik.store') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
+                <form method="post" action="{{ route('akademik.store') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
                     @csrf
                     <div class="max-w-xl">
                         <x-input-label for="id_siswa" value="SISWA" />
@@ -20,29 +20,34 @@
                         </x-select-input>
                     </div>
                     <div class="max-w-xl">
-                        <x-input-label for="tanggal" value="TANGGAL" />
-                        <x-text-input id="tanggal" type="date" name="tanggal" class="mt-1 block w-full" value="{{ old('tanggal')}}" required />
-                        <x-input-error class="mt-2" :messages="$errors->get('tanggal')" />
-                    </div>
-                    <div class="max-w-xl">
-                        <x-input-label for="kategori_lomba" value="KATEGORI LOMBA" />
-                        <x-text-input id="kategori_lomba" type="text" name="kategori_lomba" class="mt-1 block w-full" value="{{ old('kategori_lomba')}}" required />
-                        <x-input-error class="mt-2" :messages="$errors->get('kategori_lomba')" />
-                    </div>
-                    <div class="max-w-xl">
-                        <x-input-label for="juara_lomba" value="JUARA LOMBA" />
-                        <x-select-input id="juara_lomba" name="juara_lomba" class="mt-1 block w-full" required>
-                            <option value="">Pilih Juara Lomba</option>
-                            <option value="1" {{ old('juara_lomba') === '1' ? 'selected' : '' }}>1</option>
-                            <option value="2" {{ old('juara_lomba') === '2' ? 'selected' : '' }}>2</option>
-                            <option value="3" {{ old('juara_lomba') === '3' ? 'selected' : '' }}>3</option>
+                        <x-input-label for="kelas" value="KELAS" />
+                        <x-select-input id="kelas" name="kelas" class="mt-1 block w-full" required>
+                            <option value="">Pilih kelas</option>
+                            <option value="I" {{ old('kelas') === 'I' ? 'selected' : '' }}>I</option>
+                            <option value="II" {{ old('kelas') === 'II' ? 'selected' : '' }}>II</option>
+                            <option value="III" {{ old('kelas') === 'III' ? 'selected' : '' }}>III</option>
+                            <option value="IV" {{ old('kelas') === 'IV' ? 'selected' : '' }}>IV</option>
+                            <option value="V" {{ old('kelas') === 'V' ? 'selected' : '' }}>V</option>
+                            <option value="VI" {{ old('kelas') === 'VI' ? 'selected' : '' }}>VI</option>
                         </x-select-input>
                     </div>
                     <div class="max-w-xl">
-                        <x-input-label for="tingkat_lomba" value="TINGKAT LOMBA" />
-                        <x-text-input id="tingkat_lomba" type="text" name="tingkat_lomba" class="mt-1 block w-full" value="{{ old('tingkat_lomba')}}" required />
-                        <x-input-error class="mt-2" :messages="$errors->get('tingkat_lomba')" />
+                        <x-input-label for="id_rapot" value="JUMLAH NILAI RAPOT" />
+                        <x-select-input id="id_rapot" name="id_rapot" class="mt-1 block w-full" required>
+                            <option value="">Pilih Jumlah Nilai Siswa</option>
+                            @foreach(App\Models\Rapot::all() as $value)
+                            <option value="{{ $value->id }}">
+                                {{ $value->nama_siswa}}
+                            </option>
+                            @endforeach
+                        </x-select-input>
                     </div>
+                    <div class="max-w-xl">
+                            <x-input-label for="ranking" value="RANKING" />
+                            <x-text-input id="ranking" type="text" name="ranking" class="mt-1 block w-full" value="{{ old('ranking')}}"
+                                required />
+                            <x-input-error class="mt-2" :messages="$errors->get('ranking')" />
+                        </div>
                     <div class="modal-footer ">
                         <x-secondary-button tag="a" data-bs-dismiss="modal">Batal</x-secondary-button>
                         <x-primary-button name="save" value="true">Simpan</x-primary-button>

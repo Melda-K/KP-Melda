@@ -18,7 +18,8 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
             <div>
                 <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                    <div class="text-center p-4 font-bold text-lg">APLIKASI PENGELOLAAN DAN PEMILIHAN SISWA BERPRESTASI <br> SD NEGERI NYALINDUNG II</div>
+                    <img src="{{ asset('img/logoSDN Nyalindung2.png') }}" alt="Logo Sekolah" class="hidden sm:block w-auto rounded-full h-44">
                 </a>
             </div>
 

@@ -12,20 +12,16 @@ class Siswa extends Model
     protected $table='siswas';
     
     protected $fillable = [
-        'nip',
-        'nama_guru',
-        'guru_kelas',
+        'nis',
+        'nama_siswa',
+        'kelas',
         'jenis_kelamin',
         'tahun_pelajaran',
-        'id_user'
+        'id_wali_kelas',
     ];
 
-    public function siswa(): BelongsTo
+    public function walikelas(): BelongsTo
     {
-        return $this->belongsTo(WaliKelas::class);
-    }
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'id_wali_kelas');
+        return $this->belongsTo(WaliKelas::class, 'id_wali_kelas');
     }
 }

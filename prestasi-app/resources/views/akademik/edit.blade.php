@@ -1,13 +1,13 @@
-@foreach($nonakademiks as $data)
+@foreach($akademiks as $data)
 <div class="modal fade" id="exampleModal_{{$data->id}}" tabindex="-1" aria-labelledby="exampleModalLabel_{{$data->id}}" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel_{{$data->id}}">EDIT DATA NON AKADEMIK</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel_{{$data->id}}">EDIT DATA AKADEMIK</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                   <form method="post" action="{{ route('nonakademik.update', $data->id) }}" enctype="multipart/form-data" class="mt-6 space-y-6">
+                   <form method="post" action="{{ route('akademik.update', $data->id) }}" enctype="multipart/form-data" class="mt-6 space-y-6">
                         @csrf
                         @method('PATCH')
                         <div class="max-w-xl">
@@ -23,22 +23,16 @@
                             <x-input-error class="mt-2" :messages="$errors->get('kelas')" />
                         </div>
                         <div class="max-w-xl">
-                            <x-input-label for="tanggal" value="TANGGAL" />
-                            <x-text-input id="tanggal" type="date" name="tanggal" class="mt-1 block w-full" value="{{ old('tanggal')}}"
+                            <x-input-label for="jumlah_nilai_rapot" value="JUMLAH NILAI RAPOT" />
+                            <x-text-input id="jumlah_nilai_rapot" type="date" name="jumlah_nilai_rapot" class="mt-1 block w-full" value="{{ old('jumlah_nilai_rapot')}}"
                                 required />
-                            <x-input-error class="mt-2" :messages="$errors->get('tanggal')" />
+                            <x-input-error class="mt-2" :messages="$errors->get('jumlah_nilai_rapot')" />
                         </div>
                         <div class="max-w-xl">
-                            <x-input-label for="kategori_lomba" value="KATEGORI LOMBA" />
-                            <x-text-input id="kategori_lomba" type="text" name="kategori_lomba" class="mt-1 block w-full" value="{{ old('kategori_lomba')}}"
+                            <x-input-label for="ranking" value="RANKING" />
+                            <x-text-input id="ranking" type="text" name="ranking" class="mt-1 block w-full" value="{{ old('ranking')}}"
                                 required />
-                            <x-input-error class="mt-2" :messages="$errors->get('kategori_lomba')" />
-                        </div>
-                        <div class="max-w-xl">
-                            <x-input-label for="tingkat_lomba" value="TINGKAT LOMBA" />
-                            <x-text-input id="tingkat_lomba" type="text" name="tingkat_lomba" class="mt-1 block w-full" value="{{ old('tingkat_lomba')}}"
-                                required />
-                            <x-input-error class="mt-2" :messages="$errors->get('tingkat_lomba')" />
+                            <x-input-error class="mt-2" :messages="$errors->get('ranking')" />
                         </div>
                         <div class="modal-footer">
                         <x-secondary-button tag="a" data-bs-dismiss="modal">Batal</x-secondary-button>

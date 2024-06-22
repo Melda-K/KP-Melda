@@ -47,7 +47,7 @@
                             </x-select-input>
                         </div>
                         <div class="modal-footer">
-                        <x-secondary-button tag="a" data-bs-dismiss="modal">Close</x-secondary-button>
+                        <x-secondary-button tag="a" data-bs-dismiss="modal">Batal</x-secondary-button>
                         <x-primary-button name="save" value="true">Simpan</x-primary-button>
                          </div>
                     </form>

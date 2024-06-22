@@ -52,15 +52,12 @@ class WaliKelasController extends Controller
         $user->assignRole('WaliKelas');
 
 
-        $notificaton = array(
-            'message' => 'Data wali kelas berhasil ditambahkan!',
-            'allert-type' => 'success'
+        $notification = array(
+            'message' => "Data wali kelas berhasil ditambahkan",
+            'alert-type' => 'success'
         );
 
-        if ($request->save == true) {
-            return redirect()->route('walikelas.index')->with($notificaton);
-        } else
-            return redirect()->route('walikelas.create')->with($notificaton);
+        return redirect()->route('walikelas.index')->with($notification);
     }
 
     public function edit(string $id)
@@ -113,8 +110,8 @@ class WaliKelasController extends Controller
         ]);
 
         $notificaton = array(
-            'message' => 'Data wali kelas berhasil ditambahkan!',
-            'allert-type' => 'success'
+            'message' => 'Data wali kelas berhasil diperbaharui',
+            'alert-type' => 'success'
         );
 
         return redirect()->route('walikelas.index')->with($notificaton);
@@ -127,7 +124,7 @@ class WaliKelasController extends Controller
 
         $notificaton = array(
             'message' => 'Data wali kelas berhasil dihapus',
-            'alert-type' => 'warning'
+            'alert-type' => 'success'
         );
 
         return redirect()->route('walikelas.index')->with($notificaton);

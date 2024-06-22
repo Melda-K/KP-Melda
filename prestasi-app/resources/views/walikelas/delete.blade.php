@@ -13,7 +13,7 @@
                     <p>Anda yakin ingin menghapus data {{ $data->nama_guru }} ?</p>
                     <div class="modal-footer">
                         <x-secondary-button tag="a" data-bs-dismiss="modal">Batal</x-secondary-button>
-                        <x-primary-button value="true">Hapus!</x-primary-button>
+                        <x-primary-button value="true">Hapus</x-primary-button>
                     </div>
                 </form>
             </div>

@@ -15,14 +15,14 @@
                             <x-input-error class="mt-2" :messages="$errors->get('nip')" />
                         </div>
                         <div class="max-w-xl">
-                            <x-input-label for="nama" value="NAMA" />
-                            <x-text-input id="nama" type="text" name="nama" class="mt-1 block w-full" value="{{ old('nama')}}"
+                            <x-input-label for="nama_siswa" value="NAMA SISWA" />
+                            <x-text-input id="nama_siswa" type="text" name="nama_siswa" class="mt-1 block w-full" value="{{ old('nama_siswa')}}"
                                 required />
-                            <x-input-error class="mt-2" :messages="$errors->get('nama')" />
+                            <x-input-error class="mt-2" :messages="$errors->get('nama_siswa')" />
                         </div>
                         <div class="max-w-xl">
                             <x-input-label for="kelas" value="KELAS" />
-                            <x-select-input id="guru_kelas" name="guru_kelas" class="mt-1 block w-full" required>
+                            <x-select-input id="kelas" name="kelas" class="mt-1 block w-full" required>
                             <option value="">Pilih kelas</option>
                                 <option value="I" {{ old('kelas') === 'I' ? 'selected' : '' }}>I</option>
                                 <option value="II" {{ old('kelas') === 'II' ? 'selected' : '' }}>II</option>
@@ -48,8 +48,20 @@
                                 <option value="2025" {{ old('tahun_pelajaran') === '2025' ? 'selected' : '' }}>2025</option>
                             </x-select-input>
                         </div>
+                        <div class="max-w-xl">
+                            <x-input-label for="id_wali_kelas" value="WALI KELAS" />
+                            <x-select-input id="id_wali_kelas" name="id_wali_kelas" class="mt-1 block w-full" required>
+                            <option value="">Pilih wali kelas</option>
+                                <option value="1" {{ old('id_wali_kelas') === '1' ? 'selected' : '' }}>1</option>
+                                <option value="2" {{ old('id_wali_kelas') === '2' ? 'selected' : '' }}>2</option>
+                                <option value="3" {{ old('id_wali_kelas') === '3' ? 'selected' : '' }}>3</option>
+                                <option value="4" {{ old('id_wali_kelas') === '4' ? 'selected' : '' }}>4</option>
+                                <option value="5" {{ old('id_wali_kelas') === '5' ? 'selected' : '' }}>5</option>
+                                <option value="6" {{ old('id_wali_kelas') === '6' ? 'selected' : '' }}>6</option>
+                            </x-select-input>
+                        </div>   
                         <div class="modal-footer">
-                        <x-secondary-button tag="a" data-bs-dismiss="modal">Close</x-secondary-button>
+                        <x-secondary-button tag="a" data-bs-dismiss="modal">Batal</x-secondary-button>
                         <x-primary-button name="save" value="true">Simpan</x-primary-button>
                          </div>
                     </form>

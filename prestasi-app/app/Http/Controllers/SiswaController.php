@@ -13,29 +13,31 @@ class SiswaController extends Controller
 {
     public function index()
     {
-        $data['siswas'] = Siswa::with('siswa')->get();
+        $data['siswas'] = Siswa::all();
         return view('siswa.index', $data);
     }
 
     public function create()
     {
-        $data['siswas'] = User::pluck('name', 'id');
-        return view('siswa.create', $data);
+        $data
+        ['siswas'] = User::pluck('name', 'id');
+        return view('siswa.create', $data
+    );
     }
 
     public function store(Request $request)
     {
         $validate = $request->validate([
             'nis' => 'required|max:255',
-            'nama' => 'required|max:150',
+            'nama_siswa' => 'required|max:150',
             'kelas' => 'required|max:150',
             'jenis_kelamin' => 'required|max:100',
             'tahun_pelajaran' => 'required|max:100',
+            'id_wali_kelas' => 'required|max:100',
         ]);
-        
 
         // $user = new User();
-        // $user->name = $validate['nama_guru'];
+        // $user->name = $validate['nama_siswa'];
         // $user->email = $validate['email'];
         // $user->password = Hash::make('Password2024');
         // $user->save();
@@ -43,19 +45,17 @@ class SiswaController extends Controller
         $siswa = Siswa::create([
 
             'nis' => $validate['nis'],
-            'nama' => $validate['nama'],
+            'nama_siswa' => $validate['nama_siswa'],
             'kelas' => $validate['kelas'],
             'jenis_kelamin' => $validate['jenis_kelamin'],
             'tahun_pelajaran' => $validate['tahun_pelajaran'],
-            // 'id_wali_kelas' => $wali_kelas->id,
+            'id_wali_kelas' => $validate['id_wali_kelas'],
         ]);
-
-        // $wali_kelas->assignRole('Siswa');
 
 
         $notificaton = array(
-            'message' => 'Data wali kelas berhasil ditambahkan!',
-            'allert-type' => 'success'
+            'message' => 'Data siswa berhasil ditambahkan',
+            'alert-type' => 'success'
         );
 
         if ($request->save == true) {
@@ -79,10 +79,11 @@ class SiswaController extends Controller
 
         $validate = $request->validate([
             'nis' => 'required|max:255',
-            'nama' => 'required|max:255',
+            'nama_siswa' => 'required|max:255',
             'kelas' => 'required|max:150',
             'jenis_kelamin' => 'required|max:150',
             'tahun_pelajaran' => 'required|max:100',
+            'id_wali_kelas' => 'required|max:100',
         ]);
 
         // $user = new User();
@@ -108,19 +109,20 @@ class SiswaController extends Controller
 
         $siswa->update([
             'nis' => $validate['nis'],
-            'nama' => $validate['nama'],
+            'nama_siswa' => $validate['nama_siswa'],
             'kelas' => $validate['kelas'],
             'jenis_kelamin' => $validate['jenis_kelamin'],
             'tahun_pelajaran' => $validate['tahun_pelajaran'],
-            // 'id_wali_kelas' => $wali_kelas->id,
+            'id_wali_kelas' => $validate['id_wali_kelas'],
         ]);
 
         $notificaton = array(
-            'message' => 'Data siswa berhasil ditambahkan!',
-            'allert-type' => 'success'
+            'message' => 'Data siswa berhasil ditambahkan',
+            'alert-type' => 'success'
         );
 
         return redirect()->route('siswa.index')->with($notificaton);
+
     }
     public function destroy(string $id)
     {
@@ -130,10 +132,18 @@ class SiswaController extends Controller
 
         $notificaton = array(
             'message' => 'Data siswa berhasil dihapus',
-            'alert-type' => 'warning'
+            'alert-type' => 'success'
         );
 
-        return redirect()->route('siswa')->with($notificaton);
+        return redirect()->route('siswa.index')->with($notificaton);
+    }
+
+    public function filter(Request $request)
+    {
+        $kelas = $request->input('kelas');
+        $siswas = Siswa::where('kelas', $kelas)->get();
+        
+        return view('siswa.filter', compact('siswas'));
     }
 
     // public function print()

@@ -12,6 +12,11 @@ class MataPelajaran extends Model
     
     public function rapot(): BelongsTo
     {
-        return $this->belongsTo(rapot::class);
+        return $this->belongsTo(Rapot::class);
+    }
+
+    public function siswa(): BelongsTo
+    {
+        return $this->belongsTo(Siswa::class);
     }
 }

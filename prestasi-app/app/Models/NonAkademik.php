@@ -9,8 +9,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class NonAkademik extends Model
 {
     use HasFactory;
-    public function nonakademik(): BelongsTo
+    protected $fillable = [
+        "id_siswa",
+        "tanggal",
+        "kategori_lomba",
+        "juara_lomba",
+        "tingkat_lomba",
+    ];
+    public function siswa(): BelongsTo
     {
-        return $this->belongsTo(Prestasi::class);
+        return $this->belongsTo(Siswa::class,'id_siswa');
     }
+  
 }

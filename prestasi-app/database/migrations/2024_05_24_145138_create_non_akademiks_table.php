@@ -13,9 +13,12 @@ return new class extends Migration
 {
     Schema::create('non_akademiks', function (Blueprint $table) {
         $table->id();
-        $table->string('kategori_lomba', 25);
-        $table->string('tingkat_lomba', 15);
+        $table->bigInteger('id_siswa')->unsigned();
+        $table->foreign('id_siswa')->references('id')->on('siswas')->onDelete('cascade')->onUpdate('cascade');
         $table->date('tanggal');
+        $table->string('kategori_lomba', 25);
+        $table->string('juara_lomba', 15);
+        $table->string('tingkat_lomba', 15);
         $table->timestamps();
     });
 }
