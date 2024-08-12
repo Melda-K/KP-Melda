@@ -27,6 +27,7 @@ class KepsekSeeder extends Seeder
                 'password' => Hash::make('Password2024'),
                 'nip' => '197907032007012005',
                 'nama_guru' => 'Lia Nurzakiyah, S.Pd',
+                'jabatan' => 'Kepala Sekolah',
                 'jenis_kelamin' =>'P',
             ],
         ];
@@ -38,10 +39,11 @@ class KepsekSeeder extends Seeder
                 'password' => $item['password'],
             ]);
             
-            DB::table('wali_kelas')->insert([
+            DB::table('wali_kelass')->insert([
                 [
                     'nip' => $item['nip'],
                     'nama_guru' => $item['nama_guru'],
+                    'jabatan' => $item['jabatan'],
                     'jenis_kelamin' => $item['jenis_kelamin'],
                     'id_user' => $user->id,
                 ],

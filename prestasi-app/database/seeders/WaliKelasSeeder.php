@@ -23,7 +23,7 @@ class WaliKelasSeeder extends Seeder
                         'password' => Hash::make('Password2024'),
                         'nip' => '0958765667300023',
                         'nama_guru' => 'Rini Nurhayati, S.Pd.I',
-                        'guru_kelas' => '1',
+                        'jabatan' => 'Wali Kelas 1',
                         'jenis_kelamin' =>'P',
                     ],
                     [
@@ -31,7 +31,7 @@ class WaliKelasSeeder extends Seeder
                         'password' => Hash::make('Password2024'),
                         'nip' => '1035754658360003',
                         'nama_guru' => 'Erlin Ratnawati, S.Pd',
-                        'guru_kelas' => '2',
+                        'jabatan' => 'Wali Kelas 2',
                         'jenis_kelamin' =>'P',
                     ],
                     [
@@ -39,7 +39,7 @@ class WaliKelasSeeder extends Seeder
                         'password' => Hash::make('Password2024'),
                         'nip' => '196404101984102001',
                         'nama_guru' => 'Robiah, S.Pd',
-                        'guru_kelas' => '3',
+                        'jabatan' => 'Wali Kelas 3',
                         'jenis_kelamin' =>'P',
                     ],
                     [
@@ -47,7 +47,7 @@ class WaliKelasSeeder extends Seeder
                         'password' => Hash::make('Password2024'),
                         'nip' => '5140766667230373',
                         'nama_guru' => 'Ai Sulasmi, S.Pd',
-                        'guru_kelas' => '4',
+                        'jabatan' => 'Wali Kelas 4',
                         'jenis_kelamin' =>'P',
                     ],
                     [
@@ -55,7 +55,7 @@ class WaliKelasSeeder extends Seeder
                         'password' => Hash::make('Password2024'),
                         'nip' => '-',
                         'nama_guru' => 'Rusman Efendi, S.Pd',
-                        'guru_kelas' => '5',
+                        'jabatan' => 'Wali Kelas 5',
                         'jenis_kelamin' =>'L',
                     ],
                     [
@@ -63,7 +63,7 @@ class WaliKelasSeeder extends Seeder
                         'password' => Hash::make('Password2024'),
                         'nip' => '4955766668200002',
                         'nama_guru' => 'Enden Sirojudin, S.Pd',
-                        'guru_kelas' => '6',
+                        'jabatan' => 'Wali Kelas 6',
                         'jenis_kelamin' =>'L',
                     ],
                 ];
@@ -75,11 +75,11 @@ class WaliKelasSeeder extends Seeder
                         'password' => $item['password'],
                     ]);
         
-                    DB::table('wali_kelas')->insert([
+                    DB::table('wali_kelass')->insert([
                         [
                             'nip' => $item['nip'],
                             'nama_guru' => $item['nama_guru'],
-                            'guru_kelas' => $item['guru_kelas'],
+                            'jabatan' => $item['jabatan'],
                             'jenis_kelamin' => $item['jenis_kelamin'],
                             'id_user' => $user->id,
                         ],

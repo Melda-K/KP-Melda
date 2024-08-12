@@ -7,45 +7,106 @@
             </div>
             <div class="modal-body">
                 <form method="post" action="{{ route('nonakademik.store') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
-                    @csrf
-                    <div class="max-w-xl">
-                        <x-input-label for="id_siswa" value="SISWA" />
-                        <x-select-input id="id_siswa" name="id_siswa" class="mt-1 block w-full" required>
-                            <option value="">Pilih Siswa</option>
-                            @foreach(App\Models\Siswa::all() as $value)
-                            <option value="{{ $value->id }}">
-                                {{ $value->nama_siswa}}
-                            </option>
-                            @endforeach
-                        </x-select-input>
+                    <div class="gap-4 flex items-center mb-4">
+                        <label class="block text-gray-700 w-40">NIS</label>
+                        <input type="text" name="nis" value="{{ old('nis', $siswa->nis ?? '') }}" class="w-62 border border-gray-300 rounded mt-1 p-2">
+                        <button type="submit" class="p-2 bg-gray-500 text-white rounded hover:bg-gray-600 font-bold">CARI</button>
                     </div>
-                    <div class="max-w-xl">
-                        <x-input-label for="tanggal" value="TANGGAL" />
-                        <x-text-input id="tanggal" type="date" name="tanggal" class="mt-1 block w-full" value="{{ old('tanggal')}}" required />
-                        <x-input-error class="mt-2" :messages="$errors->get('tanggal')" />
+
+                    <div class="gap-4 flex items-center mb-4">
+                        <label class="block text-gray-700 w-40">NAMA SISWA</label>
+                        <input type="text" name="nama" value="{{ old('nama', $siswa->nama_siswa ?? '') }}" class="w-62 border border-gray-300 rounded mt-1 p-2">
                     </div>
-                    <div class="max-w-xl">
-                        <x-input-label for="kategori_lomba" value="KATEGORI LOMBA" />
-                        <x-text-input id="kategori_lomba" type="text" name="kategori_lomba" class="mt-1 block w-full" value="{{ old('kategori_lomba')}}" required />
-                        <x-input-error class="mt-2" :messages="$errors->get('kategori_lomba')" />
+
+                    <div class="gap-4 flex items-center mb-4">
+                        <label class="block text-gray-700 w-40">KELAS</label>
+                        <input type="text" name="kelas" value="{{ old('kelas', $siswa->kelas ?? '') }}" class="w-62 border border-gray-300 rounded mt-1 p-2">
                     </div>
-                    <div class="max-w-xl">
-                        <x-input-label for="juara_lomba" value="JUARA LOMBA" />
-                        <x-select-input id="juara_lomba" name="juara_lomba" class="mt-1 block w-full" required>
-                            <option value="">Pilih Juara Lomba</option>
-                            <option value="1" {{ old('juara_lomba') === '1' ? 'selected' : '' }}>1</option>
-                            <option value="2" {{ old('juara_lomba') === '2' ? 'selected' : '' }}>2</option>
-                            <option value="3" {{ old('juara_lomba') === '3' ? 'selected' : '' }}>3</option>
-                        </x-select-input>
+
+                    <div class="gap-4 flex items-center mb-4">
+                        <label class="block text-gray-700 w-40">TAHUN PELAJARAN</label>
+                        <input type="text" name="tahun_pelajaran" value="{{ old('tahun_pelajaran', $siswa->tahun_pelajaran ?? '') }}" class="w-62 border border-gray-300 rounded mt-1 p-2">
                     </div>
-                    <div class="max-w-xl">
-                        <x-input-label for="tingkat_lomba" value="TINGKAT LOMBA" />
-                        <x-text-input id="tingkat_lomba" type="text" name="tingkat_lomba" class="mt-1 block w-full" value="{{ old('tingkat_lomba')}}" required />
-                        <x-input-error class="mt-2" :messages="$errors->get('tingkat_lomba')" />
-                    </div>
-                    <div class="modal-footer ">
-                        <x-secondary-button tag="a" data-bs-dismiss="modal">Batal</x-secondary-button>
-                        <x-primary-button name="save" value="true">Simpan</x-primary-button>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white border border-gray-300">
+                            <thead>
+                                <p class="font-bold">CAPAIAN KOMPETENSI</p>
+                                <br>
+                                <tr>
+                                    <th class="py-2 px-4 bg-gray-100 border-b">Mata Pelajaran</th>
+                                    <th class="py-2 px-4 bg-gray-100 border-b">Nilai Pengetahuan</th>
+                                    <th class="py-2 px-4 bg-gray-100 border-b">Huruf</th>
+                                    <th class="py-2 px-4 bg-gray-100 border-b">Nilai Keterampilan</th>
+                                    <th class="py-2 px-4 bg-gray-100 border-b">Huruf</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="py-2 px-4 border-b">Pendidikan Agama dan Budi Pekerti</td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4 border-b">PPKN</td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4 border-b">Bahasa Indonesia</td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4 border-b">Matematika</td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4 border-b">IPA</td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4 border-b">IPS</td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4 border-b">PJOK</td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4 border-b">Seni Budaya</td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4 border-b">Basa Sunda</td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                    <td class="py-2 px-4 border-b"><input type="text" class="w-full p-1 border border-gray-300 rounded"></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </form>
 

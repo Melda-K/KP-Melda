@@ -15,6 +15,7 @@ class NonAkademik extends Model
         "kategori_lomba",
         "juara_lomba",
         "tingkat_lomba",
+        "dokumentasi",
     ];
     public function siswa(): BelongsTo
     {

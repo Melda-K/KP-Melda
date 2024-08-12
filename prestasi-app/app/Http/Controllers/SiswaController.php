@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataSiswa;
+use App\Models\MataPelajaran;
 use App\Models\Rapot;
 use App\Models\User;
 use App\Models\Siswa;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,35 +21,50 @@ class SiswaController extends Controller
 
     public function create()
     {
-        $data
-        ['siswas'] = User::pluck('name', 'id');
-        return view('siswa.create', $data
-    );
+        $data['siswas'] = Siswa::pluck('name', 'id');
+        return view(
+            'siswa.create',
+            $data
+        );
     }
 
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'nis' => 'required|max:255',
             'nama_siswa' => 'required|max:150',
-            'kelas' => 'required|max:150',
+            'nis' => 'required|max:255',
+            'ttl' => 'required|max:150',
             'jenis_kelamin' => 'required|max:100',
+            'agama' => 'required|max:100',
+            'pendik_sebelumnya' => 'required|max:100',
+            'jmlh_sodara' => 'required|max:100',
+            'alamat' => 'required|max:100',
+            'nama_ayah' => 'required|max:100',
+            'nama_ibu' => 'required|max:100',
+            'pekerjaan_ayah' => 'required|max:100',
+            'pekerjaan_ibu' => 'required|max:100',
+            'wali_siswa' => 'required|max:100',
+            'kelas' => 'required|max:150',
             'tahun_pelajaran' => 'required|max:100',
             'id_wali_kelas' => 'required|max:100',
         ]);
 
-        // $user = new User();
-        // $user->name = $validate['nama_siswa'];
-        // $user->email = $validate['email'];
-        // $user->password = Hash::make('Password2024');
-        // $user->save();
-
         $siswa = Siswa::create([
 
-            'nis' => $validate['nis'],
             'nama_siswa' => $validate['nama_siswa'],
-            'kelas' => $validate['kelas'],
+            'nis' => $validate['nis'],
+            'ttl' => $validate['ttl'],
             'jenis_kelamin' => $validate['jenis_kelamin'],
+            'agama' => $validate['agama'],
+            'pendik_sebelumnya' => $validate['pendik_sebelumnya'],
+            'jmlh_sodara' => $validate['jmlh_sodara'],
+            'alamat' => $validate['alamat'],
+            'nama_ayah' => $validate['nama_ayah'],
+            'nama_ibu' => $validate['nama_ibu'],
+            'pekerjaan_ayah' => $validate['pekerjaan_ayah'],
+            'pekerjaan_ibu' => $validate['pekerjaan_ibu'],
+            'wali_siswa' => $validate['wali_siswa'],
+            'kelas' => $validate['kelas'],
             'tahun_pelajaran' => $validate['tahun_pelajaran'],
             'id_wali_kelas' => $validate['id_wali_kelas'],
         ]);
@@ -72,46 +89,47 @@ class SiswaController extends Controller
 
         return view('siswa.edit', $data);
     }
-    
+
     public function update(Request $request, string $id)
     {
         $siswa = Siswa::findOrFail($id);
 
         $validate = $request->validate([
+
+            'nama_siswa' => 'required|max:150',
             'nis' => 'required|max:255',
-            'nama_siswa' => 'required|max:255',
+            'ttl' => 'required|max:150',
+            'jenis_kelamin' => 'required|max:100',
+            'agama' => 'required|max:100',
+            'pendik_sebelumnya' => 'required|max:100',
+            'jmlh_sodara' => 'required|max:100',
+            'alamat' => 'required|max:100',
+            'nama_ayah' => 'required|max:100',
+            'nama_ibu' => 'required|max:100',
+            'pekerjaan_ayah' => 'required|max:100',
+            'pekerjaan_ibu' => 'required|max:100',
+            'wali_siswa' => 'required|max:100',
             'kelas' => 'required|max:150',
-            'jenis_kelamin' => 'required|max:150',
             'tahun_pelajaran' => 'required|max:100',
             'id_wali_kelas' => 'required|max:100',
         ]);
 
-        // $user = new User();
-        // $dataUpdateWaliKelas = [
-        //     'nip' => $validate['nip'],
-        //     'nama_guru' => $validate['nama_guru'],
-        //     'guru_kelas' => $validate['guru_kelas'],
-        //     'jenis_kelamin' => $validate['jenis_kelamin'],
-        //     'id_user' => $user->id,
-        // ];
-
-        // $siswa = Siswa::findOrFail($id);
-        // $user = User::find($siswa->id_user);
-
-        // $user->name = $validate['nama'];
-        // $user->email = $validate['email'];
-        // $user->save();
-
-        // $user->update([
-        //     'email' => $validate['email'],
-        //     'name' => $validate['nama_guru'],
-        // ]);
-
         $siswa->update([
-            'nis' => $validate['nis'],
+
             'nama_siswa' => $validate['nama_siswa'],
-            'kelas' => $validate['kelas'],
+            'nis' => $validate['nis'],
+            'ttl' => $validate['ttl'],
             'jenis_kelamin' => $validate['jenis_kelamin'],
+            'agama' => $validate['agama'],
+            'pendik_sebelumnya' => $validate['pendik_sebelumnya'],
+            'jmlh_sodara' => $validate['jmlh_sodara'],
+            'alamat' => $validate['alamat'],
+            'nama_ayah' => $validate['nama_ayah'],
+            'nama_ibu' => $validate['nama_ibu'],
+            'pekerjaan_ayah' => $validate['pekerjaan_ayah'],
+            'pekerjaan_ibu' => $validate['pekerjaan_ibu'],
+            'wali_siswa' => $validate['wali_siswa'],
+            'kelas' => $validate['kelas'],
             'tahun_pelajaran' => $validate['tahun_pelajaran'],
             'id_wali_kelas' => $validate['id_wali_kelas'],
         ]);
@@ -122,7 +140,6 @@ class SiswaController extends Controller
         );
 
         return redirect()->route('siswa.index')->with($notificaton);
-
     }
     public function destroy(string $id)
     {
@@ -142,22 +159,23 @@ class SiswaController extends Controller
     {
         $kelas = $request->input('kelas');
         $siswas = Siswa::where('kelas', $kelas)->get();
-        
+
         return view('siswa.filter', compact('siswas'));
     }
 
-    // public function print()
-    // {
-    //     $doktors = doktor::all();
+    public function show($nis): JsonResponse
+    {
+        $siswa = Siswa::where('nis', $nis)->first();
 
-    //     $pdf = Pdf::loadview('doktors.print', ['doktors' => $doktors]);
-    //     return $pdf->download('data_doktor.pdf');
-    // }
-
-    // public function export()
-    // {
-    //     return Excel::download(new DoktorExport, 'doktors.xlsx');
-    //}
+        if ($siswa) {
+            return response()->json([
+                'nama_siswa' => $siswa->nama_siswa,
+                'kelas' => $siswa->kelas,
+                'tahun_pelajaran' => $siswa->tahun_pelajaran
+                // Tambahkan nilai-nilai lain sesuai kebutuhan
+            ]);
+        } else {
+            return response()->json(['error' => 'Data tidak ditemukan'], 404);
+        }
+    }
 }
-
-

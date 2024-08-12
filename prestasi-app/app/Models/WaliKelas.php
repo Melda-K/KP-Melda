@@ -10,20 +10,16 @@ use App\Models\User;
 class WaliKelas extends Model
 {
     use HasFactory;
-    protected $table='wali_kelas';
+    protected $table='wali_kelass';
     
     protected $fillable = [
         'nip',
         'nama_guru',
-        'guru_kelas',
+        'jabatan',
         'jenis_kelamin',
         'id_user'
     ];
 
-    public function walikelas(): BelongsTo
-    {
-        return $this->belongsTo(DataWaliKelas::class);
-    }
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'id_user');

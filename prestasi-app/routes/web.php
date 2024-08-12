@@ -2,11 +2,14 @@
 
 use App\Http\Controllers\AkademikController;
 use App\Http\Controllers\MataPelajaranController;
+use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\NonAkademikController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RapotController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\WaliKelasController;
+use App\Models\Rapot;
+use App\Models\Siswa;
 use App\Models\WaliKelas;
 use Illuminate\Support\Facades\Route;
 
@@ -50,22 +53,19 @@ Route::middleware('auth')->group(function () {
     Route::match(['put', 'patch'], '/siswa/{id}', [SiswaController::class, 'update'])->name('siswa.update');
     Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
     Route::get('/filter', [SiswaController::class, 'filter'])->name('siswa.filter');
-
-    route::get('/mapel', [MataPelajaranController::class, 'index'])->name('mapel.index');
-    // route::get('/mapel/create', [MataPelajaranController::class, 'create'])->name('mapel.create');
-    // Route::post('/mapel', [MataPelajaranController::class, 'store'])->name('mapel.store');
-    // Route::get('/mapel/{id}/edit', [MataPelajaranController::class, 'edit'])->name('mapel.edit');
-    // Route::match(['put', 'patch'], '/mapel/{id}', [MataPelajaranController::class, 'update'])->name('mapel.update');
-    // Route::delete('/mapel/{id}', [MataPelajaranController::class, 'destroy'])->name('mapel.destroy');
+    
+    Route::get('/siswa/{nis}', [SiswaController::class, 'show']);
 
     route::get('/rapot', [RapotController::class, 'index'])->name('rapot.index');
-    // route::get('/rapot/create', [RapotController::class, 'create'])->name('rapot.create');
-    // Route::post('/rapot', [RapotController::class, 'store'])->name('rapot.store');
+    route::get('/rapot/create', [RapotController::class, 'create'])->name('rapot.create');
+    Route::post('/rapot', [RapotController::class, 'store'])->name('rapot.store');
     // Route::get('/rapot/{id}/edit', [RapotController::class, 'edit'])->name('rapot.edit');
     // Route::match(['put', 'patch'], '/rapot/{id}', [RapotController::class, 'update'])->name('rapot.update');
     // Route::delete('/rapot/{id}', [RapotController::class, 'destroy'])->name('rapot.destroy');
 
-     route::get('/akademik', [AkademikController::class, 'index'])->name('akademik.index');
+    // routes/web.php
+
+    route::get('/akademik', [AkademikController::class, 'index'])->name('akademik.index');
     route::get('/akademik/create', [AkademikController::class, 'create'])->name('akademik.create');
     Route::post('/akademik', [AkademikController::class, 'store'])->name('akademik.store');
     Route::get('/akademik/{id}/edit', [AkademikController::class, 'edit'])->name('akademik.edit');
@@ -81,4 +81,4 @@ Route::middleware('auth')->group(function () {
 });
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

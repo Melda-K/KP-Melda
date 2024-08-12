@@ -19,6 +19,7 @@ return new class extends Migration
         $table->string('kategori_lomba', 25);
         $table->string('juara_lomba', 15);
         $table->string('tingkat_lomba', 15);
+        $table->string('dokumentasi', 255);
         $table->timestamps();
     });
 }

@@ -6,55 +6,11 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                        <img src="{{ asset('img/LogoSDN Nyalindung2.png') }}" alt="LogoSDN Nyalindung2" class="block h-10 w-auto fill-current text-gray-800">
                     </a>
-                </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        <i class="fa-solid fa-dashboard p-2"></i>{{ __('Beranda') }}
-                    </x-nav-link>
+                    <span class="ml-3 text-lg font-semibold text-gray-800">PRESTASI SDN NYALINDUNG II</span>
                 </div>
             </div>
-
-            @hasrole('WaliKelas')
-            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <x-nav-link :href="route('walikelas.index')" :active="request()->routeIs('walikelas.index')">
-                    <i class="fa-solid fa-user-pen p-2"></i>{{ __('Wali Kelas') }}
-                </x-nav-link>
-            </div>
-            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <x-nav-link :href="route('siswa.index')" :active="request()->routeIs('siswa.index')|| request()->routeIs('siswa.create')">
-                    <i class="fa-solid fa-user-group p-2"></i>{{ __('Siswa') }}
-                </x-nav-link>
-            </div>
-            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <x-nav-link :href="route('mapel.index')" :active="request()->routeIs('mapel.index')|| request()->routeIs('mapel.create')">
-                    <i class="fa-solid fa-book-open p-2"></i> {{ __('Mata Pelajaran') }}
-                </x-nav-link>
-            </div>
-            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <x-nav-link :href="route('rapot.index')" :active="request()->routeIs('rapot.index')|| request()->routeIs('rapot.create')">
-                    <i class="fa-solid fa-book p-2"></i>{{ __('Nilai Rapot') }}
-                </x-nav-link>
-            </div>
-            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex relative" x-data="{ open: false }">
-                <x-nav-link @click="open = !open" class="cursor-pointer">
-                    <i class="fa-solid fa-medal p-2"></i>{{ __('Prestasi') }}
-                </x-nav-link>
-                <div x-show="open" @click.away="open = false" class="absolute mt-16 bg-white rounded-md shadow-lg">
-                    <a href="{{ route('akademik.index') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
-                        {{ __('Akademik') }}
-                    </a>
-                    <a href="{{ route('nonakademik.index') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
-                        {{ __('Non Akademik') }}
-                    </a>
-                </div>
-            </div>
-
-            @endhasrole
-
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
@@ -104,7 +60,25 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                <i class="fa-solid fa-dashboard pr-2"></i>{{ __('BERANDA') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <i class="fa-solid fa-user-pen pr-2"></i>{{ __('WALI KELAS') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <i class="fa-solid fa-user-group pr-2"></i>{{ __('SISWA') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <i class="fa-solid fa-book pr-2"></i>{{ __('NILAI RAPOT') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <i class="fa-solid fa-medal pr-2"></i>{{ __('PRESTASI') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <i class="fa-solid fa-dashboard pr-2"></i>{{ __('AKADEMIK') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <i class="fa-solid fa-dashboard pr-2"></i>{{ __('NON AKADEMIK') }}
             </x-responsive-nav-link>
         </div>
 
@@ -123,7 +97,6 @@
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}

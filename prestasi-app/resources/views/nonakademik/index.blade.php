@@ -19,11 +19,11 @@
                             <tr class="bg-gray-400 text-center">
                                 <th>NO</th>
                                 <th>NAMA SISWA</th>
-                                <th>KELAS</th>
                                 <th>TANGGAL</th>
                                 <th>KATEGORI LOMBA</th>
                                 <th>JUARA LOMBA</th>
                                 <th>TINGKAT LOMBA</th>
+                                <th>DOKUMENTASI</th>
                                 <th>AKSI</th>
                             </tr>
                         </x-slot>
@@ -32,11 +32,15 @@
                         <tr class="text-center">
                             <td>{{ $num++ }}</td>
                             <td>{{ $data->siswa->nama_siswa}}</td>
-                            <td>{{ $data->siswa->kelas }}</td>
                             <td>{{ $data->tanggal }}</td>
                             <td>{{ $data->kategori_lomba }}</td>
                             <td>{{ $data->juara_lomba }}</td>
                             <td>{{ $data->tingkat_lomba }}</td>
+                            <td class="items-center">
+                                @if ($data->dokumentasi)
+                                <img src="{{ asset('storage/dokumentasi/' . $data->dokumentasi) }}" alt="Dokumentasi" class="h-12"/>
+                                @endif
+                            </td>
                             <td>
                                 <button tag="a" type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $data->id }}"><i class="fa-solid fa-pen-to-square"></i>
                                 </button>

@@ -20,7 +20,7 @@
                                 <th>NO</th>
                                 <th>NIP</th>
                                 <th>NAMA</th>
-                                <th>GURU KELAS</th>
+                                <th>JABATAN</th>
                                 <th>JENIS KELAMIN</th>
                                 <th>AKSI</th>
                             </tr>
@@ -31,7 +31,7 @@
                             <td>{{ $num++ }}</td>
                             <td>{{ $data->nip }}</td>
                             <td>{{ $data->nama_guru }}</td>
-                            <td>{{ $data->guru_kelas }}</td>
+                            <td>{{ $data->jabatan }}</td>
                             <td>{{ $data->jenis_kelamin }}</td>
                             <td>
                                 <button tag="a" type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $data->id }}"><i class="fa-solid fa-pen-to-square"></i>

@@ -13,7 +13,7 @@ class WaliKelasController extends Controller
 {
     public function index()
     {
-        $data['wali_kelas'] = WaliKelas::with('walikelas')->get();
+        $data['wali_kelas'] = WaliKelas::get();
         return view('walikelas.index', $data);
     }
 
@@ -29,7 +29,7 @@ class WaliKelasController extends Controller
             'email' => 'required|max:255',
             'nip' => 'required|max:255',
             'nama_guru' => 'required|max:150',
-            'guru_kelas' => 'required|max:150',
+            'jabatan' => 'required|max:150',
             'jenis_kelamin' => 'required|max:100',
         ]);
         
@@ -44,7 +44,7 @@ class WaliKelasController extends Controller
 
             'nip' => $validate['nip'],
             'nama_guru' => $validate['nama_guru'],
-            'guru_kelas' => $validate['guru_kelas'],
+            'jabatan' => $validate['jabatan'],
             'jenis_kelamin' => $validate['jenis_kelamin'],
             'id_user' => $user->id,
         ]);
@@ -77,7 +77,7 @@ class WaliKelasController extends Controller
             'email' => 'required|max:255',
             'nip' => 'required|max:255',
             'nama_guru' => 'required|max:150',
-            'guru_kelas' => 'required|max:150',
+            'jabatan' => 'required|max:150',
             'jenis_kelamin' => 'required|max:100',
         ]);
 
@@ -104,7 +104,7 @@ class WaliKelasController extends Controller
         $walikelas->update([
             'nip' => $validate['nip'],
             'nama_guru' => $validate['nama_guru'],
-            'guru_kelas' => $validate['guru_kelas'],
+            'jabatan' => $validate['jabatan'],
             'jenis_kelamin' => $validate['jenis_kelamin'],
             'id_user' => $user->id,
         ]);
