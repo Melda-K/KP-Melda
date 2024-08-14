@@ -22,18 +22,40 @@ class RapotController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'id_rapot' => 'required|max:100',
-            'id_wali_kelas' => 'required|max:100',
             'id_siswa' => 'required|max:100',
-            'id_mata_pelajaran' => 'required|max:100',
-
+            'id_wali_kelas' => 'required|max:100',
+            'pai' => 'required|max:100',
+            'pkn' => 'required|max:100',
+            'indo' => 'required|max:100',
+            'mtk' => 'required|max:100',
+            'ipa' => 'required|max:100',
+            'ips' => 'required|max:100',
+            'pjok' => 'required|max:100',
+            'senbud' => 'required|max:100',
+            'sunda' => 'required|max:100',
+            'nilai_pengetahuan' => 'required|max:100',
+            'huruf_pengetahuan' => 'required|max:100',
+            'nilai_keterampilan' => 'required|max:100',
+            'huruf_keterampilan' => 'required|max:100',
         ]);
+        dd($validate);
 
         $rapot = Rapot::create([
-            'id_rapot' => $validate['id_rapot'],
-            'id_wali_kelas' => $validate['id_wali_kelas'],
             'id_siswa' => $validate['id_siswa'],
-            'id_mata_pelajaran' => $validate['id_mata_pelajaran'],
+            'id_wali_kelas' => $validate['id_wali_kelas'],
+            'pai' => $validate['pai'],
+            'pkn' => $validate['pkn'],
+            'indo' => $validate['indo'],
+            'mtk' => $validate['mtk'],
+            'ipa' => $validate['ipa'],
+            'ips' => $validate['ips'],
+            'pjok' => $validate['pjok'],
+            'senbud' => $validate['senbud'],
+            'sunda' => $validate['sunda'],
+            'nilai_pengetahuan' => $validate['nilai_pengetahuan'],
+            'huruf_pengetahuan' => $validate['nilai_pengetahuan'],
+            'nilai_keterampilan' => $validate['nilai_keterampilan'],
+            'huruf_keterampilan' => $validate['nilai_keterampilan'],
         ]);
 
 

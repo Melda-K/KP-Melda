@@ -59,7 +59,7 @@ Route::middleware('auth')->group(function () {
     route::get('/rapot', [RapotController::class, 'index'])->name('rapot.index');
     route::get('/rapot/create', [RapotController::class, 'create'])->name('rapot.create');
     Route::post('/rapot', [RapotController::class, 'store'])->name('rapot.store');
-    // Route::get('/rapot/{id}/edit', [RapotController::class, 'edit'])->name('rapot.edit');
+    Route::get('/rapot/{id}/edit', [RapotController::class, 'edit'])->name('rapot.edit');
     // Route::match(['put', 'patch'], '/rapot/{id}', [RapotController::class, 'update'])->name('rapot.update');
     // Route::delete('/rapot/{id}', [RapotController::class, 'destroy'])->name('rapot.destroy');
 

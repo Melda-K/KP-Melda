@@ -172,7 +172,6 @@ class SiswaController extends Controller
                 'nama_siswa' => $siswa->nama_siswa,
                 'kelas' => $siswa->kelas,
                 'tahun_pelajaran' => $siswa->tahun_pelajaran
-                // Tambahkan nilai-nilai lain sesuai kebutuhan
             ]);
         } else {
             return response()->json(['error' => 'Data tidak ditemukan'], 404);
