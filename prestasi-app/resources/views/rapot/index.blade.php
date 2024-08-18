@@ -40,6 +40,28 @@
                     @endforeach
                 </x-table>
 
+                <table class="min-w-full bg-white border border-gray-300">
+                    <thead>
+                        <tr>
+                            <th class="py-2 px-4 bg-gray-100 border-b">Bobot Nilai Rapot</th>
+                            <th class="py-2 px-4 bg-gray-100 border-b">Nilai Pengetahuan</th>
+                            <th class="py-2 px-4 bg-gray-100 border-b">Nilai Keterampilan</th>
+                            <th class="py-2 px-4 bg-gray-100 border-b">Jumlah Nilai Rapot</th>
+                        </tr>
+                    </thead>
+                    @foreach ($rapots as $data)
+
+                    <tr class="text-center">
+                        <td>{{ $data->siswa->nama_siswa }}</td>
+                        <td>{{ $data->siswa->nis}}</td>
+                        <td>{{ $data->siswa->kelas }}</td>
+                        <td>{{ $data->siswa->tahun_pelajaran }}</td>
+                        <td>
+                            <button tag="a" type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id }}"><i class="fa-solid fa-folder"></i></button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </table>
             </div>
         </div>
     </div>

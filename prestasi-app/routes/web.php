@@ -8,6 +8,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RapotController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\WaliKelasController;
+use App\Models\Akademik;
+use App\Models\NonAkademik;
 use App\Models\Rapot;
 use App\Models\Siswa;
 use App\Models\WaliKelas;
@@ -25,6 +27,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('auth/login');
+});
+
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
@@ -71,6 +77,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/akademik/{id}/edit', [AkademikController::class, 'edit'])->name('akademik.edit');
     Route::match(['put', 'patch'], '/akademik/{id}', [AkademikController::class, 'update'])->name('akademik.update');
     Route::delete('/akademik/{id}', [AkademikController::class, 'destroy'])->name('akademik.destroy');
+    Route::get('/akademik/print', [AkademikController::class, 'print'])->name('akademik.print');
 
     route::get('/nonakademik', [NonAkademikController::class, 'index'])->name('nonakademik.index');
     route::get('/nonakademik/create', [NonAkademikController::class, 'create'])->name('nonakademik.create');
@@ -78,6 +85,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/nonakademik/{id}/edit', [NonAkademikController::class, 'edit'])->name('nonakademik.edit');
     Route::match(['put', 'patch'], '/nonakademik/{id}', [NonAkademikController::class, 'update'])->name('nonakademik.update');
     Route::delete('/nonakademik/{id}', [NonAkademikController::class, 'destroy'])->name('nonakademik.destroy');
+    Route::get('/nonakademik/print', [NonAkademikController::class, 'print'])->name('nonakademik.print');
+    
 });
 
 

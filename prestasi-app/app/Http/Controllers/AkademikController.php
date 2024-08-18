@@ -7,6 +7,7 @@ use App\Models\Akademik;
 use App\Models\Rapot;
 use App\Models\User;
 use App\Models\Siswa;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -96,18 +97,13 @@ class AkademikController extends Controller
         return redirect()->route('akademik.index')->with($notificaton);
     }
 
-    // public function print()
-    // {
-    //     $doktors = doktor::all();
+    public function print()
+    {
+        $akademik = Akademik::all();
 
-    //     $pdf = Pdf::loadview('doktors.print', ['doktors' => $doktors]);
-    //     return $pdf->download('data_doktor.pdf');
-    // }
-
-    // public function export()
-    // {
-    //     return Excel::download(new DoktorExport, 'doktors.xlsx');
-    //}
+        $pdf = Pdf::loadview('akademik.print', ['akademik' => $akademik]);
+        return $pdf->download('data_prestasi_akademik.pdf');
+    }
 }
 
 

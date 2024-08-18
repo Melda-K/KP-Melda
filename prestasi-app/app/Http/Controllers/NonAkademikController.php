@@ -7,6 +7,7 @@ use App\Models\NonAkademik;
 use App\Models\Rapot;
 use App\Models\User;
 use App\Models\Siswa;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -122,5 +123,13 @@ class NonAkademikController extends Controller
         );
 
         return redirect()->route('nonakademik.index')->with($notification);
+    }
+
+    public function print()
+    {
+        $nonakademik = NonAkademik::all();
+
+        $pdf = PDF::loadview('nonakademik.print', ['nonakademik' => $nonakademik]);
+        return $pdf->download('data_prestasi_nonakademik.pdf');
     }
 }

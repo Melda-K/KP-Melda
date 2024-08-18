@@ -14,6 +14,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <button type="button" class="btn btn-outline-warning m-4" data-bs-toggle="modal" data-bs-target="#tambahModal">TAMBAH DATA</button>
+                    <button type="button" class="btn btn-outline-warning m-4" href="{{ route('akademik.print')}}" target='blank'>CETAK PDF</button>
                     <x-table :tableId="'myTable_' . uniqid()"><br>
                         <x-slot name="header">
                             <tr class="bg-gray-400 text-center">

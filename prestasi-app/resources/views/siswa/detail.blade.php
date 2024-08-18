@@ -3,13 +3,13 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5 font-bold" id="openModalLabel_{{ $siswa->id }}">Informasi Data Siswa</h1>
+                <h1 class="modal-title fs-5 font-bold" id="openModalLabel_{{ $siswa->id }}">INFORMASI DATA SISWA</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
 
                 <div class="flex">
-                    <div class="flex-auto">
+                    <div class="w-64">
                         <div class="font-bold">
                             <label>NAMA SISWA</label>
                         </div>
@@ -18,7 +18,7 @@
                         </div>
                     </div>
 
-                    <div class="flex-auto">
+                    <div class="w-64">
                         <div class="font-bold">
                             <label>NIS</label>
                         </div>
@@ -27,7 +27,7 @@
                         </div>
                     </div>
 
-                    <div class="flex-auto">
+                    <div class="w-64">
                         <div class="font-bold">
                             <label>TEMPAT TANGGAL LAHIR</label>
                         </div>
@@ -40,7 +40,7 @@
                 <br>
 
                 <div class="flex">
-                    <div class="flex-auto">
+                    <div class="w-64">
                         <div class="font-bold">
                             <label>JENIS KELAMIN</label>
                         </div>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
 
-                    <div class="flex-auto">
+                    <div class="w-64">
                         <div class="font-bold">
                             <label>AGAMA</label>
                         </div>
@@ -58,9 +58,9 @@
                         </div>
                     </div>
 
-                    <div class="flex-auto">
+                    <div class="w-64">
                         <div class="font-bold">
-                            <label>PENDIDIKAN SEBELUMNYA : </label>
+                            <label>PENDIDIKAN SEBELUMNYA</label>
                         </div>
                         <div>
                             <p>{{ $siswa->pendik_sebelumnya }}</p>
@@ -71,12 +71,12 @@
                 <br>
 
                 <div class="flex">
-                    <div class="flex-auto">
+                    <div class="w-64">
                         <div class="font-bold">
                             <label>NAMA ORANG TUA : </label>
                         </div>
                         <div class="flex">
-                            <div class="flex-auto">
+                            <div class="w-80">
                                 <div class="font-bold">
                                     <label>AYAH</label>
                                 </div>
@@ -84,7 +84,7 @@
                                     <p>{{ $siswa->nama_ayah }}</p>
                                 </div>
                             </div>
-                            <div class="flex-auto">
+                            <div class="w-80">
                                 <div class="font-bold">
                                     <label>IBU</label>
                                 </div>
@@ -95,14 +95,15 @@
                         </div>
                     </div>
                 </div>
+                <br>
 
                 <div class="flex">
-                    <div class="flex-auto">
+                    <div class="w-64">
                         <div class="font-bold">
                             <label>PEKERJAAN ORANG TUA : </label>
                         </div>
                         <div class="flex">
-                            <div class="flex-auto">
+                            <div class="w-80">
                                 <div class="font-bold">
                                     <label>AYAH</label>
                                 </div>
@@ -110,7 +111,7 @@
                                     <p>{{ $siswa->pekerjaan_ayah }}</p>
                                 </div>
                             </div>
-                            <div class="flex-auto">
+                            <div class="w-80">
                                 <div class="font-bold">
                                     <label>IBU</label>
                                 </div>
@@ -125,7 +126,7 @@
                 <br>
 
                 <div class="flex">
-                    <div class="flex-auto">
+                    <div class="w-64">
                         <div class="font-bold">
                             <label>NAMA WALI SISWA</label>
                         </div>
@@ -134,7 +135,7 @@
                         </div>
                     </div>
 
-                    <div class="flex-auto">
+                    <div class="w-64">
                         <div class="font-bold">
                             <label>KELAS</label>
                         </div>
@@ -143,12 +144,12 @@
                         </div>
                     </div>
 
-                    <div class="flex-auto">
+                    <div class="w-64">
                         <div class="font-bold">
                             <label>WALI KELAS </label>
                         </div>
                         <div>
-                            <p>{{ $siswa->walikelas->nama_wali_kelas }}</p>
+                            <p>{{ $siswa->walikelas->nama_guru }}</p>
                         </div>
                     </div>
                 </div>

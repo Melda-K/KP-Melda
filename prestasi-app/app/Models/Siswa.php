@@ -37,8 +37,8 @@ class Siswa extends Model
         return $this->belongsTo(WaliKelas::class, 'id_wali_kelas');
     }
 
-    public function nilai()
+    public function mapel()
     {
-        return $this->hasMany(Nilai::class);
+        return $this->hasMany(MataPelajaran::class);
     }
 }

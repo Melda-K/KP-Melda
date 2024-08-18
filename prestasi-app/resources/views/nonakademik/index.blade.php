@@ -5,7 +5,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('PRESTASI SISWA NON AKADEMIK') }}
         </h2>
     </x-slot>
 
@@ -14,6 +14,8 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <button type="button" class="btn btn-outline-warning m-4" data-bs-toggle="modal" data-bs-target="#tambahModal">TAMBAH DATA</button>
+                    <a class="btn btn-outline-warning m-4" href="{{ route('nonakademik.print') }}" target="_blank">CETAK PDF</a>
+
                     <x-table :tableId="'myTable_' . uniqid()">
                         <x-slot name="header">
                             <tr class="bg-gray-400 text-center">
