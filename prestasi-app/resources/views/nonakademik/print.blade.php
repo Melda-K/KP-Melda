@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DATA NON AKADEMIK</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 </head>
@@ -15,7 +15,7 @@
     $tahun = date('Y');
     @endphp
     <p class="text-center">Laporan Data Prestasi Non Akademik Siswa-Siswi SDN Nyalindung II
-        Kp.Haregem, RT/RW. 005/001 Kel.Galudra, Kec.Cugenang, Kab.Cianjur Tahun{{$tahun}}</p>
+        Kp.Haregem, RT/RW. 005/001 Kel.Galudra, Kec.Cugenang, Kab.Cianjur Tahun {{$tahun}}</p>
     <br>
     <table id="table-data" class="table table-bordered">
         <thead>

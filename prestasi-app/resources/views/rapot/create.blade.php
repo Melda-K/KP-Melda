@@ -14,16 +14,17 @@
                         </div>
                         <div class="w-2/3 flex">
                             <select id="nis" name="nis" class="block w-72 rounded-lg" required>
-                                <option value="">Pilih NIS/NISN</option>
+                                <option value="">Pilih NIS</option>
                                 @foreach(App\Models\Siswa::all() as $siswa)
                                 <option value="{{ $siswa->nis }}">{{ $siswa->nis }}</option>
                                 @endforeach
                             </select>
                             <x-input-error class="mt-1" :messages="$errors->get('nis')" />
-                            <button type="button" id="searchButton" class="btn btn-secondary m-2">Cari</button>
+                            <button type="button" route="{{ 'searchSiswa' }}" id="searchButton" class="btn btn-secondary m-2">Cari</button>
                         </div>
                     </div>
 
+                    <!-- Pencarian Data Berdasarkan NIS -->
                     <div class="flex items-center mb-2">
                         <div class="w-1/3">
                             <x-input-label for="nama_siswa" value="NAMA SISWA" />
@@ -60,19 +61,19 @@
                         <div class="row pl-6">
                             <div class="col-md-3">
                                 <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
                             </div>
                             <div class="col-md-3">
                                 <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text" name="huruf_keterampilan" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
                             </div>
                         </div>
                         <br>
@@ -81,19 +82,19 @@
                         <div class="row pl-6">
                             <div class="col-md-3">
                                 <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
                             </div>
                             <div class="col-md-3">
                                 <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text" name="huruf_keterampilan" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
                             </div>
                         </div>
                         <br>
@@ -102,19 +103,19 @@
                         <div class="row pl-6">
                             <div class="col-md-3">
                                 <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
                             </div>
                             <div class="col-md-3">
                                 <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text"  name="huruf_keterampilan" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
                             </div>
                         </div>
                         <br>
@@ -123,19 +124,19 @@
                         <div class="row pl-6">
                             <div class="col-md-3">
                                 <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
                             </div>
                             <div class="col-md-3">
                                 <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text"  name="huruf_keterampilan" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
                             </div>
                         </div>
                         <br>
@@ -144,19 +145,19 @@
                         <div class="row pl-6">
                             <div class="col-md-3">
                                 <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
                             </div>
                             <div class="col-md-3">
                                 <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text" name="nilai_pengetahuan" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
                             </div>
                         </div>
                         <br>
@@ -165,19 +166,19 @@
                         <div class="row pl-6">
                             <div class="col-md-3">
                                 <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
                             </div>
                             <div class="col-md-3">
                                 <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text" name="huruf_keterampilan"id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
                             </div>
                         </div>
                         <br>
@@ -186,19 +187,19 @@
                         <div class="row pl-6">
                             <div class="col-md-3">
                                 <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
                             </div>
                             <div class="col-md-3">
                                 <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text" name="huruf_keterampilan" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
                             </div>
                         </div>
                         <br>
@@ -207,19 +208,19 @@
                         <div class="row pl-6">
                             <div class="col-md-3">
                                 <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
                             </div>
                             <div class="col-md-3">
                                 <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text" name="huruf_keterampilan" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
                             </div>
                         </div>
                         <br>
@@ -228,19 +229,19 @@
                         <div class="row pl-6">
                             <div class="col-md-3">
                                 <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
                             </div>
                             <div class="col-md-3">
                                 <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
+                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
                             </div>
                             <div class="col-md-2">
                                 <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
+                                <input type="text" name="huruf_keterampilan" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
                             </div>
                         </div>
                         <br>
@@ -248,14 +249,12 @@
                         <div class="modal-footer">
                             <x-secondary-button tag="a" data-bs-dismiss="modal">Batal</x-secondary-button>
                             <x-primary-button name="save" value="true">Simpan</x-primary-button>
-                            <!-- <button tag="a" data-bs-dismiss="modal" type="button" class="btn btn-light">BATAL</button>
-                        <button name="save" value="true" type="button" class="btn btn-warning">SIMPAN</button> -->
                         </div>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <script>

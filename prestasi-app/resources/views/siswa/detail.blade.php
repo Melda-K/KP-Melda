@@ -155,7 +155,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <x-secondary-button tag="a" data-bs-dismiss="modal">Close</x-secondary-button>
+                    <x-secondary-button tag="a" data-bs-dismiss="modal">Batal</x-secondary-button>
                 </div>
             </div>
         </div>

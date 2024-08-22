@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('alamat', 255);
             $table->string('nama_ayah', 50)->nullable();
             $table->string('nama_ibu', 50)->nullable();
-            $table->string('pekerjaan_ayah', 25);
-            $table->string('pekerjaan_ibu', 25);
+            $table->string('pekerjaan_ayah', 25)->nullable();
+            $table->string('pekerjaan_ibu', 25)->nullable();
             $table->string('wali_siswa')->nullable();
             $table->char('kelas', 5);
             $table->integer('tahun_pelajaran');

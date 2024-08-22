@@ -14,11 +14,10 @@
                     @foreach(Auth::user()->roles as $role)
                     {{ $role->name }}
                     @endforeach
-                    - Selamat datang {{ Auth::user()->name }}!
+                    - Selamat datang {{ Auth::user()->name }} di Aplikasi Pengelolaan dan Pemilihan Siswa Berprestasi!
                     @endif
                 </div>
             </div>
-
 
             @hasrole('WaliKelas')
             <style>
@@ -77,7 +76,7 @@
                         <p class="font-extrabold text-2xl text-right pt-2 text-white">{{ App\Models\Akademik::count() }}</p>
                     </div>
                 </div>
-                
+
                 <div class="bg-amber-800 w-72 overflow-hidden shadow-sm sm:rounded-lg m-auto">
                     <div class="p-6 text-gray-900">
                         <h2 class="font-bold text-xl text-white leading-tight">Data Prestasi Non-Akademik</h2>
@@ -99,6 +98,15 @@
     </div>
 </x-app-layout>
 
+@php
+    $kelas1= DB::table('siswas')->where('kelas', 'I')->count();
+    $kelas2= DB::table('siswas')->where('kelas', 'II')->count();
+    $kelas3= DB::table('siswas')->where('kelas', 'III')->count();
+    $kelas4= DB::table('siswas')->where('kelas', 'IV')->count();
+    $kelas5= DB::table('siswas')->where('kelas', 'V')->count();
+    $kelas6= DB::table('siswas')->where('kelas', 'VI')->count();  
+@endphp
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     const kelas = document.getElementById('mykelas');
@@ -109,7 +117,7 @@
             labels: ['Kelas-I', 'Kelas-II', 'Kelas-III', 'Kelas-IV', 'Kelas-V', 'Kelas-VI'],
             datasets: [{
                 label: 'JUMLAH DATA SISWA-SISWI',
-                data: [45, 48, 40, 36, 51, 36],
+                data: [{{ $kelas1 }}, {{ $kelas2 }}, {{ $kelas3 }}, {{ $kelas3 }}, {{ $kelas4 }}, {{ $kelas5 }}, {{ $kelas6 }}],
                 backgroundColor: ['#16303F', '#91887B'],
                 borderWidth: 1
             }]
