@@ -139,15 +139,4 @@ class RapotController extends Controller
             return redirect()->route('rapot.create')->with($notificaton);
 
     }
-
-    public function pai(Request $request)
-    {
-        $validated = $request->validate([
-            'nilai_pengetahuan' => 'required|max:100',
-            'huruf_pengetahuan' => 'required|max:100',
-            'nilai_keterampilan' => 'required|max:100',
-            'huruf_keterampilan' => 'required|max:100',
-        ]);
-        return response()->json($validated);
-    }
 }

@@ -73,6 +73,27 @@
                 <div class="flex">
                     <div class="w-64">
                         <div class="font-bold">
+                            <label>ANAK KE</label>
+                        </div>
+                        <div>
+                            <p>{{ $siswa->jmlh_sodara }}</p>
+                        </div>
+                    </div>
+                    <div class="w-64">
+                        <div class="font-bold">
+                            <label>ALAMAT SISWA</label>
+                        </div>
+                        <div>
+                            <p>{{ $siswa->alamat }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="flex">
+                    <div class="w-64">
+                        <div class="font-bold">
                             <label>NAMA ORANG TUA : </label>
                         </div>
                         <div class="flex">
@@ -94,10 +115,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <br>
 
-                <div class="flex">
                     <div class="w-64">
                         <div class="font-bold">
                             <label>PEKERJAAN ORANG TUA : </label>
@@ -122,7 +140,7 @@
                         </div>
                     </div>
                 </div>
-
+        
                 <br>
 
                 <div class="flex">
@@ -150,6 +168,15 @@
                         </div>
                         <div>
                             <p>{{ $siswa->walikelas->nama_guru }}</p>
+                        </div>
+                    </div>
+
+                    <div class="w-64">
+                        <div class="font-bold">
+                            <label>TAHUN PELAJARAN </label>
+                        </div>
+                        <div>
+                            <p>{{ $siswa->tahun_pelajaran }}</p>
                         </div>
                     </div>
                 </div>

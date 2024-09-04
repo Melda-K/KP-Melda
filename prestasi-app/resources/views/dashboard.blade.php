@@ -19,7 +19,7 @@
                 </div>
             </div>
 
-            @hasrole('WaliKelas')
+            @hasrole('Admin')
             <style>
                 @media (min-width: 640px) {
                     .responsive-margin>div {
@@ -35,6 +35,47 @@
                         <p class="font-extrabold text-2xl text-right pt-2 text-white">{{ App\Models\WaliKelas::count() }}</p>
                     </div>
                 </div>
+
+                <div class="bg-red-950 w-72 overflow-hidden shadow-sm sm:rounded-lg m-auto">
+                    <div class="p-6 text-gray-900">
+                        <h2 class="font-bold text-xl text-white leading-tight">Data Prestasi Akademik</h2>
+                        <small class="text-white">Data prestasi siswa akademik</small>
+                        <p class="font-extrabold text-2xl text-right pt-2 text-white">{{ App\Models\Akademik::count() }}</p>
+                    </div>
+                </div>
+
+                <div class="bg-amber-950 w-72 overflow-hidden shadow-sm sm:rounded-lg m-auto">
+                    <div class="p-6 text-gray-900">
+                        <h2 class="font-bold text-xl text-white leading-tight">Data Prestasi Non-Akademik</h2>
+                        <small class="text-white">Data prestasi siswa non akademik</small>
+                        <p class="font-extrabold text-2xl text-right pt-2 text-white">{{ App\Models\NonAkademik::count() }}</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+
+            <div style="height: 1000px; width: 600px;">
+                <canvas id="mykelas"></canvas>
+            </div>
+            @endhasrole
+
+            @hasrole('WaliKelas')
+            <style>
+                @media (min-width: 640px) {
+                    .responsive-margin>div {
+                        margin: 0 !important;
+                    }
+                }
+            </style>
+            <div class="flex flex-wrap pt-4 gap-4 responsive-margin">
+                <!-- <div class="bg-sky-950 w-72 overflow-hidden shadow-sm sm:rounded-lg m-auto">
+                    <div class="p-6 text-gray-900">
+                        <h2 class="font-bold text-xl text-white leading-tight">Data Guru</h2>
+                        <small class="text-white">Data guru di SDN Nyalindung II</small>
+                        <p class="font-extrabold text-2xl text-right pt-2 text-white">{{ App\Models\WaliKelas::count() }}</p>
+                    </div>
+                </div> -->
 
                 <div class="bg-red-950 w-72 overflow-hidden shadow-sm sm:rounded-lg m-auto">
                     <div class="p-6 text-gray-900">
@@ -77,7 +118,7 @@
                     </div>
                 </div>
 
-                <div class="bg-amber-800 w-72 overflow-hidden shadow-sm sm:rounded-lg m-auto">
+                <div class="bg-amber-950 w-72 overflow-hidden shadow-sm sm:rounded-lg m-auto">
                     <div class="p-6 text-gray-900">
                         <h2 class="font-bold text-xl text-white leading-tight">Data Prestasi Non-Akademik</h2>
                         <small class="text-white">Data prestasi siswa non akademik</small>

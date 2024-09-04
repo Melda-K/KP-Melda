@@ -7,16 +7,39 @@ use App\Models\MataPelajaran;
 use App\Models\Rapot;
 use App\Models\User;
 use App\Models\Siswa;
+use App\Models\WaliKelas;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class SiswaController extends Controller
 {
     public function index()
     {
-        $data['siswas'] = Siswa::all();
-        return view('siswa.index', $data);
+        // $data['siswas'] = Siswa::all();
+        // return view('siswa.index', $data);
+        if (Auth::check()) {
+            foreach (Auth::user()->roles as $role) {
+                if ($role->name == 'WaliKelas') {
+                    $userId = Auth::id();
+
+                    $siswa = \App\Models\Siswa::where('id', $userId)->first();
+
+                    if ($siswa) {
+                        $siswas = Siswa::where('id_wali_kelas', $siswa->id_wali_kelas)->get();
+                    } else {
+                        $siswas = collect();
+                    }
+
+                    return view('siswa.index', ['siswas' => $siswas]);
+                } else {
+                    $data['siswa'] = Siswa::get();
+
+                    return view('siswa.index', $data);
+                }
+            }
+        }
     }
 
     public function create()
@@ -36,14 +59,14 @@ class SiswaController extends Controller
             'ttl' => 'required|max:150',
             'jenis_kelamin' => 'required|max:100',
             'agama' => 'required|max:100',
-            'pendik_sebelumnya' => 'required|max:100',
-            'jmlh_sodara' => 'required|max:100',
+            'pendik_sebelumnya' => 'max:100',
+            'jmlh_sodara' => 'max:100',
             'alamat' => 'required|max:100',
-            'nama_ayah' => 'required|max:100',
-            'nama_ibu' => 'required|max:100',
-            'pekerjaan_ayah' => 'required|max:100',
-            'pekerjaan_ibu' => 'required|max:100',
-            'wali_siswa' => 'required|max:100',
+            'nama_ayah' => 'max:100',
+            'nama_ibu' => 'max:100',
+            'pekerjaan_ayah' => 'max:100',
+            'pekerjaan_ibu' => 'max:100',
+            'wali_siswa' => 'max:100',
             'kelas' => 'required|max:150',
             'tahun_pelajaran' => 'required|max:100',
             'id_wali_kelas' => 'required|max:100',
@@ -71,7 +94,7 @@ class SiswaController extends Controller
 
 
         $notificaton = array(
-            'message' => 'Data siswa berhasil ditambahkan',
+            'message' => 'Data siswa berhasil ditambahkan!',
             'alert-type' => 'success'
         );
 
@@ -82,9 +105,24 @@ class SiswaController extends Controller
     }
 
     public function edit(string $id)
+    // {
+    //     $data['siswa'] = Siswa::findOrFail($id);
+    //     $data['wali_kelas'] = Siswa::findOrFail($id);
+    //     $data['rapot'] = Rapot::pluck('name', 'id');
+
+    //     return view('siswa.edit', $data);
+    // }
     {
+        // Mengambil data siswa berdasarkan ID
         $data['siswa'] = Siswa::findOrFail($id);
-        $data['wali_kelas'] = Siswa::findOrFail($id);
+
+        // Mengambil semua data siswa untuk digunakan dalam perulangan pada blade
+        $data['siswas'] = Siswa::all();
+
+        // Mengambil data wali kelas (asumsi mengambil wali_kelas dari model WaliKelas, sesuaikan jika berbeda)
+        $data['wali_kelas'] = WaliKelas::pluck('name', 'id');
+
+        // Mengambil data rapot
         $data['rapot'] = Rapot::pluck('name', 'id');
 
         return view('siswa.edit', $data);
@@ -101,14 +139,14 @@ class SiswaController extends Controller
             'ttl' => 'required|max:150',
             'jenis_kelamin' => 'required|max:100',
             'agama' => 'required|max:100',
-            'pendik_sebelumnya' => 'required|max:100',
-            'jmlh_sodara' => 'required|max:100',
+            'pendik_sebelumnya' => 'max:100',
+            'jmlh_sodara' => 'max:100',
             'alamat' => 'required|max:100',
-            'nama_ayah' => 'required|max:100',
-            'nama_ibu' => 'required|max:100',
-            'pekerjaan_ayah' => 'required|max:100',
-            'pekerjaan_ibu' => 'required|max:100',
-            'wali_siswa' => 'required|max:100',
+            'nama_ayah' => 'max:100',
+            'nama_ibu' => 'max:100',
+            'pekerjaan_ayah' => 'max:100',
+            'pekerjaan_ibu' => 'max:100',
+            'wali_siswa' => 'max:100',
             'kelas' => 'required|max:150',
             'tahun_pelajaran' => 'required|max:100',
             'id_wali_kelas' => 'required|max:100',
@@ -135,7 +173,7 @@ class SiswaController extends Controller
         ]);
 
         $notificaton = array(
-            'message' => 'Data siswa berhasil ditambahkan',
+            'message' => 'Data siswa berhasil diperbaharui!',
             'alert-type' => 'success'
         );
 
@@ -148,7 +186,7 @@ class SiswaController extends Controller
         $siswa->delete();
 
         $notificaton = array(
-            'message' => 'Data siswa berhasil dihapus',
+            'message' => 'Data siswa berhasil dihapus!',
             'alert-type' => 'success'
         );
 

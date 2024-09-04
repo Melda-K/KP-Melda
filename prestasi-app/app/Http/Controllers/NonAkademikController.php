@@ -102,7 +102,7 @@ class NonAkademikController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Data non akademik berhasil ditambahkan',
+            'message' => 'Data non akademik berhasil diperbaharui!',
             'alert-type' => 'success'
         );
 
@@ -118,7 +118,7 @@ class NonAkademikController extends Controller
         $nonakademik->delete();
 
         $notification = array(
-            'message' => 'Data non akademik berhasil dihapus',
+            'message' => 'Data non akademik berhasil dihapus!',
             'alert-type' => 'success'
         );
 

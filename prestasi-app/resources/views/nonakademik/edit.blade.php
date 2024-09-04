@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel_{{$data->id}}">EDIT DATA NON AKADEMIK</h1>
+                <h1 class="modal-title fs-5 font-bold" id="exampleModalLabel_{{$data->id}}">EDIT DATA NON AKADEMIK</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -12,7 +12,7 @@
                     @method('PATCH')
                     <div class="max-w-xl">
                         <x-input-label for="id_siswa" value="SISWA" />
-                        <select id="id_siswa" name="id_siswa" class="mt-1 block w-full" required>
+                        <select id="id_siswa" name="id_siswa" class="mt-1 block w-full rounded" required>
                             <option value="">Pilih Siswa</option>
                             @foreach(App\Models\Siswa::all() as $value)
                             <option value="{{ $value->id }}" {{ old('id_siswa', $data->id_siswa) == $value->id ? 'selected' : '' }}>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="max-w-xl">
                         <x-input-label for="juara_lomba" value="JUARA LOMBA" />
-                        <select id="juara_lomba" name="juara_lomba" class="mt-1 block w-full" required>
+                        <select id="juara_lomba" name="juara_lomba" class="mt-1 block w-full rounded" required>
                             <option value="">Pilih Juara Lomba</option>
                             <option value="1" {{ old('juara_lomba', $data->juara_lomba) == '1' ? 'selected' : '' }}>1</option>
                             <option value="2" {{ old('juara_lomba', $data->juara_lomba) == '2' ? 'selected' : '' }}>2</option>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="max-w-xl">
                         <x-input-label for="tingkat_lomba" value="TINGKAT LOMBA" />
-                        <select id="tingkat_lomba" name="tingkat_lomba" class="mt-1 block w-full" required>
+                        <select id="tingkat_lomba" name="tingkat_lomba" class="mt-1 block w-full rounded" required>
                             <option value="">Pilih Tingkat Lomba</option>
                             <option value="Kecamatan" {{ old('tingkat_lomba', $data->tingkat_lomba) == 'Kecamatan' ? 'selected' : '' }}>Kecamatan</option>
                             <option value="Kabupaten" {{ old('tingkat_lomba', $data->tingkat_lomba) == 'Kabupaten' ? 'selected' : '' }}>Kabupaten</option>

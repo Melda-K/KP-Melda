@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="tambahModalLabel">TAMBAH DATA SISWA</h1>
+                <h1 class="modal-title fs-5 font-bold" id="tambahModalLabel">TAMBAH DATA SISWA</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -38,12 +38,12 @@
                     </div>
                     <div class="max-w-xl">
                         <x-input-label for="pendik_sebelumnya" value="PENDIDIKAN SEBELUMNYA" />
-                        <x-text-input id="pendik_sebelumnya" type="text" name="pendik_sebelumnya" class="mt-1 block w-full" value="{{ old('pendik_sebelumnya')}}" required />
+                        <x-text-input id="pendik_sebelumnya" type="text" name="pendik_sebelumnya" class="mt-1 block w-full" value="{{ old('pendik_sebelumnya')}}"/>
                         <x-input-error class="mt-2" :messages="$errors->get('pendik_sebelumnya')" />
                     </div>
                     <div class="max-w-xl">
                         <x-input-label for="jmlh_sodara" value="ANAK KE" />
-                        <x-text-input id="jmlh_sodara" type="text" name="jmlh_sodara" class="mt-1 block w-full" value="{{ old('jmlh_sodara')}}" required />
+                        <x-text-input id="jmlh_sodara" type="text" name="jmlh_sodara" class="mt-1 block w-full" value="{{ old('jmlh_sodara')}}"/>
                         <x-input-error class="mt-2" :messages="$errors->get('jmlh_sodara')" />
                     </div>
                     <div class="max-w-xl">
@@ -54,28 +54,28 @@
                     <div class="row g-3">
                         <p>NAMA ORANG TUA </p>
                         <div class="col">
-                            <x-text-input id="nama_ayah" type="text" name="nama_ayah" class="mt-1 block w-full" value="{{ old('nama_ayah')}}" required placeholder="Nama Ayah"/>
+                            <x-text-input id="nama_ayah" type="text" name="nama_ayah" class="mt-1 block w-full" value="{{ old('nama_ayah')}}" placeholder="Nama Ayah"/>
                             <x-input-error class="mt-2" :messages="$errors->get('nama_ayah')" />
                         </div>
                         <div class="col">
-                            <x-text-input id="nama_ibu" type="text" name="nama_ibu" class="mt-1 block w-full" value="{{ old('nama_ibu')}}" required placeholder="Nama Ibu"/>
+                            <x-text-input id="nama_ibu" type="text" name="nama_ibu" class="mt-1 block w-full" value="{{ old('nama_ibu')}}" placeholder="Nama Ibu"/>
                             <x-input-error class="mt-2" :messages="$errors->get('nama_ibu')" />
                         </div>
                     </div>
                     <div class="row g-3">
                         <p>PEKERJAAN ORANG TUA </p>
                         <div class="col">
-                            <x-text-input id="pekerjaan_ayah" type="text" name="pekerjaan_ayah" class="mt-1 block w-full" value="{{ old('pekerjaan_ayah')}}" required placeholder="Pekerjaan Ayah"/>
+                            <x-text-input id="pekerjaan_ayah" type="text" name="pekerjaan_ayah" class="mt-1 block w-full" value="{{ old('pekerjaan_ayah')}}" placeholder="Pekerjaan Ayah"/>
                             <x-input-error class="mt-2" :messages="$errors->get('pekerjaan_ayah')" />
                         </div>
                         <div class="col">
-                            <x-text-input id="pekerjaan_ibu" type="text" name="pekerjaan_ibu" class="mt-1 block w-full" value="{{ old('pekerjaan_ibu')}}" required placeholder="Pekerjaan Ibu"/>
+                            <x-text-input id="pekerjaan_ibu" type="text" name="pekerjaan_ibu" class="mt-1 block w-full" value="{{ old('pekerjaan_ibu')}}" placeholder="Pekerjaan Ibu"/>
                             <x-input-error class="mt-2" :messages="$errors->get('pekerjaan_ibu')" />
                         </div>
                     </div>
                     <div class="max-w-xl">
                         <x-input-label for="wali_siswa" value="NAMA WALI SISWA" />
-                        <x-text-input id="wali_siswa" type="text" name="wali_siswa" class="mt-1 block w-full" value="{{ old('wali_siswa')}}" required />
+                        <x-text-input id="wali_siswa" type="text" name="wali_siswa" class="mt-1 block w-full" value="{{ old('wali_siswa')}}" />
                         <x-input-error class="mt-2" :messages="$errors->get('wali_siswa')" />
                     </div>
                     <div class="max-w-xl">

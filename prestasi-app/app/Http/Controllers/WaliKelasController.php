@@ -129,18 +129,5 @@ class WaliKelasController extends Controller
 
         return redirect()->route('walikelas.index')->with($notificaton);
     }
-
-    // public function print()
-    // {
-    //     $doktors = doktor::all();
-
-    //     $pdf = Pdf::loadview('doktors.print', ['doktors' => $doktors]);
-    //     return $pdf->download('data_doktor.pdf');
-    // }
-
-    // public function export()
-    // {
-    //     return Excel::download(new DoktorExport, 'doktors.xlsx');
-    //}
 }
 

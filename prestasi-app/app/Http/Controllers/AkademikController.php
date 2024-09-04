@@ -41,7 +41,7 @@ class AkademikController extends Controller
         ]);
 
         $notificaton = array(
-            'message' => 'Data akademik berhasil ditambahkan',
+            'message' => 'Data akademik berhasil ditambahkan!',
             'alert-type' => 'success'
         );
 
@@ -77,7 +77,7 @@ class AkademikController extends Controller
         ]);
 
         $notificaton = array(
-            'message' => 'Data akademik berhasil ditambahkan',
+            'message' => 'Data akademik berhasil diperbaharui!',
             'alert-type' => 'success'
         );
 
@@ -91,7 +91,7 @@ class AkademikController extends Controller
         $akademik->delete();
 
         $notificaton = array(
-            'message' => 'Data akademik berhasil dihapus',
+            'message' => 'Data akademik berhasil dihapus!',
             'alert-type' => 'success'
         );
 

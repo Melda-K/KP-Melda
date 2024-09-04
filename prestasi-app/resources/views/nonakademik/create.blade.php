@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="tambahModalLabel">TAMBAH DATA AKADEMIK</h1>
+                <h1 class="modal-title fs-5 font-bold" id="tambahModalLabel">TAMBAH DATA AKADEMIK</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -10,7 +10,7 @@
                     @csrf
                     <div class="max-w-xl">
                         <x-input-label for="id_siswa" value="NAMA SISWA" />
-                        <select id="id_siswa" name="id_siswa" class="mt-1 block w-full" required>
+                        <select id="id_siswa" name="id_siswa" class="mt-1 block w-full rounded" required>
                             <option value="" selected>Pilih Siswa</option>
                             @foreach (\App\Models\Siswa::all() as $siswa)
                             <option value="{{ $siswa->id }}">{{ $siswa->nama_siswa }}</option>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="max-w-xl">
                         <x-input-label for="juara_lomba" value="JUARA LOMBA" />
-                        <select id="juara_lomba" name="juara_lomba" class="mt-1 block w-full" required>
+                        <select id="juara_lomba" name="juara_lomba" class="mt-1 block w-full rounded" required>
                             <option value="">Pilih Juara Lomba</option>
                             <option value="1 Solo" {{ old('juara_lomba') === '1 Solo' ? 'selected' : '' }}>1 Solo</option>
                             <option value="2 Solo" {{ old('juara_lomba') === '2 Solo' ? 'selected' : '' }}>2 Solo</option>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="max-w-xl">
                         <x-input-label for="tingkat_lomba" value="TINGKAT LOMBA" />
-                        <select id="tingkat_lomba" name="tingkat_lomba" class="mt-1 block w-full" required>
+                        <select id="tingkat_lomba" name="tingkat_lomba" class="mt-1 block w-full rounded" required>
                             <option value="">Pilih Tingkat Lomba</option>
                             <option value="kabupaten" {{ old('tingkat_lomba') === 'kabupatan' ? 'selected' : '' }}>Kabupaten</option>
                             <option value="kecamatan" {{ old('tingkat_lomba') === 'kecamatan' ? 'selected' : '' }}>Kecamatan</option>
