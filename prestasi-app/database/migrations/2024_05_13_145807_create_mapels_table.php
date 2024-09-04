@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('mapels', function (Blueprint $table) {
             $table->id();
-            $table->string('pai');
-            $table->string('pkn');
-            $table->string('indo');
-            $table->string('mtk');
-            $table->string('ipa');
-            $table->string('ips');
-            $table->string('pjok');
-            $table->string('senbud');
-            $table->string('sunda');
+            $table->string('nama_mapel');
+            // hapus
+            // $table->string('pkn');
+            // $table->string('indo');
+            // $table->string('mtk');
+            // $table->string('ipa');
+            // $table->string('ips');
+            // $table->string('pjok');
+            // $table->string('senbud');
+            // $table->string('sunda');
             $table->timestamps();
         });
     }

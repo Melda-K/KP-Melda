@@ -19,10 +19,10 @@ return new class extends Migration
             $table->foreign('id_wali_kelas')->references('id')->on('wali_kelass')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('id_mapel')->unsigned();
             $table->foreign('id_mapel')->references('id')->on('mapels')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('nilai_pengetahuan');
-            $table->string('huruf_pengetahuan');
-            $table->integer('nilai_keterampilan');
-            $table->string('huruf_keterampilan');
+            $table->float('nilai_pengetahuan', 5)->nullable();
+            $table->char('huruf_pengetahuan', 1)->nullable();
+            $table->float('nilai_keterampilan', 5)->nullable();
+            $table->char('huruf_keterampilan', 1)->nullable();
             $table->timestamps();
         });
     }

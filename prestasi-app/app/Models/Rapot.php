@@ -12,25 +12,26 @@ class Rapot extends Model
     use HasFactory;
     protected $tabel="rapots";
 
-    protected $fillable = [
-        "id_siswa",
-        "id_mata_pelajaran"
+    protected $guarded = [
+
     ];
-    
+
     public function siswa(): BelongsTo
     {
         return $this->belongsTo(Siswa::class, "id_siswa");
 
     }
-    public function walikelas(): BelongsTo
-    {
-        return $this->belongsTo(WaliKelas::class, "id_wali_kelas");
-
-    }
-
+    // public function walikelas(): BelongsTo
+    // {
+    //     return $this->belongsTo(WaliKelas::class, "id_wali_kelas");
+    // }
+    /**
+     * Get all of the mapel for the Rapot
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function mapel()
     {
-        return $this->hasMany(MataPelajaran::class, "id", "id_mata_pelajaran");
-
+        return $this->hasMany(MataPelajaran::class, 'id', 'id_mapel');
     }
 }

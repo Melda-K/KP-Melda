@@ -15,13 +15,14 @@ class AkademikController extends Controller
 {
     public function index()
     {
-        $data['akademiks'] = Akademik::with('siswa')->get();
+        $data['akademiks'] = Siswa::has('akademik')->get();
         return view('akademik.index', $data);
     }
 
     public function create()
     {
-        $data['siswas'] = Siswa::all();
+        // $data['siswas'] = Siswa::all();
+        $data = Siswa::has('rapot')->with('rapot.mapel')->get();
         return view('akademik.create', $data);
     }
 
@@ -58,7 +59,7 @@ class AkademikController extends Controller
 
         return view('akademik.edit', $data);
     }
-    
+
     public function update(Request $request, string $id)
     {
         $akademik = Akademik::findOrFail($id);
@@ -105,5 +106,3 @@ class AkademikController extends Controller
         return $pdf->download('data_prestasi_akademik.pdf');
     }
 }
-
-

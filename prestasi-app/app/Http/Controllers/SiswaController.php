@@ -165,16 +165,33 @@ class SiswaController extends Controller
 
     public function show($nis): JsonResponse
     {
-        $siswa = Siswa::where('nis', $nis)->first();
+        $siswa = Siswa::where('id', $nis)->first();
 
         if ($siswa) {
             return response()->json([
+                'id' => $siswa->id,
                 'nama_siswa' => $siswa->nama_siswa,
                 'kelas' => $siswa->kelas,
                 'tahun_pelajaran' => $siswa->tahun_pelajaran
             ]);
         } else {
             return response()->json(['error' => 'Data tidak ditemukan'], 404);
+        }
+    }
+
+    public function searchSiswa(Request $request)
+    {
+        $nis = $request->input('id_siswa');
+        $siswa = Siswa::where('nis', $nis)->first();
+
+        if ($siswa) {
+            return response()->json([
+                'nama_siswa' => $siswa->nama_siswa,
+                'kelas' => $siswa->kelas,
+                'tahun_pelajaran' => $siswa->tahun_pelajaran,
+            ]);
+        } else {
+            return response()->json(['message' => 'Data tidak ditemukan'], 404);
         }
     }
 }

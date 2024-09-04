@@ -10,9 +10,9 @@ class Siswa extends Model
 {
     use HasFactory;
     protected $table='siswas';
-    
+
     protected $fillable = [
-    
+
         'nama_siswa',
         'nis',
         'ttl',
@@ -37,8 +37,22 @@ class Siswa extends Model
         return $this->belongsTo(WaliKelas::class, 'id_wali_kelas');
     }
 
-    public function mapel()
+    // public function mapel()
+    // {
+    //     return $this->hasMany(MataPelajaran::class);
+    // }
+    /**
+     * Get all of the comments for the Siswa
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function rapot()
     {
-        return $this->hasMany(MataPelajaran::class);
+        return $this->hasMany(Rapot::class, 'id_siswa', 'id');
+    }
+
+    public function akademik()
+    {
+        return $this->hasOne(Akademik::class, 'id_siswa', 'id');
     }
 }

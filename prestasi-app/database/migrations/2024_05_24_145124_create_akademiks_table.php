@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigInteger('id_siswa')->unsigned();
             $table->foreign('id_siswa')->references('id')->on('siswas')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('jumlah_nilai_rapot');
-            $table->integer('rangking');
+            $table->integer('ranking');
             $table->timestamps();
         });
     }

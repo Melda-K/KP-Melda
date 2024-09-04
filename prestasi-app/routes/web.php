@@ -59,13 +59,19 @@ Route::middleware('auth')->group(function () {
     Route::match(['put', 'patch'], '/siswa/{id}', [SiswaController::class, 'update'])->name('siswa.update');
     Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
     Route::get('/filter', [SiswaController::class, 'filter'])->name('siswa.filter');
-    
     Route::get('/siswa/{nis}', [SiswaController::class, 'show']);
+    Route::get('/searchSiswa', [SiswaController::class, 'searchSiswa'])->name('searchSiswa');
+
 
     route::get('/rapot', [RapotController::class, 'index'])->name('rapot.index');
     route::get('/rapot/create', [RapotController::class, 'create'])->name('rapot.create');
     Route::post('/rapot', [RapotController::class, 'store'])->name('rapot.store');
     Route::get('/rapot/{id}/edit', [RapotController::class, 'edit'])->name('rapot.edit');
+    Route::get('getrapot/{id_siswa}', function ($id_siswa) {
+        $rapot = App\Models\Rapot::where('id_siswa',$id_siswa)->get();
+        $nilai = $rapot->sum('nilai_pengetahuan') + $rapot->sum('nilai_keterampilan');
+        return response()->json($nilai);
+    });
     // Route::match(['put', 'patch'], '/rapot/{id}', [RapotController::class, 'update'])->name('rapot.update');
     // Route::delete('/rapot/{id}', [RapotController::class, 'destroy'])->name('rapot.destroy');
 
@@ -86,7 +92,7 @@ Route::middleware('auth')->group(function () {
     Route::match(['put', 'patch'], '/nonakademik/{id}', [NonAkademikController::class, 'update'])->name('nonakademik.update');
     Route::delete('/nonakademik/{id}', [NonAkademikController::class, 'destroy'])->name('nonakademik.destroy');
     Route::get('/nonakademik/print', [NonAkademikController::class, 'print'])->name('nonakademik.print');
-    
+
 });
 
 

@@ -7,38 +7,49 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                   <form method="post" action="{{ route('akademik.update', $data->id) }}" enctype="multipart/form-data" class="mt-6 space-y-6">
-                        @csrf
-                        @method('PATCH')
-                        <div class="max-w-xl">
-                            <x-input-label for="nama_siswa" value="NAMA SISWA" />
-                            <x-text-input id="nama_siswa" type="text" name="nama_siswa" class="mt-1 block w-full" value="{{ old('nama_siswa')}}"
-                                required />
-                            <x-input-error class="mt-2" :messages="$errors->get('nama_siswa')" />
-                        </div>
-                        <div class="max-w-xl">
-                            <x-input-label for="kelas" value="KELAS" />
-                            <x-text-input id="kelas" type="text" name="kelas" class="mt-1 block w-full" value="{{ old('kelas')}}"
-                                required />
-                            <x-input-error class="mt-2" :messages="$errors->get('kelas')" />
-                        </div>
-                        <div class="max-w-xl">
-                            <x-input-label for="jumlah_nilai_rapot" value="JUMLAH NILAI RAPOT" />
-                            <x-text-input id="jumlah_nilai_rapot" type="date" name="jumlah_nilai_rapot" class="mt-1 block w-full" value="{{ old('jumlah_nilai_rapot')}}"
-                                required />
-                            <x-input-error class="mt-2" :messages="$errors->get('jumlah_nilai_rapot')" />
-                        </div>
-                        <div class="max-w-xl">
-                            <x-input-label for="ranking" value="RANKING" />
-                            <x-text-input id="ranking" type="text" name="ranking" class="mt-1 block w-full" value="{{ old('ranking')}}"
-                                required />
-                            <x-input-error class="mt-2" :messages="$errors->get('ranking')" />
-                        </div>
-                        <div class="modal-footer">
+                <form method="post" action="{{ route('akademik.update', $data->id) }}" enctype="multipart/form-data" class="mt-6 space-y-6">
+                    @csrf
+                    @method('PATCH')
+                    <div class="max-w-xl">
+                        <x-input-label for="id_siswa" value="SISWA" />
+                        <x-select-input id="id_siswa" name="id_siswa" class="mt-1 block w-full" required>
+                            <option value="">Pilih Siswa</option>
+                            @foreach (App\Models\Siswa::all() as $value)
+                            <option value="{{ $value->id }}">
+                                {{ $value->nama_siswa }}
+                            </option>
+                            @endforeach
+                        </x-select-input>
+                    </div>
+                    <div class="max-w-xl">
+                        <x-input-label for="kelas" value="KELAS" />
+                        <x-select-input id="kelas" name="kelas" class="mt-1 block w-full" required>
+                            <option value="">Pilih kelas</option>
+                            <option value="I" {{ old('kelas') === 'I' ? 'selected' : '' }}>I</option>
+                            <option value="II" {{ old('kelas') === 'II' ? 'selected' : '' }}>II</option>
+                            <option value="III" {{ old('kelas') === 'III' ? 'selected' : '' }}>III</option>
+                            <option value="IV" {{ old('kelas') === 'IV' ? 'selected' : '' }}>IV</option>
+                            <option value="V" {{ old('kelas') === 'V' ? 'selected' : '' }}>V</option>
+                            <option value="VI" {{ old('kelas') === 'VI' ? 'selected' : '' }}>VI</option>
+                        </x-select-input>
+                    </div>
+                    <div class="max-w-xl">
+                        <x-input-label for="jumlah_nilai_rapot" value="JUMLAH NILAI RAPOT" />
+                        <x-text-input id="jumlah_nilai_rapot" type="text" name="jumlah_nilai_rapot" class="mt-1 block w-full" value="{{ old('jumlah_nilai_rapot')}}"
+                            required />
+                        <x-input-error class="mt-2" :messages="$errors->get('ranking')" />
+                    </div>
+                    <div class="max-w-xl">
+                        <x-input-label for="ranking" value="RANKING" />
+                        <x-text-input id="ranking" type="text" name="ranking" class="mt-1 block w-full" value="{{ old('ranking')}}"
+                            required />
+                        <x-input-error class="mt-2" :messages="$errors->get('ranking')" />
+                    </div>
+                    <div class="modal-footer">
                         <x-secondary-button tag="a" data-bs-dismiss="modal">Batal</x-secondary-button>
                         <x-primary-button name="save" value="true">Simpan</x-primary-button>
-                        </div>
-                    </form>
+                    </div>
+                </form>
                 </form>
             </div>
         </div>
@@ -46,8 +57,8 @@
 </div>
 @endforeach
 @section('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 @endsection
 
 
