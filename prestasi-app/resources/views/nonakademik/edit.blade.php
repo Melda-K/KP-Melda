@@ -36,10 +36,14 @@
                         <x-input-label for="juara_lomba" value="JUARA LOMBA" />
                         <select id="juara_lomba" name="juara_lomba" class="mt-1 block w-full rounded" required>
                             <option value="">Pilih Juara Lomba</option>
-                            <option value="1" {{ old('juara_lomba', $data->juara_lomba) == '1' ? 'selected' : '' }}>1</option>
-                            <option value="2" {{ old('juara_lomba', $data->juara_lomba) == '2' ? 'selected' : '' }}>2</option>
-                            <option value="3" {{ old('juara_lomba', $data->juara_lomba) == '3' ? 'selected' : '' }}>3</option>
+                            <option value="1 Solo" {{ old('juara_lomba') === '1 Solo' ? 'selected' : '' }}>1 Solo</option>
+                            <option value="2 Solo" {{ old('juara_lomba') === '2 Solo' ? 'selected' : '' }}>2 Solo</option>
+                            <option value="3 Solo" {{ old('juara_lomba') === '3 Solo' ? 'selected' : '' }}>3 Solo</option>
+                            <option value="1 Group" {{ old('juara_lomba') === '1 Group' ? 'selected' : '' }}>1 Group</option>
+                            <option value="2 Group" {{ old('juara_lomba') === '2 Group' ? 'selected' : '' }}>2 Group</option>
+                            <option value="3 Group" {{ old('juara_lomba') === '3 Group' ? 'selected' : '' }}>3 Group</option>
                         </select>
+                        <x-input-error class="mt-2" :messages="$errors->get('juara_lomba')" />
                     </div>
                     <div class="max-w-xl">
                         <x-input-label for="tingkat_lomba" value="TINGKAT LOMBA" />

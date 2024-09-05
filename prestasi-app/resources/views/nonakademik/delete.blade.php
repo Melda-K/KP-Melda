@@ -7,10 +7,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('nonakademik.destroy', $data->id)}}" enctype="multipart/form-data" class="mt-6 space-y-6">
+                <form method="post" action="{{ route('akademik.destroy', $data->id)}}" enctype="multipart/form-data" class="mt-6 space-y-6">
                     @csrf
                     @method('delete')
-                    <p>Anda yakin ingin menghapus data {{ $data->nama_siswa }} ?</p>
+                    <p>Anda yakin ingin menghapus data {{ $data->siswa->nama_siswa }} ?</p>
                     <div class="modal-footer">
                         <x-secondary-button tag="a" data-bs-dismiss="modal">Batal</x-secondary-button>
                         <x-primary-button value="true">Hapus</x-primary-button>

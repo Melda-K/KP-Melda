@@ -20,12 +20,7 @@
                                     <option value="{{ $siswa->id }}">{{ $siswa->nis }}</option>
                                 @endforeach
                             </select>
-                            <!-- <select id="id_siswa" name="id_siswa" class="block w-72 rounded-lg" required>
-                                <option value="">Pilih ID Siswa</option>
-                                @foreach (App\Models\Siswa::all() as $siswa)
-<option value="{{ $siswa->id }}">{{ $siswa->nis }}</option>
-@endforeach
-                            </select> -->
+                           
                             <x-input-error class="mt-1" :messages="$errors->get('nis')" />
                             <button type="button" route="{{ 'searchSiswa' }}" id="searchButton"
                                 class="btn btn-secondary m-2">Cari</button>
@@ -68,6 +63,7 @@
 
                     <div class="container">
                         <p class="font-bold">CAPAIAN KOMPETENSI</p>
+                        <p>Mata Pelajaran</p>
                         <div class="row pl-6">
                             <table border="0" cellspacing="0" cellpadding="0" id="dynamicAddRemove">
                                 <tr>

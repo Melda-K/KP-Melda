@@ -34,7 +34,7 @@ class SiswaController extends Controller
 
                     return view('siswa.index', ['siswas' => $siswas]);
                 } else {
-                    $data['siswa'] = Siswa::get();
+                    $data['siswas'] = Siswa::get();
 
                     return view('siswa.index', $data);
                 }

@@ -7,6 +7,36 @@
     <title>DATA AKADEMIK</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+    <style>
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            border: 1px solid black;
+        }
+
+        td {
+            word-wrap: break-word;
+            border: 1px solid black;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,7 +47,7 @@
     <p class="text-center">Laporan Data Prestasi Akademik Siswa-Siswi SDN Nyalindung II
         Kp.Haregem, RT/RW. 005/001 Kel.Galudra, Kec.Cugenang, Kab.Cianjur Tahun{{$tahun}}</p>
     <br>
-    <table id="table-data" class="table table-bordered">
+    <table>
         <thead>
             <tr>
                 <th>NO</th>
