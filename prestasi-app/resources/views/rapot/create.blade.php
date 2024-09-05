@@ -14,17 +14,25 @@
                             <x-input-label for="nis" value="NIS/NISN" />
                         </div>
                         <div class="w-2/3 flex">
+                            @php
+                            // Mendapatkan ID wali kelas yang sedang login
+                            $user_id = Auth::id();
+
+                            // Mengambil data siswa yang memiliki ID wali kelas yang sedang login
+                            $wali_kelas = \App\Models\Siswa::where('id_wali_kelas', $user_id -1)->get();
+                            @endphp
+
                             <select id="nis" name="id_siswa" class="block w-72 rounded-lg" required>
                                 <option value="">Pilih NIS</option>
-                                @foreach (App\Models\Siswa::all() as $siswa)
-                                    <option value="{{ $siswa->id }}">{{ $siswa->nis }}</option>
+                                @foreach ($wali_kelas as $siswa)
+                                <option value="{{ $siswa->id }}">{{ $siswa->nis }}</option>
                                 @endforeach
                             </select>
-                           
+
                             <x-input-error class="mt-1" :messages="$errors->get('nis')" />
-                            <button type="button" route="{{ 'searchSiswa' }}" id="searchButton"
-                                class="btn btn-secondary m-2">Cari</button>
+                            <button type="button" route="{{ 'searchSiswa' }}" id="searchButton" class="btn btn-secondary m-2">Cari</button>
                         </div>
+
                     </div>
 
                     <!-- Pencarian Data Siswa Berdasarkan NIS -->
@@ -70,7 +78,7 @@
                                     <td>
                                         <select name="form[0][id_mapel]" id="id_mapel">
                                             @foreach (App\Models\MataPelajaran::all() as $item)
-                                                <option value="{{ $item->id }}">{{ $item->nama_mapel }}</option>
+                                            <option value="{{ $item->id }}">{{ $item->nama_mapel }}</option>
                                             @endforeach
                                         </select>
                                     </td>

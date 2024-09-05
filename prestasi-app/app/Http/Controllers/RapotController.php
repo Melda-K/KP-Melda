@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\MataPelajaran;
@@ -23,7 +24,7 @@ class RapotController extends Controller
     public function create()
     {
         $data['Rapot'] = Rapot::pluck('rapot', 'id');
-        $mapel = MataPelajaran::pluck('id','nama_mapel');
+        $mapel = MataPelajaran::pluck('id', 'nama_mapel');
         return view('rapot.create', compact('data', 'mapel'));
     }
 
@@ -86,21 +87,21 @@ class RapotController extends Controller
 
             if ($value['nilai_pengetahuan'] >= 85) {
                 $hurufP = 'A';
-            } else if ($value['nilai_pengetahuan'] >= 75 ) {
-               $hurufP = 'B';
+            } else if ($value['nilai_pengetahuan'] >= 75) {
+                $hurufP = 'B';
             } else {
                 $hurufP = 'C';
             };
 
             if ($value['nilai_pengetahuan'] >= 85) {
                 $hurufK = 'A';
-            } else if ($value['nilai_pengetahuan'] >= 75 ) {
-               $hurufK = 'B';
+            } else if ($value['nilai_pengetahuan'] >= 75) {
+                $hurufK = 'B';
             } else {
                 $hurufK = 'C';
             };
 
-           $rapot =  Rapot::create([
+            $rapot =  Rapot::create([
                 'id_siswa' => $request['id_siswa'],
                 'id_mapel' => $value['id_mapel'],
                 'id_wali_kelas' => Auth::id(),
@@ -109,7 +110,7 @@ class RapotController extends Controller
                 'nilai_keterampilan' => $value['nilai_keterampilan'],
                 'huruf_keterampilan' => $hurufK,
 
-                ]);
+            ]);
         }
         // Validasi data dari request
         // $validated = $request->validate([
@@ -137,6 +138,5 @@ class RapotController extends Controller
             return redirect()->route('rapot.index')->with($notificaton);
         } else
             return redirect()->route('rapot.create')->with($notificaton);
-
     }
 }

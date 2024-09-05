@@ -24,10 +24,10 @@ class SiswaController extends Controller
                 if ($role->name == 'WaliKelas') {
                     $userId = Auth::id();
 
-                    $siswa = \App\Models\Siswa::where('id', $userId)->first();
+                    $wali_kelas = \App\Models\WaliKelas::where('id_user', $userId)->first();
 
-                    if ($siswa) {
-                        $siswas = Siswa::where('id_wali_kelas', $siswa->id_wali_kelas)->get();
+                    if ($wali_kelas) {
+                        $siswas = Siswa::where('id_wali_kelas', $wali_kelas->id)->get();
                     } else {
                         $siswas = collect();
                     }
