@@ -23,7 +23,7 @@
                 <i class="fa-solid fa-book p-2"></i>{{ __('DATA NILAI RAPOT') }}
             </x-nav-link>
         </div>
-        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex relative" x-data="{ open: false }">
+        <!-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex relative" x-data="{ open: false }">
             <x-nav-link @click="open = !open" class="cursor-pointer">
                 <i class="fa-solid fa-medal p-2"></i>{{ __('DATA PRESTASI') }}
             </x-nav-link>
@@ -34,6 +34,25 @@
                 </a>
                 <a href="{{ route('nonakademik.index') }}" class="block px-2 py-2 text-gray-800 hover:bg-gray-200">
                     <i class="fa-solid fa-trophy p-2"></i> {{ __('NON AKADEMIK') }}
+                </a>
+            </div>
+        </div> -->
+
+        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex relative" x-data="{ open: window.location.href.includes('akademik') || window.location.href.includes('nonakademik'), activeLink: window.location.href.includes('akademik') ? 'akademik' : window.location.href.includes('nonakademik') ? 'nonakademik' : '' }">
+            <x-nav-link @click="open = !open" class="cursor-pointer">
+                <i class="fa-solid fa-medal p-2"></i>{{ __('DATA PRESTASI') }}
+            </x-nav-link>
+
+            <!-- Dropdown Menu -->
+            <div x-show="open" @click.away="open = false" class="absolute mt-10 bg-white rounded-md shadow-lg">
+                <a href="{{ route('akademik.index') }}"
+                    class="block px-2 py-2 text-gray-800 hover:bg-gray-200 {{ request()->routeIs('akademik.index') ? 'bg-gray-200 font-bold' : '' }}">
+                    <i class="fa-solid fa-graduation-cap p-2"></i>{{ __('AKADEMIK') }}
+                </a>
+
+                <a href="{{ route('nonakademik.index') }}"
+                    class="block px-2 py-2 text-gray-800 hover:bg-gray-200 {{ request()->routeIs('nonakademik.index') ? 'bg-gray-200 font-bold' : '' }}">
+                    <i class="fa-solid fa-trophy p-2"></i>{{ __('NON AKADEMIK') }}
                 </a>
             </div>
         </div>
@@ -50,33 +69,42 @@
                 <i class="fa-solid fa-book p-2"></i>{{ __('DATA NILAI RAPOT') }}
             </x-nav-link>
         </div>
-        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex relative" x-data="{ open: false }">
+        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex relative" x-data="{ open: window.location.href.includes('akademik') || window.location.href.includes('nonakademik'), activeLink: window.location.href.includes('akademik') ? 'akademik' : window.location.href.includes('nonakademik') ? 'nonakademik' : '' }">
             <x-nav-link @click="open = !open" class="cursor-pointer">
                 <i class="fa-solid fa-medal p-2"></i>{{ __('DATA PRESTASI') }}
             </x-nav-link>
 
+            <!-- Dropdown Menu -->
             <div x-show="open" @click.away="open = false" class="absolute mt-10 bg-white rounded-md shadow-lg">
-                <a href="{{ route('akademik.index') }}" class="block px-2 py-2 text-gray-800 hover:bg-gray-200">
+                <a href="{{ route('akademik.index') }}"
+                    class="block px-2 py-2 text-gray-800 hover:bg-gray-200 {{ request()->routeIs('akademik.index') ? 'bg-gray-200 font-bold' : '' }}">
                     <i class="fa-solid fa-graduation-cap p-2"></i>{{ __('AKADEMIK') }}
                 </a>
-                <a href="{{ route('nonakademik.index') }}" class="block px-2 py-2 text-gray-800 hover:bg-gray-200">
-                    <i class="fa-solid fa-trophy p-2"></i> {{ __('NON AKADEMIK') }}
+
+                <a href="{{ route('nonakademik.index') }}"
+                    class="block px-2 py-2 text-gray-800 hover:bg-gray-200 {{ request()->routeIs('nonakademik.index') ? 'bg-gray-200 font-bold' : '' }}">
+                    <i class="fa-solid fa-trophy p-2"></i>{{ __('NON AKADEMIK') }}
                 </a>
             </div>
         </div>
         @endhasrole
 
         @hasrole('KepalaSekolah')
-        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex relative" x-data="{ open: false }">
+        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex relative" x-data="{ open: window.location.href.includes('akademik') || window.location.href.includes('nonakademik'), activeLink: window.location.href.includes('akademik') ? 'akademik' : window.location.href.includes('nonakademik') ? 'nonakademik' : '' }">
             <x-nav-link @click="open = !open" class="cursor-pointer">
                 <i class="fa-solid fa-medal p-2"></i>{{ __('DATA PRESTASI') }}
             </x-nav-link>
+
+            <!-- Dropdown Menu -->
             <div x-show="open" @click.away="open = false" class="absolute mt-10 bg-white rounded-md shadow-lg">
-                <a href="{{ route('akademik.index') }}" class="block px-2 py-2 text-gray-800 hover:bg-gray-200">
+                <a href="{{ route('akademik.index') }}"
+                    class="block px-2 py-2 text-gray-800 hover:bg-gray-200 {{ request()->routeIs('akademik.index') ? 'bg-gray-200 font-bold' : '' }}">
                     <i class="fa-solid fa-graduation-cap p-2"></i>{{ __('AKADEMIK') }}
                 </a>
-                <a href="{{ route('nonakademik.index') }}" class="block px-2 py-2 text-gray-800 hover:bg-gray-200">
-                    <i class="fa-solid fa-trophy p-2"></i> {{ __('NON AKADEMIK') }}
+
+                <a href="{{ route('nonakademik.index') }}"
+                    class="block px-2 py-2 text-gray-800 hover:bg-gray-200 {{ request()->routeIs('nonakademik.index') ? 'bg-gray-200 font-bold' : '' }}">
+                    <i class="fa-solid fa-trophy p-2"></i>{{ __('NON AKADEMIK') }}
                 </a>
             </div>
         </div>
