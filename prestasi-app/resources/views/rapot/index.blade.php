@@ -1,5 +1,7 @@
 @include('rapot.create')
+@include('rapot.delete')
 @include('rapot.detail')
+
 
 <x-app-layout>
     <x-slot name="header">
@@ -27,25 +29,24 @@
 
                     @php $num = 1; @endphp
                     @foreach ($siswa as $data)
-                        <tr class="text-center">
-                            <td>{{ $num++ }}</td>
-                            <td>{{ $data->nama_siswa }}</td>
-                            <td>{{ $data->nis }}</td>
-                            <td>{{ $data->kelas }}</td>
-                            <td>{{ $data->tahun_pelajaran }}</td>
-                            <td>
-                                <!-- <button tag="a" type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id }}"><i class="fa-solid fa-folder"></i></button> -->
-                                <button tag="a" type="button" class="btn btn-outline-warning"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $data->id }}"><i
-                                        class="fa-solid fa-pen-to-square"></i></button>
-                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                                    data-bs-target="#hapusModal_{{ $data->id }}"><i
-                                        class="fa-solid fa-trash-can"></i></button>
-                                <button tag="a" type="button" class="btn btn-outline-success"
-                                    data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id }}"><i
-                                        class="fa-solid fa-folder"></i></button>
-                            </td>
-                        </tr>
+                    <tr class="text-center">
+                        <td>{{ $num++ }}</td>
+                        <td>{{ $data->nama_siswa }}</td>
+                        <td>{{ $data->nis }}</td>
+                        <td>{{ $data->kelas }}</td>
+                        <td>{{ $data->tahun_pelajaran }}</td>
+                        <td>
+                            <!-- <button tag="a" type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id }}"><i class="fa-solid fa-folder"></i></button> -->
+                            <button tag="a" type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $data->id }}"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <!-- <button tag="a" type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                                data-bs-target="#hapusModal_{{ $data->id }}"><i
+                                    class="fa-solid fa-trash-can"></i></button> -->
+                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#hapusModal_{{ $data->id }}"><i class="fa-solid fa-trash-can"></i></button>
+                            <button tag="a" type="button" class="btn btn-outline-success"
+                                data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id }}"><i
+                                    class="fa-solid fa-folder"></i></button>
+                        </td>
+                    </tr>
                     @endforeach
                 </x-table>
             </div>

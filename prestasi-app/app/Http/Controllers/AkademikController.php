@@ -13,10 +13,16 @@ use Illuminate\Support\Facades\Hash;
 
 class AkademikController extends Controller
 {
+    // public function index()
+    // {
+    //     $data['akademiks'] = Siswa::has('akademik')->get();
+    //     return view('akademik.index', $data);
+    // }
     public function index()
     {
-        $data['akademiks'] = Siswa::has('akademik')->get();
-        return view('akademik.index', $data);
+        $akademiks = Akademik::orderBy('jumlah_nilai_rapot', 'desc')->get();
+
+        return view('akademik.index', compact('akademiks'));
     }
 
     public function create()
@@ -71,7 +77,7 @@ class AkademikController extends Controller
         ]);
 
         $akademik->update([
-           'id_siswa' => $validate['id_siswa'],
+            'id_siswa' => $validate['id_siswa'],
             'jumlah_nilai_rapot' => $validate['jumlah_nilai_rapot'],
             'ranking' => $validate['ranking'],
         ]);
@@ -82,7 +88,6 @@ class AkademikController extends Controller
         );
 
         return redirect()->route('akademik.index')->with($notificaton);
-
     }
     public function destroy(string $id)
     {

@@ -18,7 +18,7 @@ class RapotController extends Controller
         $rapot = Rapot::get();
         $siswa = Siswa::has('rapot')->with('rapot.mapel')->get();
         // return response()->json($siswa, 200);
-        return view('rapot.index', compact('siswa','rapot'));
+        return view('rapot.index', compact('siswa', 'rapot'));
     }
 
     public function create()
@@ -138,5 +138,19 @@ class RapotController extends Controller
             return redirect()->route('rapot.index')->with($notificaton);
         } else
             return redirect()->route('rapot.create')->with($notificaton);
+    }
+
+    public function destroy(string $id)
+    {
+        $raports = Rapot::findOrFail($id);
+
+        $raports->delete();
+
+        $notificaton = array(
+            'message' => 'Data siswa berhasil dihapus!',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('rapot.index')->with($notificaton);
     }
 }

@@ -72,8 +72,8 @@ Route::middleware('auth')->group(function () {
         $nilai = $rapot->sum('nilai_pengetahuan') + $rapot->sum('nilai_keterampilan');
         return response()->json($nilai);
     });
+    Route::delete('/rapot/{id}', [RapotController::class, 'destroy'])->name('rapot.destroy');
     // Route::match(['put', 'patch'], '/rapot/{id}', [RapotController::class, 'update'])->name('rapot.update');
-    // Route::delete('/rapot/{id}', [RapotController::class, 'destroy'])->name('rapot.destroy');
 
     // routes/web.php
 

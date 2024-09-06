@@ -10,27 +10,18 @@
                     class="mt-6 space-y-6">
                     @csrf
                     <div class="max-w-xl">
-                        <x-input-label for="id_siswa" value="SISWA" />
-                        <x-select-input id="id_siswa" name="id_siswa" class="mt-1 block w-full" required>
-                            <option value="">Pilih Siswa</option>
-                            @foreach (App\Models\Siswa::all() as $value)
-                                <option value="{{ $value->id }}">
-                                    {{ $value->nama_siswa }}
-                                </option>
+                        @php
+                        $user_id = Auth::id();
+                        $wali_kelas = \App\Models\Siswa::where('id_wali_kelas', $user_id -1)->get();
+                        @endphp
+                        <x-input-label for="nama_siswa" value="NAMA SISWA" />
+                        <select id="id_siswa" name="id_siswa" class="block rounded-lg w-full" required>
+                            <option value="">Pilih Nama Siswa</option>
+                            @foreach ($wali_kelas as $siswa)
+                            <option value="{{ $siswa->id }}">{{ $siswa->nama_siswa }}</option>
                             @endforeach
-                        </x-select-input>
-                    </div>
-                    <div class="max-w-xl">
-                        <x-input-label for="kelas" value="KELAS" />
-                        <x-select-input id="kelas" name="kelas" class="mt-1 block w-full" required>
-                            <option value="">Pilih kelas</option>
-                            <option value="I" {{ old('kelas') === 'I' ? 'selected' : '' }}>I</option>
-                            <option value="II" {{ old('kelas') === 'II' ? 'selected' : '' }}>II</option>
-                            <option value="III" {{ old('kelas') === 'III' ? 'selected' : '' }}>III</option>
-                            <option value="IV" {{ old('kelas') === 'IV' ? 'selected' : '' }}>IV</option>
-                            <option value="V" {{ old('kelas') === 'V' ? 'selected' : '' }}>V</option>
-                            <option value="VI" {{ old('kelas') === 'VI' ? 'selected' : '' }}>VI</option>
-                        </x-select-input>
+                        </select>
+
                     </div>
                     <div class="max-w-xl">
                         <x-input-label for="id_rapot" value="JUMLAH NILAI RAPOT" />

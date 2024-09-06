@@ -1,16 +1,16 @@
-@foreach ($akademiks as $data)
+@foreach ($rapots as $data)
 <div class="modal fade" id="hapusModal_{{ $data->id }}" tabindex="-1" aria-labelledby="hapusModalLabel_{{ $data->id }}" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title font-bold" id="hapusModalLabel_{{ $data->id }}">HAPUS DATA PRESTASI AKADEMIK</h5>
+                <h5 class="modal-title font-bold" id="hapusModalLabel_{{ $data->id }}">HAPUS DATA RAPOT SISWA</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('akademik.destroy', $data->id)}}" enctype="multipart/form-data" class="mt-6 space-y-6">
+                <form method="post" action="{{ route('rapot.destroy', $data->id)}}" enctype="multipart/form-data" class="mt-6 space-y-6">
                     @csrf
                     @method('delete')
-                    <p>Anda yakin ingin menghapus data {{ $data->siswa->nama_siswa }} ?</p>
+                    <p>Anda yakin ingin menghapus data {{ $data->nama_siswa}} ?</p>
                     <div class="modal-footer">
                         <x-secondary-button tag="a" data-bs-dismiss="modal">Batal</x-secondary-button>
                         <x-primary-button value="true">Hapus</x-primary-button>

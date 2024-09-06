@@ -13,8 +13,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <button type="button" class="btn btn-outline-warning m-4" data-bs-toggle="modal" data-bs-target="#tambahModal">TAMBAH DATA</button>
-                    <a class="btn btn-outline-warning m-4" href="{{ route('nonakademik.print') }}" target="_blank">CETAK PDF</a>
+                    <button type="button" class="btn btn-outline-warning m-2" data-bs-toggle="modal" data-bs-target="#tambahModal">TAMBAH DATA</button>
+                    <a class="btn btn-outline-warning m-2" href="{{ route('nonakademik.print') }}" target="_blank">CETAK PDF</a>
 
                     <x-table :tableId="'myTable_' . uniqid()">
                         <x-slot name="header">
