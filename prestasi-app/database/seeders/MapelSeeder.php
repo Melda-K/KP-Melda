@@ -22,7 +22,7 @@ class MapelSeeder extends Seeder
                 'mapel' => 'PKN',
             ],
             [
-                'mapel' => 'Matematik',
+                'mapel' => 'Matematika',
             ],
             [
                 'mapel' => 'IPA',
@@ -38,6 +38,9 @@ class MapelSeeder extends Seeder
             ],
             [
                 'mapel' => 'Basa Sunda',
+            ],
+            [
+                'mapel' => 'Bahasa Indonesia',
             ],
             [
                 'mapel' => 'Bahasa Inggris',

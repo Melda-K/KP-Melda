@@ -29,7 +29,7 @@
                                 @endforeach
                             </select>
                             <x-input-error class="mt-1" :messages="$errors->get('nis')" />
-                            <button type="button" route="{{ 'searchSiswa' }}" id="searchButton" class="btn btn-secondary m-2">Cari</button>
+                            <button type="button" route="{{ 'searchSiswa' }}" id="searchButton" class="btn btn-secondary m-2">CARI</button>
                         </div>
 
                     </div>
@@ -88,181 +88,12 @@
                                     <td><input placeholder="Nilai Keterampilan" name="form[0][nilai_keterampilan]"
                                             id="nilai_keterampilan" class="form-control" type="number"></td>
                                     <td><button type="button" name="add" id="dynamic-ar"
-                                            class="btn btn-outline-primary">Tambah</button></td>
+                                            class="btn btn-outline-primary m-2">TAMBAH</button></td>
                                 </tr>
                             </table>
                         </div>
                         <br>
-
-                        {{--
-                        <p>PPKN</p>
-                        <div class="row pl-6">
-                            <div class="col-md-3">
-                                <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" name="huruf_keterampilan" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
-                            </div>
-                        </div>
                         <br>
-
-                        <p>Bahasa Indonesia</p>
-                        <div class="row pl-6">
-                            <div class="col-md-3">
-                                <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" name="huruf_keterampilan" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
-                            </div>
-                        </div>
-                        <br>
-
-                        <p>Matematika</p>
-                        <div class="row pl-6">
-                            <div class="col-md-3">
-                                <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" name="huruf_keterampilan" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
-                            </div>
-                        </div>
-                        <br>
-
-                        <p>IPA</p>
-                        <div class="row pl-6">
-                            <div class="col-md-3">
-                                <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" name="nilai_pengetahuan" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
-                            </div>
-                        </div>
-                        <br>
-
-                        <p>IPS</p>
-                        <div class="row pl-6">
-                            <div class="col-md-3">
-                                <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" name="huruf_keterampilan" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
-                            </div>
-                        </div>
-                        <br>
-
-                        <p>PJOK</p>
-                        <div class="row pl-6">
-                            <div class="col-md-3">
-                                <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" name="huruf_keterampilan" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
-                            </div>
-                        </div>
-                        <br>
-
-                        <p>Seni Budaya</p>
-                        <div class="row pl-6">
-                            <div class="col-md-3">
-                                <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" name="huruf_keterampilan" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
-                            </div>
-                        </div>
-                        <br>
-
-                        <p>Basa Sunda</p>
-                        <div class="row pl-6">
-                            <div class="col-md-3">
-                                <label for="nilai_pengetahuan">Nilai Pengetahuan</label>
-                                <input type="text" name="nilai_pengetahuan" id="nilai_pengetahuan" class="form-control rounded" placeholder="Nilai">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="huruf_pengetahuan">Huruf</label>
-                                <input type="text" name="huruf_pengetahuan" id="huruf_pengetahuan" class="form-control rounded" placeholder="Huruf">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="nilai_keterampilan">Nilai Keterampilan</label>
-                                <input type="text" name="nilai_keterampilan" id="nilai_keterampilan" class="form-control rounded" placeholder="Nilai">
-                            </div>
-                            <div class="col-md-2">
-                                <label for="huruf_keterampilan">Huruf</label>
-                                <input type="text" name="huruf_keterampilan" id="huruf_keterampilan" class="form-control rounded" placeholder="Huruf">
-                            </div>
-                        </div> --}}
-                        <br>
-
                         <div class="modal-footer">
                             <x-secondary-button tag="a" data-bs-dismiss="modal">Batal</x-secondary-button>
                             <x-primary-button name="save" value="true">Simpan</x-primary-button>
@@ -273,6 +104,9 @@
         </div>
     </div>
 </div>
+
+
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
@@ -281,39 +115,26 @@
         ++i;
         let table = `
         <tr>
-                                    <td style="border-top-style: hidden">
-                                        <select name="form[${i}][id_mapel]" id="id_mapel">
-                                          @foreach (App\Models\MataPelajaran::all() as $item)
-                                                <option value="{{ $item->id }}">{{ $item->nama_mapel }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td style="border-top-style: hidden">
-                                        <input type="number" id="nilai_pengetahuan${i}" type="text" name="form[${i}][nilai_pengetahuan]"
-                                            placeholder="Nilai Pengetahuan" class="form-control" required/>
-                                    </td style="border-top-style: hidden">
-                                    <td style="border-top-style: hidden"><input type="number" name="form[${i}][nilai_keterampilan]" id="nilai_keterampilan${i}"
-                                            class="form-control" placeholder="Nilai Keterampilan" required></td>
-                                    <td style="border-top-style: hidden"><button type="button" class="btn btn-outline-danger remove-input-field">Hapus</button></td>
-                                </tr>
+        
+            <td style="border-top-style: hidden">
+                <select name="form[${i}][id_mapel]" id="id_mapel">
+                @foreach (App\Models\MataPelajaran::all() as $item)
+                    <option value="{{ $item->id }}">{{ $item->nama_mapel }}</option>
+                @endforeach
+            </select>
+            </td>
+
+            <td style="border-top-style: hidden">
+                <input type="number" id="nilai_pengetahuan${i}" type="text" name="form[${i}][nilai_pengetahuan]"
+                    placeholder="Nilai Pengetahuan" class="form-control" required/>
+            </td style="border-top-style: hidden">
+            <td style="border-top-style: hidden"><input type="number" name="form[${i}][nilai_keterampilan]" id="nilai_keterampilan${i}"
+                    class="form-control" placeholder="Nilai Keterampilan" required></td>
+            <td style="border-top-style: hidden"><button type="button" class="btn btn-outline-danger remove-input-field">Hapus</button></td>
+        </tr>
     `;
         $("#dynamicAddRemove").append(table);
-        // $("#dynamicAddRemove").append('<tr><td><select><option></option></select></td>'
-        //     '<td><input type="text" id="korek' + i +
-        //     '" name="form[' + i +
-        //     '][nilai_pengetahuan]" placeholder="1" class="form-control" id="nilai_pengetahuan" /></td><td><input type="text" name="form[' +
-        //     i +
-        //     '][huruf_pengetahuan]" placeholder="2" id="huruf_pengetahuan' + i +
-        //     '" class="form-control" id="uraian"' +
-        //     i +
-        //     ' /></td><td><input name="form[' +
-        //     i +
-        //     '][nilai_keterampilan]" placeholder="3"  class="form-control input-mask text-start" id="nilai_keterampilan' +
-        //     i +
-        //     '" /></td><td><input type="text" name="form[' +
-        //     i +
-        //     '][huruf_keterampilan]" placeholder="4" class="form-control" id="huruf_keterampilan" /><td><button type="button" class="btn btn-outline-danger remove-input-field">Hapus</button></td></tr>'
-        // );
+
     });
     $(document).on('click', '.remove-input-field', function() {
         $(this).parents('tr').remove();

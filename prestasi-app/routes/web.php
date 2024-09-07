@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AkademikController;
+use App\Http\Controllers\MapelController;
 use App\Http\Controllers\MataPelajaranController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\NonAkademikController;
@@ -75,7 +76,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/rapot/{id}', [RapotController::class, 'destroy'])->name('rapot.destroy');
     // Route::match(['put', 'patch'], '/rapot/{id}', [RapotController::class, 'update'])->name('rapot.update');
 
-    // routes/web.php
+    route::get('/mapel', [MapelController::class, 'index'])->name('mapel.index');
+    route::post('/mapel/store', [MapelController::class, 'store'])->name('mapel.store');
+    Route::match(['put', 'patch'], '/mapel/{id}', [MapelController::class, 'update'])->name('mapel.update');
+    Route::delete('/mapel/{id}', [MapelController::class, 'destroy'])->name('mapel.destroy');
 
     route::get('/akademik', [AkademikController::class, 'index'])->name('akademik.index');
     route::get('/akademik/create', [AkademikController::class, 'create'])->name('akademik.create');
@@ -92,6 +96,8 @@ Route::middleware('auth')->group(function () {
     Route::match(['put', 'patch'], '/nonakademik/{id}', [NonAkademikController::class, 'update'])->name('nonakademik.update');
     Route::delete('/nonakademik/{id}', [NonAkademikController::class, 'destroy'])->name('nonakademik.destroy');
     Route::get('/nonakademik/print', [NonAkademikController::class, 'print'])->name('nonakademik.print');
+
+      // routes/web.php
 
 });
 
