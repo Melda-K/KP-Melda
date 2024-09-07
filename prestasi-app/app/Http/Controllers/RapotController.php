@@ -142,9 +142,9 @@ class RapotController extends Controller
 
     public function destroy(string $id)
     {
-        $raports = Rapot::findOrFail($id);
+        $rapot = Rapot::findOrFail($id);
 
-        $raports->delete();
+        $rapot->delete();
 
         $notificaton = array(
             'message' => 'Data siswa berhasil dihapus!',
