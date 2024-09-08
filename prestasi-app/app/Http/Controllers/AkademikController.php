@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Hash;
 
 class AkademikController extends Controller
 {
-    // public function index()
-    // {
-    //     $data['akademiks'] = Siswa::has('akademik')->get();
-    //     return view('akademik.index', $data);
-    // }
     public function index()
     {
         $akademiks = Akademik::orderBy('jumlah_nilai_rapot', 'desc')->get();
@@ -37,7 +32,7 @@ class AkademikController extends Controller
         $validate = $request->validate([
             'id_siswa' => 'required|max:100',
             'jumlah_nilai_rapot' => 'required|max:100',
-            'ranking' => 'required|max:100',
+            'ranking' => 'max:100',
         ]);
 
         $akademik = Akademik::create([
@@ -73,7 +68,7 @@ class AkademikController extends Controller
         $validate = $request->validate([
             'id_siswa' => 'required|max:100',
             'jumlah_nilai_rapot' => 'required|max:100',
-            'ranking' => 'required|max:100',
+            'ranking' => 'max:100',
         ]);
 
         $akademik->update([

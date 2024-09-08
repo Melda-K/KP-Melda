@@ -85,10 +85,11 @@
                                         <input placeholder="Nilai Pengetahuan" id="nilai_pengetahuan" type="number"
                                             name="form[0][nilai_pengetahuan]" class="form-control" />
                                     </td>
-                                    <td><input placeholder="Nilai Keterampilan" name="form[0][nilai_keterampilan]"
-                                            id="nilai_keterampilan" class="form-control" type="number"></td>
-                                    <td><button type="button" name="add" id="dynamic-ar"
-                                            class="btn btn-outline-primary m-2">TAMBAH</button></td>
+                                    <td>
+                                        <input placeholder="Nilai Keterampilan" name="form[0][nilai_keterampilan]"
+                                            id="nilai_keterampilan" class="form-control" type="number">
+                                    </td>
+                                    <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary m-2">TAMBAH</button></td>
                                 </tr>
                             </table>
                         </div>
@@ -105,8 +106,7 @@
     </div>
 </div>
 
-
-
+<!-- Button Tambah Data MataPelajaran -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
@@ -140,6 +140,8 @@
         $(this).parents('tr').remove();
     });
 </script>
+
+
 <script>
     document.getElementById('searchButton').addEventListener('click', function() {
         let nis = document.getElementById('nis').value;
@@ -166,17 +168,6 @@
                 alert('Terjadi kesalahan saat mengambil data.');
             });
     });
-
-    // Fungsi untuk mengkonversi nilai ke huruf
-    function convertToLetterGrade(nilai) {
-        if (nilai > 85) {
-            return 'A';
-        } else if (nilai > 75) {
-            return 'B';
-        } else {
-            return 'C';
-        }
-    }
 
     // Event listener untuk input nilai pengetahuan dan otomatis mengisi huruf
     document.querySelectorAll('#nilai_pengetahuan').forEach(function(input) {

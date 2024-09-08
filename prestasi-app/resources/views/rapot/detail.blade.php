@@ -13,43 +13,36 @@
             <div class="w-full p-6">
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <form action="{{ route('searchSiswa') }}" method="GET">
-                        <div class="flex-auto">
-                            <div class="font-bold">
-                                <label>NIS</label>
-                            </div>
-                            <div>
-                                <p>{{ $rapot->nis }}</p>
-                            </div>
-                        </div>
-
-                        <div class="flex-auto">
-                            <div class="font-bold">
-                                <label>NAMA SISWA</label>
-                            </div>
-                            <div>
-                                <p>{{ $rapot->nama_siswa }}</p>
-                            </div>
-                        </div>
-
-                        <div class="flex-auto">
-                            <div class="font-bold">
-                                <label>KELAS</label>
-                            </div>
-                            <div>
-                                <p>{{ $rapot->kelas }}</p>
-                            </div>
-                        </div>
-
-                        <div class="flex">
-                            <div class="flex-auto">
-                                <div class="font-bold">
-                                    <label>TAHUN PELAJARAN</label>
-                                </div>
-                                <div>
-                                    <p>{{ $rapot->tahun_pelajaran }}</p>
-                                </div>
-                            </div>
-                        </div>
+                        <table>
+                            <tr>
+                                <td style="padding-right: 10px;">NIS</td>
+                                <td>:</td>
+                                <td>
+                                    <p style="margin-left: 10px;">{{ $rapot->nis }}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-right: 10px;">NAMA SISWA</td>
+                                <td>:</td>
+                                <td>
+                                    <p style="margin-left: 10px;">{{ $rapot->nama_siswa }}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-right: 10px;">KELAS</td>
+                                <td>:</td>
+                                <td>
+                                    <p style="margin-left: 10px;">{{ $rapot->kelas }}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-right: 10px;">TAHUN PELAJARAN</td>
+                                <td>:</td>
+                                <td>
+                                    <p style="margin-left: 10px;">{{ $rapot->tahun_pelajaran }}</p>
+                                </td>
+                            </tr>
+                        </table>
                         <br>
 
                         <div class="overflow-x-auto">
@@ -71,7 +64,7 @@
                                         $i = 1;
                                         @endphp
                                         @foreach ($rapot->rapot as $item)
-                                        <tr>
+                                        <tr class="text-center">
                                             <td>{{ $i++ }}</td>
                                             <td class="py-2 px-4 border-r">
                                                 <div class="font-bold">
@@ -80,7 +73,7 @@
                                             </td>
                                             <td class="py-2 px-4 border-r">{{ $item->nilai_pengetahuan }}</td>
                                             <td class="py-2 px-4 border-r">{{ $item->huruf_pengetahuan }}</td>
-                                            <td class="py-2 px-4 border-r">{{ $item->nilai_pengetahuan }}</td>
+                                            <td class="py-2 px-4 border-r">{{ $item->nilai_keterampilan }}</td>
                                             <td class="py-2 px-4 border-r">{{ $item->huruf_keterampilan }}</td>
                                         </tr>
                                         @endforeach
@@ -90,11 +83,11 @@
                                     <tr>
                                         <th style="text-align: center;" colspan="2"
                                             class="py-2 px-4 bg-gray-100 border-b">Jumlah</th>
-                                        <th class="py-2 px-4 bg-gray-100 border-b">
+                                        <th class="py-2 px-4 bg-gray-100 border-b text-center">
                                             {{ $rapot->rapot->sum('nilai_pengetahuan') }}
                                         </th>
                                         <th class="py-2 px-4 bg-gray-100 border-b"></th>
-                                        <th class="py-2 px-4 bg-gray-100 border-b">
+                                        <th class="py-2 px-4 bg-gray-100 border-b text-center">
                                             {{ $rapot->rapot->sum('nilai_keterampilan') }}
                                         </th>
                                         <th class="py-2 px-4 bg-gray-100 border-b"></th>

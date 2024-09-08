@@ -30,8 +30,7 @@
                     </div>
                     <div class="max-w-xl">
                         <x-input-label for="ranking" value="RANKING" />
-                        <x-text-input id="ranking" type="text" name="ranking" class="mt-1 block w-full" value="{{ old('ranking')}}"
-                            required />
+                        <x-text-input id="ranking" type="text" name="ranking" class="mt-1 block w-full" value="{{ old('ranking')}}" />
                         <x-input-error class="mt-2" :messages="$errors->get('ranking')" />
                     </div>
                     <div class="modal-footer">
