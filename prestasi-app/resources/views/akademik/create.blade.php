@@ -25,7 +25,7 @@
                     </div>
                     <div class="max-w-xl">
                         <x-input-label for="id_rapot" value="JUMLAH NILAI RAPOT" />
-                        <x-text-input id="id_rapot" type="number" name="jumlah_nilai_rapot" class="mt-1 block w-full"
+                        <x-text-input id="id_rapot" type="text" name="jumlah_nilai_rapot" class="mt-1 block w-full"
                             value="" required />
                     </div>
                     <div class="max-w-xl">

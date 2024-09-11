@@ -2,7 +2,6 @@
 @include('rapot.delete')
 @include('rapot.detail')
 
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -36,7 +35,11 @@
                         <td>{{ $data->kelas }}</td>
                         <td>{{ $data->tahun_pelajaran }}</td>
                         <td>
-                            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#hapusModal_{{ $data->id }}"><i class="fa-solid fa-trash-can"></i></button>
+                            <!-- <button tag="a" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#hapusModal_{{ $data->id }}"><i class="fa-solid fa-trash-can"></i></button> -->
+                            <button tag="a" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#hapusModal_{{ $data->id }}">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+
                             <button tag="a" type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id }}"><i class="fa-solid fa-folder"></i></button>
                         </td>
                     </tr>

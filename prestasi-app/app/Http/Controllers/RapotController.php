@@ -36,21 +36,21 @@ class RapotController extends Controller
 
             if ($value['nilai_pengetahuan'] >= 85) {
                 $hurufP = 'A';
-            } else if ($value['nilai_pengetahuan'] >= 75 ) {
-               $hurufP = 'B';
+            } else if ($value['nilai_pengetahuan'] >= 75) {
+                $hurufP = 'B';
             } else {
                 $hurufP = 'C';
             };
 
             if ($value['nilai_pengetahuan'] >= 85) {
                 $hurufK = 'A';
-            } else if ($value['nilai_pengetahuan'] >= 75 ) {
-               $hurufK = 'B';
+            } else if ($value['nilai_pengetahuan'] >= 75) {
+                $hurufK = 'B';
             } else {
                 $hurufK = 'C';
             };
 
-           $rapot =  Rapot::create([
+            $rapot =  Rapot::create([
                 'id_siswa' => $request['id_siswa'],
                 'id_mapel' => $value['id_mapel'],
                 'id_wali_kelas' => Auth::id(),
@@ -59,9 +59,9 @@ class RapotController extends Controller
                 'nilai_keterampilan' => $value['nilai_keterampilan'],
                 'huruf_keterampilan' => $hurufK,
 
-                ]);
+            ]);
         }
-    
+
         $notificaton = array(
             'message' => 'Data siswa berhasil ditambahkan',
             'alert-type' => 'success'
@@ -70,20 +70,32 @@ class RapotController extends Controller
             return redirect()->route('rapot.index')->with($notificaton);
         } else
             return redirect()->route('rapot.create')->with($notificaton);
-
     }
 
+    // public function destroy(string $id)
+    // {
+    //     $rapot = Rapot::findOrFail($id);
+
+    //     $rapot->delete();
+
+    //     $notificaton = array(
+    //         'message' => 'Data siswa berhasil dihapus!',
+    //         'alert-type' => 'success'
+    //     );
+
+    //     return redirect()->route('rapot.index', $rapot)->with($notificaton);
+    // }
     public function destroy(string $id)
     {
         $rapot = Rapot::findOrFail($id);
 
         $rapot->delete();
 
-        $notificaton = array(
+        $notification = array(
             'message' => 'Data siswa berhasil dihapus!',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('rapot.index')->with($notificaton);
+        return redirect()->route('rapot.index')->with($notification);
     }
 }

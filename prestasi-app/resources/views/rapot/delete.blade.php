@@ -1,20 +1,21 @@
 @foreach ($rapot as $data)
-<div class="modal fade" id="hapusModal_{{ $data->id }}" tabindex="-1" aria-labelledby="hapusModalLabel_{{ $data->id }}" aria-hidden="true">
+
+<div class="modal fade" id="hapusModal_{{ $data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title font-bold" id="hapusModalLabel_{{ $data->id }}">HAPUS DATA RAPOT SISWA</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('rapot.destroy', $data->id)}}" enctype="multipart/form-data" class="mt-6 space-y-6">
+                Apakah Anda yakin ingin menghapus data {{ $data->siswa->nama }}?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <form action="{{ route('rapot.destroy', $data->id) }}" method="POST" style="display: inline;">
                     @csrf
-                    @method('delete')
-                    <p>Anda yakin ingin menghapus data {{ $data->siswa->nama_siswa}} ?</p>
-                    <div class="modal-footer">
-                        <x-secondary-button tag="a" data-bs-dismiss="modal">Batal</x-secondary-button>
-                        <x-primary-button value="true">Hapus</x-primary-button>
-                    </div>
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Hapus</button>
                 </form>
             </div>
         </div>

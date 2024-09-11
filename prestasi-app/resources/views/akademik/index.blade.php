@@ -13,10 +13,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+                    @if (Auth::user()->hasRole('Admin') || Auth::user()->hasRole('WaliKelas'))
                     <button type="button" class="btn btn-outline-warning m-2" data-bs-toggle="modal" data-bs-target="#tambahModal">TAMBAH DATA</button>
+                    @endif
                     <a class="btn btn-outline-warning m-2" href="{{ route('akademik.print') }}" target="_blank">CETAK PDF</a>
 
-                    <x-table :tableId="'myTable_' . uniqid()"><br>
+                    <x-table :tableId="'myTable_' . uniqid()">
                         <x-slot name="header">
                             <tr class="bg-gray-400 text-center">
                                 <th>NO</th>
@@ -24,7 +26,9 @@
                                 <th>KELAS</th>
                                 <th>JUMLAH NILAI RAPOT</th>
                                 <th>RANKING</th>
+                                @if (Auth::user()->hasRole('Admin') || Auth::user()->hasRole('WaliKelas'))
                                 <th>AKSI</th>
+                                @endif
                             </tr>
                         </x-slot>
                         @php $num = 1; @endphp
@@ -36,6 +40,7 @@
                             <td>{{ $data->siswa->kelas }}</td>
                             <td>{{ $data->jumlah_nilai_rapot }}</td>
                             <td>{{ $data->ranking }}</td>
+                            @if (Auth::user()->hasRole('Admin') || Auth::user()->hasRole('WaliKelas'))
                             <td>
                                 <button tag="a" type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $data->id }}">
                                     <i class="fa-solid fa-pen-to-square"></i>
@@ -44,6 +49,7 @@
                                     <i class="fa-solid fa-trash-can"></i>
                                 </button>
                             </td>
+                            @endif
                         </tr>
                         @endforeach
 

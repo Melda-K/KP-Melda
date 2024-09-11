@@ -20,8 +20,10 @@
 
                             // Mengambil data siswa yang memiliki ID wali kelas yang sedang login
                             $wali_kelas = \App\Models\Siswa::where('id_wali_kelas', $user_id -1)->get();
+                            $admin = \App\Models\Siswa::all();
                             @endphp
 
+                            @if (Auth::user()->hasRole('WaliKelas'))
                             <select id="nis" name="id_siswa" class="block w-72 rounded-lg" required>
                                 <option value="">Pilih NIS</option>
                                 @foreach ($wali_kelas as $siswa)
@@ -29,6 +31,17 @@
                                 @endforeach
                             </select>
                             <x-input-error class="mt-1" :messages="$errors->get('nis')" />
+                            @elseif (Auth::user()->hasRole('Admin'))
+                            <select id="nis" name="id_siswa" class="block w-72 rounded-lg" required>
+                                <option value="">Pilih NIS</option>
+                                @foreach ($admin as $siswa)
+                                <option value="{{ $siswa->id }}">{{ $siswa->nis }}</option>
+                                @endforeach
+                            </select>
+                            <x-input-error class="mt-1" :messages="$errors->get('nis')" />
+
+                            @endif
+
                             <button type="button" route="{{ 'searchSiswa' }}" id="searchButton" class="btn btn-secondary m-2">CARI</button>
                         </div>
 
@@ -82,12 +95,12 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <input placeholder="Nilai Pengetahuan" id="nilai_pengetahuan" type="number"
+                                        <input placeholder="Nilai Pengetahuan" id="nilai_pengetahuan" type="text"
                                             name="form[0][nilai_pengetahuan]" class="form-control" />
                                     </td>
                                     <td>
                                         <input placeholder="Nilai Keterampilan" name="form[0][nilai_keterampilan]"
-                                            id="nilai_keterampilan" class="form-control" type="number">
+                                            id="nilai_keterampilan" class="form-control" type="text">
                                     </td>
                                     <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary m-2">TAMBAH</button></td>
                                 </tr>
@@ -125,10 +138,10 @@
             </td>
 
             <td style="border-top-style: hidden">
-                <input type="number" id="nilai_pengetahuan${i}" type="text" name="form[${i}][nilai_pengetahuan]"
+                <input type="text" id="nilai_pengetahuan${i}" type="text" name="form[${i}][nilai_pengetahuan]"
                     placeholder="Nilai Pengetahuan" class="form-control" required/>
             </td style="border-top-style: hidden">
-            <td style="border-top-style: hidden"><input type="number" name="form[${i}][nilai_keterampilan]" id="nilai_keterampilan${i}"
+            <td style="border-top-style: hidden"><input type="text" name="form[${i}][nilai_keterampilan]" id="nilai_keterampilan${i}"
                     class="form-control" placeholder="Nilai Keterampilan" required></td>
             <td style="border-top-style: hidden"><button type="button" class="btn btn-outline-danger remove-input-field">Hapus</button></td>
         </tr>

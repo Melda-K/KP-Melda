@@ -15,6 +15,7 @@
         <div class="max-w-4xlxl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 flex justify-between items-center">
+                    @hasrole('Admin')
                     <button type="button" class="btn btn-outline-warning m-4 p-2" data-bs-toggle="modal" data-bs-target="#tambahModal">TAMBAH DATA</button>
                     <form id="filterForm" action="{{ route('siswa.filter') }}" method="GET" class="inline-block">
                         <x-select-input id="kelas" name="kelas" class="mt-1 block w-36" required onchange="submitFilterForm()">
@@ -27,6 +28,7 @@
                             <option value="VI" {{ old('kelas') === 'VI' ? 'selected' : '' }}>VI</option>
                         </x-select-input>
                     </form>
+                    @endhasrole
                 </div>
                 <x-table :tableId="'myTable_' . uniqid()">
                     <x-slot name="header">

@@ -13,7 +13,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+                    @if (Auth::user()->hasRole('Admin') || Auth::user()->hasRole('WaliKelas'))
                     <button type="button" class="btn btn-outline-warning m-2" data-bs-toggle="modal" data-bs-target="#tambahModal">TAMBAH DATA</button>
+                    @endif
                     <a class="btn btn-outline-warning m-2" href="{{ route('nonakademik.print') }}" target="_blank">CETAK PDF</a>
 
                     <x-table :tableId="'myTable_' . uniqid()">
@@ -26,7 +28,9 @@
                                 <th>JUARA LOMBA</th>
                                 <th>TINGKAT LOMBA</th>
                                 <th>DOKUMENTASI</th>
+                                @if (Auth::user()->hasRole('Admin') || Auth::user()->hasRole('WaliKelas'))
                                 <th>AKSI</th>
+                                @endif
                             </tr>
                         </x-slot>
                         @php $num = 1; @endphp
@@ -40,15 +44,17 @@
                             <td>{{ $data->tingkat_lomba }}</td>
                             <td class="items-center">
                                 @if ($data->dokumentasi)
-                                <img src="{{ asset('storage/dokumentasi/' . $data->dokumentasi) }}" alt="Dokumentasi" class="h-12"/>
+                                <img src="{{ asset('storage/dokumentasi/' . $data->dokumentasi) }}" alt="Dokumentasi" class="h-12" />
                                 @endif
                             </td>
+                            @if (Auth::user()->hasRole('Admin') || Auth::user()->hasRole('WaliKelas'))
                             <td>
                                 <button tag="a" type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $data->id }}"><i class="fa-solid fa-pen-to-square"></i>
                                 </button>
                                 <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#hapusModal_{{ $data->id }}"><i class="fa-solid fa-trash-can"></i>
                                 </button>
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </x-table>

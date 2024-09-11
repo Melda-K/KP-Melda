@@ -52,7 +52,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/waliKelas/{id}/edit', [WaliKelasController::class, 'edit'])->name('walikelas.edit');
     Route::match(['put', 'patch'], '/waliKelas/{id}', [WaliKelasController::class, 'update'])->name('walikelas.update');
     Route::delete('/waliKelas/{id}', [WaliKelasController::class, 'destroy'])->name('walikelas.destroy');
+});
 
+Route::middleware('auth')->group(function () {
     route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
     route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
     Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
@@ -62,8 +64,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/filter', [SiswaController::class, 'filter'])->name('siswa.filter');
     Route::get('/siswa/{nis}', [SiswaController::class, 'show']);
     Route::get('/searchSiswa', [SiswaController::class, 'searchSiswa'])->name('searchSiswa');
+});
 
-
+Route::middleware('auth')->group(function () {
     route::get('/rapot', [RapotController::class, 'index'])->name('rapot.index');
     route::get('/rapot/create', [RapotController::class, 'create'])->name('rapot.create');
     Route::post('/rapot', [RapotController::class, 'store'])->name('rapot.store');
@@ -75,12 +78,16 @@ Route::middleware('auth')->group(function () {
     });
     Route::delete('/rapot/{id}', [RapotController::class, 'destroy'])->name('rapot.destroy');
     // Route::match(['put', 'patch'], '/rapot/{id}', [RapotController::class, 'update'])->name('rapot.update');
+});
 
+Route::middleware('auth')->group(function () {
     route::get('/mapel', [MapelController::class, 'index'])->name('mapel.index');
     route::post('/mapel/store', [MapelController::class, 'store'])->name('mapel.store');
     Route::match(['put', 'patch'], '/mapel/{id}', [MapelController::class, 'update'])->name('mapel.update');
     Route::delete('/mapel/{id}', [MapelController::class, 'destroy'])->name('mapel.destroy');
+});
 
+Route::middleware('auth')->group(function () {
     route::get('/akademik', [AkademikController::class, 'index'])->name('akademik.index');
     route::get('/akademik/create', [AkademikController::class, 'create'])->name('akademik.create');
     Route::post('/akademik', [AkademikController::class, 'store'])->name('akademik.store');
@@ -88,7 +95,9 @@ Route::middleware('auth')->group(function () {
     Route::match(['put', 'patch'], '/akademik/{id}', [AkademikController::class, 'update'])->name('akademik.update');
     Route::delete('/akademik/{id}', [AkademikController::class, 'destroy'])->name('akademik.destroy');
     Route::get('/akademik/print', [AkademikController::class, 'print'])->name('akademik.print');
+});
 
+Route::middleware('auth')->group(function () {
     route::get('/nonakademik', [NonAkademikController::class, 'index'])->name('nonakademik.index');
     route::get('/nonakademik/create', [NonAkademikController::class, 'create'])->name('nonakademik.create');
     Route::post('/nonakademik', [NonAkademikController::class, 'store'])->name('nonakademik.store');
@@ -96,9 +105,6 @@ Route::middleware('auth')->group(function () {
     Route::match(['put', 'patch'], '/nonakademik/{id}', [NonAkademikController::class, 'update'])->name('nonakademik.update');
     Route::delete('/nonakademik/{id}', [NonAkademikController::class, 'destroy'])->name('nonakademik.destroy');
     Route::get('/nonakademik/print', [NonAkademikController::class, 'print'])->name('nonakademik.print');
-
-      // routes/web.php
-
 });
 
 
