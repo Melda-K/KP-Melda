@@ -70,7 +70,7 @@
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 3000,
+            timer: 5000,
         });
 
         if (typeof Toast !== 'undefined') {

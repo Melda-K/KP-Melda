@@ -34,6 +34,7 @@
                             <option value="Wali Kelas 4" {{ old('jabatan') === 'Wali Kelas 4' ? 'selected' : '' }}>Wali Kelas 4</option>
                             <option value="Wali Kelas 5" {{ old('jabatan') === 'Wali Kelas 5' ? 'selected' : '' }}>Wali Kelas 5</option>
                             <option value="Wali Kelas 6" {{ old('jabatan') === 'Wali Kelas 6' ? 'selected' : '' }}>Wali Kelas 6</option>
+                            <option value="Guru Pengajar" {{ old('jabatan') === 'Guru Pengajar' ? 'selected' : '' }}>Guru Pengajar</option>
                         </x-select-input>
                     </div>
                     <div class="max-w-xl">

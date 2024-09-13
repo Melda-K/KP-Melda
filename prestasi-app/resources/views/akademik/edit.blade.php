@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel_{{$data->id}}">EDIT DATA AKADEMIK</h1>
+                <h1 class="modal-title fs-5 font-bold" id="exampleModalLabel_{{$data->id}}">EDIT DATA AKADEMIK</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -23,9 +23,14 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="max-w-xl">
+                    <!-- <div class="max-w-xl">
                         <x-input-label for="id_rapot" value="JUMLAH NILAI RAPOT" />
                         <x-text-input id="id_rapot" type="number" name="jumlah_nilai_rapot" class="mt-1 block w-full"
+                            value="" required />
+                    </div> -->
+                    <div class="max-w-xl">
+                        <x-input-label for="id_rapot" value="JUMLAH NILAI RAPOT" />
+                        <x-text-input id="id_rapot" type="text" name="jumlah_nilai_rapot" class="mt-1 block w-full"
                             value="" required />
                     </div>
                     <div class="max-w-xl">

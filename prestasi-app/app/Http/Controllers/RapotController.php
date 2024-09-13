@@ -58,12 +58,11 @@ class RapotController extends Controller
                 'huruf_pengetahuan' => $hurufP,
                 'nilai_keterampilan' => $value['nilai_keterampilan'],
                 'huruf_keterampilan' => $hurufK,
-
             ]);
         }
 
         $notificaton = array(
-            'message' => 'Data siswa berhasil ditambahkan',
+            'message' => 'Data rapot berhasil ditambahkan',
             'alert-type' => 'success'
         );
         if ($request->save == true) {
@@ -72,19 +71,6 @@ class RapotController extends Controller
             return redirect()->route('rapot.create')->with($notificaton);
     }
 
-    // public function destroy(string $id)
-    // {
-    //     $rapot = Rapot::findOrFail($id);
-
-    //     $rapot->delete();
-
-    //     $notificaton = array(
-    //         'message' => 'Data siswa berhasil dihapus!',
-    //         'alert-type' => 'success'
-    //     );
-
-    //     return redirect()->route('rapot.index', $rapot)->with($notificaton);
-    // }
     public function destroy(string $id)
     {
         $rapot = Rapot::findOrFail($id);
@@ -92,7 +78,7 @@ class RapotController extends Controller
         $rapot->delete();
 
         $notification = array(
-            'message' => 'Data siswa berhasil dihapus!',
+            'message' => 'Data rapot berhasil dihapus!',
             'alert-type' => 'success'
         );
 

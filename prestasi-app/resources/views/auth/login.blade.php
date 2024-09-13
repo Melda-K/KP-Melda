@@ -5,7 +5,7 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
         <div class="text-center p-4 font-bold text-lg">MASUK AKUN</div>
-        
+
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
@@ -18,9 +18,9 @@
             <x-input-label for="password" :value="__('Kata Sandi')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+                type="password"
+                name="password"
+                required autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -34,11 +34,11 @@
         </div> -->
 
         <div class="flex items-center justify-end mt-4">
-        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Daftar Akun/</a>
+            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Daftar Akun/</a>
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Lupa kata sandi?') }}
-                </a>
+            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                {{ __('Lupa kata sandi?') }}
+            </a>
             @endif
 
             <x-primary-button class="ms-3 font-bold" style="background-color: rgba(171, 16, 6, 1);">

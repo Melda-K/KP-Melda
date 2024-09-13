@@ -119,6 +119,33 @@
     </div>
 </div>
 
+<!-- Notifikasi untuk inputan nilai angka -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.getElementById('nilai_pengetahuan').addEventListener('input', function(event) {
+        var nilaiInput = event.target.value;
+        if (/[^0-9]/.test(nilaiInput)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Input tidak valid',
+                text: 'Masukkan hanya angka.',
+            });
+            event.target.value = '';
+        }
+    });
+    document.getElementById('nilai_keterampilan').addEventListener('input', function(event) {
+        var nilaiInput = event.target.value;
+        if (/[^0-9]/.test(nilaiInput)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Input tidak valid',
+                text: 'Masukkan hanya angka.',
+            });
+            event.target.value = '';
+        }
+    });
+</script>
+
 <!-- Button Tambah Data MataPelajaran -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -128,29 +155,58 @@
         ++i;
         let table = `
         <tr>
-        
             <td style="border-top-style: hidden">
                 <select name="form[${i}][id_mapel]" id="id_mapel">
-                @foreach (App\Models\MataPelajaran::all() as $item)
-                    <option value="{{ $item->id }}">{{ $item->nama_mapel }}</option>
-                @endforeach
-            </select>
+                    @foreach (App\Models\MataPelajaran::all() as $item)
+                        <option value="{{ $item->id }}">{{ $item->nama_mapel }}</option>
+                    @endforeach
+                </select>
             </td>
-
             <td style="border-top-style: hidden">
-                <input type="text" id="nilai_pengetahuan${i}" type="text" name="form[${i}][nilai_pengetahuan]"
-                    placeholder="Nilai Pengetahuan" class="form-control" required/>
-            </td style="border-top-style: hidden">
-            <td style="border-top-style: hidden"><input type="text" name="form[${i}][nilai_keterampilan]" id="nilai_keterampilan${i}"
-                    class="form-control" placeholder="Nilai Keterampilan" required></td>
-            <td style="border-top-style: hidden"><button type="button" class="btn btn-outline-danger remove-input-field">Hapus</button></td>
+                <input type="text" id="nilai_pengetahuan${i}" name="form[${i}][nilai_pengetahuan]"
+                    placeholder="Nilai Pengetahuan" class="form-control nilai_pengetahuan" required/>
+            </td>
+            <td style="border-top-style: hidden">
+                <input type="text" name="form[${i}][nilai_keterampilan]" id="nilai_keterampilan${i}"
+                    class="form-control nilai_keterampilan" placeholder="Nilai Keterampilan" required>
+            </td>
+            <td style="border-top-style: hidden">
+                <button type="button" class="btn btn-outline-danger remove-input-field">Hapus</button>
+            </td>
         </tr>
     `;
         $("#dynamicAddRemove").append(table);
-
     });
+
+    // Menghapus baris inputan
     $(document).on('click', '.remove-input-field', function() {
         $(this).parents('tr').remove();
+    });
+
+    // Menambahkan event listener untuk validasi input angka pada nilai pengetahuan
+    $(document).on('input', '.nilai_pengetahuan', function(event) {
+        var nilaiInput = event.target.value;
+        if (/[^0-9]/.test(nilaiInput)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Input tidak valid',
+                text: 'Masukkan hanya angka.',
+            });
+            event.target.value = ''; // Menghapus nilai yang tidak valid
+        }
+    });
+
+    // Menambahkan event listener untuk validasi input angka pada nilai keterampilan
+    $(document).on('input', '.nilai_keterampilan', function(event) {
+        var nilaiInput = event.target.value;
+        if (/[^0-9]/.test(nilaiInput)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Input tidak valid',
+                text: 'Masukkan hanya angka.',
+            });
+            event.target.value = ''; // Menghapus nilai yang tidak valid
+        }
     });
 </script>
 

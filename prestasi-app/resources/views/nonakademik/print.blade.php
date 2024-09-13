@@ -12,24 +12,24 @@
             width: 100%;
             margin: 20px 0;
             border-collapse: collapse;
-            border: 1px solid black;
+            border: 1px solid gray;
         }
 
         th, td {
             padding: 8px;
             text-align: center;
             vertical-align: middle;
-            border: 1px solid black;
+            border: 1px solid gray;
         }
 
         th {
             background-color: #f2f2f2;
-            border: 1px solid black;
+            border: 1px solid gray;
         }
 
         td {
             word-wrap: break-word;
-            border: 1px solid black;
+            border: 1px solid gray;
         }
 
         .text-center {
@@ -49,7 +49,7 @@
     <table id="table-data" class="table table-bordered">
         <thead>
             <tr>
-                <th>NO</th>
+                <th>NO.</th>
                 <th>NAMA SISWA</th>
                 <th>TANGGAL</th>
                 <th>KATEGORI LOMBA</th>
