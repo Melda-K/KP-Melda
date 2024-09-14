@@ -28,29 +28,99 @@ class RapotController extends Controller
         return view('rapot.create', compact('data', 'mapel'));
     }
 
+    // public function store(Request $request)
+    // {
+    //     // Mengumpulkan semua 'id_mapel' yang diinputkan ke dalam array
+    //     $mapelIds = array_column($request->form, 'id_mapel');
+
+    //     // Memeriksa apakah ada duplikasi di dalam array 'id_mapel'
+    //     if (count($mapelIds) !== count(array_unique($mapelIds))) {
+    //         // Jika ada duplikasi, kembalikan notifikasi error
+    //         $notification = array(
+    //             'message' => 'Data nama inputan mapel sama',
+    //             'alert-type' => 'error'
+    //         );
+    //         return redirect()->back()->with($notification); // Kembali ke halaman sebelumnya dengan notifikasi
+    //     }
+
+    //     // Jika tidak ada duplikasi, lanjutkan penyimpanan data
+    //     foreach ($request->form as $key => $value) {
+    //         // Tentukan huruf nilai pengetahuan
+    //         $hurufP = '';
+    //         if ($value['nilai_pengetahuan'] >= 85) {
+    //             $hurufP = 'A';
+    //         } else if ($value['nilai_pengetahuan'] >= 75) {
+    //             $hurufP = 'B';
+    //         } else {
+    //             $hurufP = 'C';
+    //         }
+
+    //         // Tentukan huruf nilai keterampilan
+    //         $hurufK = '';
+    //         if ($value['nilai_keterampilan'] >= 85) {
+    //             $hurufK = 'A';
+    //         } else if ($value['nilai_keterampilan'] >= 75) {
+    //             $hurufK = 'B';
+    //         } else {
+    //             $hurufK = 'C';
+    //         }
+
+    //         // Simpan data rapot
+    //         Rapot::create([
+    //             'id_siswa' => $request['id_siswa'],
+    //             'id_mapel' => $value['id_mapel'],
+    //             'id_wali_kelas' => Auth::id(),
+    //             'nilai_pengetahuan' => $value['nilai_pengetahuan'],
+    //             'huruf_pengetahuan' => $hurufP,
+    //             'nilai_keterampilan' => $value['nilai_keterampilan'],
+    //             'huruf_keterampilan' => $hurufK,
+    //         ]);
+    //     }
+
+    //     // Jika tidak ada duplikasi, tampilkan notifikasi berhasil
+    //     $notification = array(
+    //         'message' => 'Data rapot berhasil ditambahkan',
+    //         'alert-type' => 'success'
+    //     );
+    //     if ($request->save == true) {
+    //         return redirect()->route('rapot.index')->with($notification);
+    //     } else {
+    //         return redirect()->route('rapot.create')->with($notification);
+    //     }
+    // }
     public function store(Request $request)
     {
+        // Mengumpulkan semua 'id_mapel' yang diinputkan ke dalam array
+        $mapelIds = array_column($request->form, 'id_mapel');
+
+        // Memeriksa apakah ada duplikasi di dalam array 'id_mapel' pada input
+        if (count($mapelIds) !== count(array_unique($mapelIds))) {
+            // Jika ada duplikasi, kembalikan notifikasi error
+            $notification = array(
+                'message' => 'Data nama inputan mapel sama',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification); // Kembali ke halaman sebelumnya dengan notifikasi
+        }
+
+        // Loop melalui inputan form untuk menyimpan nilai rapot
         foreach ($request->form as $key => $value) {
-            $hurufP = '';
-            $hurufK = '';
+            // Cek apakah id_mapel sudah ada untuk siswa tersebut
+            $existingRecord = Rapot::where('id_siswa', $request['id_siswa'])
+                ->where('id_mapel', $value['id_mapel'])
+                ->first();
 
-            if ($value['nilai_pengetahuan'] >= 85) {
-                $hurufP = 'A';
-            } else if ($value['nilai_pengetahuan'] >= 75) {
-                $hurufP = 'B';
-            } else {
-                $hurufP = 'C';
-            };
+            if ($existingRecord) {
+                // Jika data rapot untuk siswa dan mapel ini sudah ada, lewati penyimpanan
+                continue;
+            }
 
-            if ($value['nilai_pengetahuan'] >= 85) {
-                $hurufK = 'A';
-            } else if ($value['nilai_pengetahuan'] >= 75) {
-                $hurufK = 'B';
-            } else {
-                $hurufK = 'C';
-            };
+            // Tentukan huruf nilai pengetahuan dan keterampilan
+            $hurufP = $this->getGradeLetter($value['nilai_pengetahuan']);
+            $hurufK = $this->getGradeLetter($value['nilai_keterampilan']);
 
-            $rapot =  Rapot::create([
+            // Simpan data rapot
+            Rapot::create([
                 'id_siswa' => $request['id_siswa'],
                 'id_mapel' => $value['id_mapel'],
                 'id_wali_kelas' => Auth::id(),
@@ -61,15 +131,31 @@ class RapotController extends Controller
             ]);
         }
 
-        $notificaton = array(
+        // Notifikasi sukses
+        $notification = array(
             'message' => 'Data rapot berhasil ditambahkan',
             'alert-type' => 'success'
         );
+
         if ($request->save == true) {
-            return redirect()->route('rapot.index')->with($notificaton);
-        } else
-            return redirect()->route('rapot.create')->with($notificaton);
+            return redirect()->route('rapot.index')->with($notification);
+        } else {
+            return redirect()->route('rapot.create')->with($notification);
+        }
     }
+
+    // Fungsi untuk menentukan huruf nilai
+    private function getGradeLetter($nilai)
+    {
+        if ($nilai >= 85) {
+            return 'A';
+        } else if ($nilai >= 75) {
+            return 'B';
+        } else {
+            return 'C';
+        }
+    }
+
 
     public function destroy(string $id)
     {
@@ -83,5 +169,14 @@ class RapotController extends Controller
         );
 
         return redirect()->route('rapot.index')->with($notification);
+    }
+
+    public function show($id_siswa)
+    {
+        // Mengambil data rapot untuk siswa yang dipilih berdasarkan 'id_siswa'
+        $rapots = Rapot::where('id_siswa', $id_siswa)->get();
+
+        // Kirim data rapot ke view
+        return view('rapot.detail', compact('rapots'));
     }
 }

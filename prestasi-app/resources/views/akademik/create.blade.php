@@ -28,12 +28,7 @@
                         <x-text-input id="id_rapot" type="text" name="jumlah_nilai_rapot" class="mt-1 block w-full"
                             value="" required />
                     </div>
-                    <div class="max-w-xl">
-                        <x-input-label for="ranking" value="RANKING" />
-                        <x-text-input id="ranking" type="text" name="ranking" class="mt-1 block w-full"
-                            value="{{ old('ranking') }}"/>
-                        <x-input-error class="mt-2" :messages="$errors->get('ranking')" />
-                    </div>
+                    
                     <div class="modal-footer ">
                         <x-secondary-button tag="a" data-bs-dismiss="modal">Batal</x-secondary-button>
                         <x-primary-button name="save" value="true">Simpan</x-primary-button>
