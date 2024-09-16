@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Siswa extends Model
 {
@@ -46,9 +48,9 @@ class Siswa extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function rapot()
+    public function rapot(): HasOne
     {
-        return $this->hasMany(Rapot::class, 'id_siswa', 'id');
+        return $this->hasOne(Rapot::class, 'id_siswa', 'id');
     }
 
     public function akademik()

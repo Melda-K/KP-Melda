@@ -19,7 +19,7 @@
                 <x-table :tableId="'myTable_' . uniqid()">
                     <x-slot name="header">
                         <tr class="bg-gray-400 text-center">
-                            <th>NO.</th>
+                            <th class="text-center">NO.</th>
                             <th>NAMA MATAPELAJARAN</th>
                             <th>AKSI</th>
                         </tr>
@@ -27,8 +27,8 @@
 
                     @php $num = 1; @endphp
                     @foreach ($mapel as $data)
-                    <tr class="">
-                        <td>{{ $num++ }}</td>
+                    <tr>
+                        <td class="text-center">{{ $num++ }}</td>
                         <td>{{ $data->nama_mapel }}</td>
                         <td>
                             <button tag="a" type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $data->id }}"><i class="fa-solid fa-pen-to-square"></i></button>

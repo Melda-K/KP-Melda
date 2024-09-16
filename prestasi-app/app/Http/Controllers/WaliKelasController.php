@@ -26,7 +26,7 @@ class WaliKelasController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'email' => 'required|max:255',
+            'username' => 'required|max:255',
             'nip' => 'required|max:255',
             'nama_guru' => 'required|max:150',
             'jabatan' => 'required|max:150',
@@ -36,8 +36,8 @@ class WaliKelasController extends Controller
 
         $user = new User();
         $user->name = $validate['nama_guru'];
-        $user->email = $validate['email'];
-        $user->password = Hash::make('Password2024');
+        $user->username = $validate['username'];
+        $user->password = Hash::make('prestasi2024');
         $user->save();
 
         $walikelas = WaliKelas::create([
@@ -74,7 +74,7 @@ class WaliKelasController extends Controller
         $walikelas = WaliKelas::findOrFail($id);
 
         $validate = $request->validate([
-            'email' => 'required|max:255',
+            'username' => 'required|max:255',
             'nip' => 'required|max:255',
             'nama_guru' => 'required|max:150',
             'jabatan' => 'required|max:150',
@@ -93,11 +93,11 @@ class WaliKelasController extends Controller
         $user = User::find($walikelas->id_user);
 
         $user->name = $validate['nama_guru'];
-        $user->email = $validate['email'];
+        $user->username = $validate['username'];
         $user->save();
 
         $user->update([
-            'email' => $validate['email'],
+            'username' => $validate['username'],
             'name' => $validate['nama_guru'],
         ]);
 

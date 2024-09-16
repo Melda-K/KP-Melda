@@ -1,4 +1,4 @@
-@foreach ($rapot as $data)
+@foreach ($rapots as $data)
 
 <div class="modal fade" id="hapusModal_{{ $data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -11,7 +11,7 @@
                 @csrf
                 @method('DELETE')
                 <div class="modal-body">
-                    Apakah Anda yakin ingin menghapus data {{ $data->siswa->nama }}?
+                    Apakah Anda yakin ingin menghapus data {{ $data->siswa->nama_siswa }}?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-Light" data-bs-dismiss="modal">BATAL</button>

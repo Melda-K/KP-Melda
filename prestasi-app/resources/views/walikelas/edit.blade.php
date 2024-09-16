@@ -11,8 +11,8 @@
                         @csrf
                         @method('PATCH')
                         <div class="max-w-xl">
-                            <x-input-label for="email" value="EMAIL" />
-                            <x-text-input id="email" type="text" name="email" class="mt-1 block w-full" value="{{ old('email', $data->user->email)}}"
+                            <x-input-label for="username" value="NAMA PELANGGAN" />
+                            <x-text-input id="username" type="text" name="username" class="mt-1 block w-full" value="{{ old('username', $data->user->username)}}"
                                 required />
                             <x-input-error class="mt-2" :messages="$errors->get('email')" />
                         </div>

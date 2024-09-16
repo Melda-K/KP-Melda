@@ -27,7 +27,7 @@
                             <select id="nis" name="id_siswa" class="block w-72 rounded-lg" required>
                                 <option value="">Pilih NIS</option>
                                 @foreach ($wali_kelas as $siswa)
-                                <option value="{{ $siswa->id }}">{{ $siswa->nis }}</option>
+                                <option value="{{ old('id_siswa', $siswa->id) }}">{{ $siswa->nis }}</option>
                                 @endforeach
                             </select>
                             <x-input-error class="mt-1" :messages="$errors->get('nis')" />
@@ -35,7 +35,7 @@
                             <select id="nis" name="id_siswa" class="block w-72 rounded-lg" required>
                                 <option value="">Pilih NIS</option>
                                 @foreach ($admin as $siswa)
-                                <option value="{{ $siswa->id }}">{{ $siswa->nis }}</option>
+                                <option value="{{ old('id_siswa', $siswa->id) }}">{{ $siswa->nis }}</option>
                                 @endforeach
                             </select>
                             <x-input-error class="mt-1" :messages="$errors->get('nis')" />

@@ -12,13 +12,19 @@ class Rapot extends Model
     use HasFactory;
     protected $tabel="rapots";
 
-    protected $guarded = [
-
+    protected $fillable = [
+        'id_siswa',
+        'id_wali_kelas',
+        'id_mapel',
+        'nilai_pengetahuan',
+        'huruf_pengetahuan',
+        'nilai_keterampilan',
+        'huruf_keterampilan',
     ];
 
     public function siswa(): BelongsTo
     {
-        return $this->belongsTo(Siswa::class, "id_siswa");
+        return $this->belongsTo(Siswa::class, "id_siswa", "id");
 
     }
     // public function walikelas(): BelongsTo

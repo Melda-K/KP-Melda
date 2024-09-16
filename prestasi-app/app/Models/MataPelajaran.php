@@ -4,6 +4,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+// class MataPelajaran extends Model
+// {
+//     use HasFactory;
+
+//     protected $table='mapels';
+
+//     protected $primarykey="id";
+    
+//     protected $fillable = [
+
+//         'nama_mapel'
+//     ];
+// }
+
 class MataPelajaran extends Model
 {
     // use HasFactory;

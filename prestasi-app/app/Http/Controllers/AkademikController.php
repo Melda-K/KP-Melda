@@ -89,14 +89,28 @@ class AkademikController extends Controller
         $validate = $request->validate([
             'id_siswa' => 'required|max:100',
             'jumlah_nilai_rapot' => 'required|max:100',
-            'ranking' => 'max:100',
         ]);
 
         $akademik->update([
             'id_siswa' => $validate['id_siswa'],
             'jumlah_nilai_rapot' => $validate['jumlah_nilai_rapot'],
-            'ranking' => $validate['ranking'],
         ]);
+
+        // Ambil semua data akademik yang sudah ada, urutkan berdasarkan jumlah_nilai_rapot (nilai rapot) dari yang terbesar ke terkecil
+        $akademiks = Akademik::orderBy('jumlah_nilai_rapot', 'desc')->get();
+
+        // Inisialisasi variabel ranking
+        $ranking = 1;
+
+        // Loop untuk memberikan ranking baru pada setiap data akademik berdasarkan urutan nilai
+        foreach ($akademiks as $data) {
+            // Update kolom ranking sesuai urutan nilai
+            $data->ranking = $ranking;
+            $data->save();
+
+            // Naikkan ranking untuk iterasi berikutnya
+            $ranking++;
+        }
 
         $notificaton = array(
             'message' => 'Data akademik berhasil diperbaharui!',

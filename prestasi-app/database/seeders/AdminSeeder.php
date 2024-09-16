@@ -24,15 +24,15 @@ class AdminSeeder extends Seeder
         $data = [
             [
                 'name' => 'AdminSD',
-                'email' => 'admin@gmail.com',
-                'password' => Hash::make('Password2024'),
+                'username' => 'admin',
+                'password' => Hash::make('prestasi2024'),
             ],
         ];
 
         foreach ($data as $item) {
             $user = User::create([
                 'name' => $item['name'],
-                'email' => $item['email'],
+                'username' => $item['username'],
                 'password' => $item['password'],
             ]);
             

@@ -23,8 +23,8 @@ class KepsekSeeder extends Seeder
         
         $data = [
             [
-                'email' => 'liaNurzakiyah@gmail.com',
-                'password' => Hash::make('Password2024'),
+                'username' => 'lianurzakiyah',
+                'password' => Hash::make('prestasi2024'),
                 'nip' => '197907032007012005',
                 'nama_guru' => 'Lia Nurzakiyah, S.Pd',
                 'jabatan' => 'Kepala Sekolah',
@@ -35,7 +35,7 @@ class KepsekSeeder extends Seeder
         foreach ($data as $item) {
             $user = User::create([
                 'name' => $item['nama_guru'],
-                'email' => $item['email'],
+                'username' => $item['username'],
                 'password' => $item['password'],
             ]);
             

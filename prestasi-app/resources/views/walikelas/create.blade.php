@@ -9,8 +9,8 @@
                 <form method="post" action="{{ route('walikelas.store') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
                     @csrf
                     <div class="max-w-xl">
-                        <x-input-label for="email" value="EMAIL" />
-                        <x-text-input id="email" type="text" name="email" class="mt-1 block w-full" value="{{ old('email')}}" required />
+                        <x-input-label for="username" value="NAMA PENGGUNA" />
+                        <x-text-input id="username" type="text" name="username" class="mt-1 block w-full" value="{{ old('username')}}" required />
                         <x-input-error class="mt-2" :messages="$errors->get('nip')" />
                     </div>
                     <div class="max-w-xl">
