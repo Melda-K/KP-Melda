@@ -39,18 +39,14 @@ class Siswa extends Model
         return $this->belongsTo(WaliKelas::class, 'id_wali_kelas');
     }
 
-    // public function mapel()
-    // {
-    //     return $this->hasMany(MataPelajaran::class);
-    // }
-    /**
-     * Get all of the comments for the Siswa
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function rapot(): HasMany
     {
         return $this->hasMany(Rapot::class, 'id_siswa', 'id');
+    }
+
+    public function rapots(): BelongsTo
+    {
+        return $this->belongsTo(Rapot::class, 'id_siswa', 'id');
     }
 
     public function akademik()

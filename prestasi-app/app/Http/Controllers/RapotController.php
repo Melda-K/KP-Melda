@@ -14,36 +14,29 @@ class RapotController extends Controller
 {
     public function index()
     {
-        // $data['rapots'] = Rapot::get();
-        $rapot = Rapot::get();
-        $siswa = Siswa::has('rapot')->with('rapot.mapel')->get();
-        // return response()->json($siswa, 200);
-        return view('rapot.index', compact('siswa','rapot'));
+        $siswa = collect();
+        $rapot = collect();
+
+        if (Auth::check()) {
+            $userId = Auth::id();
+            $wali_kelas = \App\Models\WaliKelas::where('id_user', $userId)->first();
+
+            if ($wali_kelas) {
+                $rapot = Rapot::get();
+                $siswa = Siswa::has('rapot')
+                    ->with('rapot.mapel')
+                    ->where('id_wali_kelas', $wali_kelas->id)
+                    ->get();
+            } elseif (Auth::user()) {
+                $rapot = Rapot::get();
+                $siswa = Siswa::has('rapot')
+                    ->with('rapot.mapel')
+                    ->get();
+            }
+        }
+
+        return view('rapot.index', compact('siswa', 'rapot'));
     }
-
-
-    // public function index()
-    // {
-    //     if (Auth::check()) {
-
-    //         $userId = Auth::id();
-    //         $wali_kelas = \App\Models\WaliKelas::where('id_user', $userId)->first();
-    //         $admin = \App\Models\User::where('name', 'AdminSD')->first();
-
-    //         // dd($wali_kelas);
-
-    //         if ($wali_kelas) {
-    //             $data['rapots'] = Rapot::where('id_wali_kelas', $wali_kelas->id)->get();
-    //             $data['siswas'] = Siswa::with('rapot')->where('id_wali_kelas', $wali_kelas->id)->get();
-    //         } elseif ($admin) {
-    //             $data['rapots'] = Rapot::all();
-    //             $data['siswas'] = Siswa::all();
-    //         }
-
-    //         return view('rapot.index', $data);
-    //     }
-    // }
-
 
     public function create()
     {
@@ -120,6 +113,20 @@ class RapotController extends Controller
         }
     }
 
+
+    // public function destroy(string $id)
+    // {
+    //     $rapot = Rapot::findOrFail($id);
+
+    //     $rapot->delete();
+
+    //     $notification = array(
+    //         'message' => 'Data rapot berhasil dihapus!',
+    //         'alert-type' => 'success'
+    //     );
+
+    //     return redirect()->route('rapot.index')->with($notification);
+    // }
 
     public function destroy(string $id)
     {

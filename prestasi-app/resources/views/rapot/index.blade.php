@@ -1,9 +1,8 @@
+@include('rapot.create')
+@include('rapot.delete')
+@include('rapot.detail')
+
 <x-app-layout>
-
-    @include('rapot.create')
-    @include('rapot.delete')
-    @include('rapot.detail')
-
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('DATA NILAI RAPOT SISWA-SISWI') }}
@@ -27,24 +26,20 @@
                         </tr>
                     </x-slot>
 
-                    @php
-                    $prevSiswa = null;
-                    @endphp
-
                     @php $num = 1; @endphp
-                    @foreach ($rapot as $data)
+                    @foreach ($siswa as $data)
                     <tr class="text-center">
                         <td>{{ $num++ }}</td>
-                        <td>{{ $data->siswa->nama_siswa }}</td>
-                        <td>{{ $data->siswa->nis }}</td>
-                        <td>{{ $data->siswa->kelas }}</td>
-                        <td>{{ $data->siswa->tahun_pelajaran }}</td>
+                        <td>{{ $data->nama_siswa }}</td>
+                        <td>{{ $data->nis }}</td>
+                        <td>{{ $data->kelas }}</td>
+                        <td>{{ $data->tahun_pelajaran }}</td>
                         <td>
                             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                                data-bs-target="#hapusModal_{{ $data->id }}"><i
-                                    class="fa-solid fa-trash-can"></i></button>
+                                data-bs-target="#hapusModal_{{ $data->id }}"><i class="fa-solid fa-trash-can"></i></button>
+
                             <button tag="a" type="button" class="btn btn-outline-success"
-                                data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->siswa->id }}"><i
+                                data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id }}"><i
                                     class="fa-solid fa-folder"></i></button>
                         </td>
                     </tr>

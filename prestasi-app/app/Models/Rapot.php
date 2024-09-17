@@ -53,18 +53,10 @@ class Rapot extends Model
 
     public function siswa(): BelongsTo
     {
-        return $this->belongsTo(Siswa::class, "id_siswa");
+        return $this->belongsTo(Siswa::class, 'id_siswa', 'id');
 
     }
-    // public function walikelas(): BelongsTo
-    // {
-    //     return $this->belongsTo(WaliKelas::class, "id_wali_kelas");
-    // }
-    /**
-     * Get all of the mapel for the Rapot
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+
     public function mapel()
     {
         return $this->hasMany(MataPelajaran::class, 'id', 'id_mapel');

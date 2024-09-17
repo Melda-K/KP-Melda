@@ -171,7 +171,7 @@
                     class="form-control nilai_keterampilan" placeholder="Nilai Keterampilan" required>
             </td>
             <td style="border-top-style: hidden">
-                <button type="button" class="btn btn-outline-danger remove-input-field">Hapus</button>
+                <button type="button" class="btn btn-outline-danger remove-input-field m-2">Hapus</button>
             </td>
         </tr>
     `;
