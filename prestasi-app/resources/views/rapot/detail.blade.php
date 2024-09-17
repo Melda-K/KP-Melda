@@ -1,10 +1,10 @@
-@foreach ($rapots as $data)
-<div class="modal fade" id="openModal_{{ $data->siswa->id }}" tabindex="-1"
-    aria-labelledby="openModalLabel_{{ $data->siswa->id }}" aria-hidden="true">
+@foreach ($siswa as $rapot)
+<div class="modal fade" id="openModel_{{ $rapot->id }}" tabindex="-1"
+    aria-labelledby="openModalLabel_{{ $rapot->id }}" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5 font-bold" id="openModalLabel_{{ $data->siswa->id }}">INFORMASI DATA NILAI
+                <h1 class="modal-title fs-5 font-bold" id="openModalLabel_{{ $rapot->id }}">INFORMASI DATA NILAI
                     RAPOT SISWA</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -12,35 +12,34 @@
 
             <div class="w-full p-6">
                 <div class="bg-white p-6 rounded-lg shadow-lg">
-
                     <form action="{{ route('searchSiswa') }}" method="GET">
                         <table>
                             <tr>
                                 <td style="padding-right: 10px;">NIS</td>
                                 <td>:</td>
                                 <td>
-                                    <p style="margin-left: 10px;">{{ $data->siswa->nis }}</p>
+                                    <p style="margin-left: 10px;">{{ $rapot->nis }}</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td style="padding-right: 10px;">NAMA SISWA</td>
                                 <td>:</td>
                                 <td>
-                                    <p style="margin-left: 10px;">{{ $data->siswa->nama_siswa }}</p>
+                                    <p style="margin-left: 10px;">{{ $rapot->nama_siswa }}</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td style="padding-right: 10px;">KELAS</td>
                                 <td>:</td>
                                 <td>
-                                    <p style="margin-left: 10px;">{{ $data->siswa->kelas }}</p>
+                                    <p style="margin-left: 10px;">{{ $rapot->kelas }}</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td style="padding-right: 10px;">TAHUN PELAJARAN</td>
                                 <td>:</td>
                                 <td>
-                                    <p style="margin-left: 10px;">{{ $data->siswa->tahun_pelajaran }}</p>
+                                    <p style="margin-left: 10px;">{{ $rapot->tahun_pelajaran }}</p>
                                 </td>
                             </tr>
                         </table>
@@ -65,7 +64,7 @@
                                         @php
                                         $i = 1;
                                         @endphp
-                                        @foreach ($rapots as $item)
+                                        @foreach ($rapot->rapot as $item)
                                         <tr class="text-center">
                                             <td>{{ $i++ }}</td>
                                             <td class="py-2 px-4 border-r">
@@ -78,12 +77,13 @@
                                                     $mapel = 'PAI';
                                                     }
                                                     @endphp
+
                                                     <label>{{ $mapel }}</label>
                                                 </div>
                                             </td>
                                             <td class="py-2 px-4 border-r">{{ $item->nilai_pengetahuan }}</td>
                                             <td class="py-2 px-4 border-r">{{ $item->huruf_pengetahuan }}</td>
-                                            <td class="py-2 px-4 border-r">{{ $item->nilai_keterampilan }}</td>
+                                            <td class="py-2 px-4 border-r">{{ $item->nilai_pengetahuan }}</td>
                                             <td class="py-2 px-4 border-r">{{ $item->huruf_keterampilan }}</td>
                                         </tr>
                                         @endforeach
@@ -94,11 +94,11 @@
                                         <th style="text-align: center;" colspan="2"
                                             class="py-2 px-4 bg-gray-100 border-b">Jumlah</th>
                                         <th class="py-2 px-4 bg-gray-100 border-b">
-                                            {{ $rapots->sum('nilai_pengetahuan') }}
+                                            {{ $rapot->rapot->sum('nilai_pengetahuan') }}
                                         </th>
                                         <th class="py-2 px-4 bg-gray-100 border-b"></th>
                                         <th class="py-2 px-4 bg-gray-100 border-b">
-                                            {{ $rapots->sum('nilai_keterampilan') }}
+                                            {{ $rapot->rapot->sum('nilai_keterampilan') }}
                                         </th>
                                         <th class="py-2 px-4 bg-gray-100 border-b"></th>
                                     </tr>
@@ -107,14 +107,13 @@
                                             class="py-2 px-4 bg-gray-100 border-b">Total</th>
                                         <th colspan="3" class="py-2 px-4 bg-gray-100 border-b"></th>
                                         <th class="py-2 px-4 bg-gray-100 border-b">
-                                            {{ $rapots->sum('nilai_pengetahuan') + $rapots->sum('nilai_keterampilan') }}
+                                            {{ $rapot->rapot->sum('nilai_pengetahuan') + $rapot->rapot->sum('nilai_keterampilan') }}
                                         </th>
                                     </tr>
                                 </tfoot>
                             </table>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>

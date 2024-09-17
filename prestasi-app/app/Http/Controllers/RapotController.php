@@ -14,25 +14,35 @@ class RapotController extends Controller
 {
     public function index()
     {
-        if (Auth::check()) {
-
-            $userId = Auth::id();
-            $wali_kelas = \App\Models\WaliKelas::where('id_user', $userId)->first();
-            $admin = \App\Models\User::where('name', 'AdminSD')->first();
-
-            // dd($wali_kelas);
-
-            if ($wali_kelas) {
-                $data['rapots'] = Rapot::where('id_wali_kelas', $wali_kelas->id)->get();
-                $data['siswas'] = Siswa::with('rapot')->where('id_wali_kelas', $wali_kelas->id)->get();
-            } elseif ($admin) {
-                $data['rapots'] = Rapot::all();
-                $data['siswas'] = Siswa::all();
-            }
-
-            return view('rapot.index', $data);
-        }
+        // $data['rapots'] = Rapot::get();
+        $rapot = Rapot::get();
+        $siswa = Siswa::has('rapot')->with('rapot.mapel')->get();
+        // return response()->json($siswa, 200);
+        return view('rapot.index', compact('siswa','rapot'));
     }
+
+
+    // public function index()
+    // {
+    //     if (Auth::check()) {
+
+    //         $userId = Auth::id();
+    //         $wali_kelas = \App\Models\WaliKelas::where('id_user', $userId)->first();
+    //         $admin = \App\Models\User::where('name', 'AdminSD')->first();
+
+    //         // dd($wali_kelas);
+
+    //         if ($wali_kelas) {
+    //             $data['rapots'] = Rapot::where('id_wali_kelas', $wali_kelas->id)->get();
+    //             $data['siswas'] = Siswa::with('rapot')->where('id_wali_kelas', $wali_kelas->id)->get();
+    //         } elseif ($admin) {
+    //             $data['rapots'] = Rapot::all();
+    //             $data['siswas'] = Siswa::all();
+    //         }
+
+    //         return view('rapot.index', $data);
+    //     }
+    // }
 
 
     public function create()

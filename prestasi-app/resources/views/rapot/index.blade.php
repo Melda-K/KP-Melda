@@ -15,7 +15,6 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <button type="button" class="btn btn-outline-warning m-4" data-bs-toggle="modal"
                     data-bs-target="#tambahModal">TAMBAH DATA</button>
-
                 <x-table :tableId="'myTable_' . uniqid()">
                     <x-slot name="header">
                         <tr class="bg-gray-400 text-center">
@@ -29,29 +28,26 @@
                     </x-slot>
 
                     @php
-                    $num = 1;
+                    $prevSiswa = null;
                     @endphp
-                    @foreach ($siswas as $data)
-                    @if (\App\Models\Rapot::where('id_siswa', $data->id)->whereNotNull('id_mapel')->exists())
+
+                    @php $num = 1; @endphp
+                    @foreach ($rapot as $data)
                     <tr class="text-center">
                         <td>{{ $num++ }}</td>
-                        <td>{{ $data->nama_siswa }}</td>
-                        <td>{{ $data->nis }}</td>
-                        <td>{{ $data->kelas }}</td>
-                        <td>{{ $data->tahun_pelajaran }}</td>
+                        <td>{{ $data->siswa->nama_siswa }}</td>
+                        <td>{{ $data->siswa->nis }}</td>
+                        <td>{{ $data->siswa->kelas }}</td>
+                        <td>{{ $data->siswa->tahun_pelajaran }}</td>
                         <td>
-                            <button type="button" class="btn btn-outline-danger"
-                                data-bs-toggle="modal" data-bs-target="#hapusModal_{{ $data->id }}">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </button>
-
-                            <button type="button" class="btn btn-outline-success"
-                                data-bs-toggle="modal" data-bs-target="#openModal_{{ $data->rapot->id }}">
-                                <i class="fa-solid fa-folder"></i>
-                            </button>
+                            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                                data-bs-target="#hapusModal_{{ $data->id }}"><i
+                                    class="fa-solid fa-trash-can"></i></button>
+                            <button tag="a" type="button" class="btn btn-outline-success"
+                                data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->siswa->id }}"><i
+                                    class="fa-solid fa-folder"></i></button>
                         </td>
                     </tr>
-                    @endif
                     @endforeach
                 </x-table>
             </div>

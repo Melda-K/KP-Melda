@@ -48,9 +48,9 @@ class Siswa extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function rapot(): HasOne
+    public function rapot(): HasMany
     {
-        return $this->hasOne(Rapot::class, 'id_siswa', 'id');
+        return $this->hasMany(Rapot::class, 'id_siswa', 'id');
     }
 
     public function akademik()

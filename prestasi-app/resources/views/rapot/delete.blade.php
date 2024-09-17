@@ -1,4 +1,4 @@
-@foreach ($rapots as $data)
+@foreach ($rapot as $data)
 
 <div class="modal fade" id="hapusModal_{{ $data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
