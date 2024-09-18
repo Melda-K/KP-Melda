@@ -27,7 +27,7 @@ class RapotController extends Controller
                     ->with('rapot.mapel')
                     ->where('id_wali_kelas', $wali_kelas->id)
                     ->get();
-            } elseif (Auth::user()) {
+            } elseif (Auth::user()->hasRole('Admin')) {
                 $rapot = Rapot::get();
                 $siswa = Siswa::has('rapot')
                     ->with('rapot.mapel')
@@ -113,27 +113,10 @@ class RapotController extends Controller
         }
     }
 
-
-    // public function destroy(string $id)
-    // {
-    //     $rapot = Rapot::findOrFail($id);
-
-    //     $rapot->delete();
-
-    //     $notification = array(
-    //         'message' => 'Data rapot berhasil dihapus!',
-    //         'alert-type' => 'success'
-    //     );
-
-    //     return redirect()->route('rapot.index')->with($notification);
-    // }
-
     public function destroy(string $id)
     {
-        $rapot = Rapot::findOrFail($id);
-
-        $rapot->delete();
-
+        $rapot = Rapot::where('id_siswa', $id)->delete();
+       
         $notification = array(
             'message' => 'Data rapot berhasil dihapus!',
             'alert-type' => 'success'

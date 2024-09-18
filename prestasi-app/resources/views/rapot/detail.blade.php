@@ -83,7 +83,7 @@
                                             </td>
                                             <td class="py-2 px-4 border-r">{{ $item->nilai_pengetahuan }}</td>
                                             <td class="py-2 px-4 border-r">{{ $item->huruf_pengetahuan }}</td>
-                                            <td class="py-2 px-4 border-r">{{ $item->nilai_pengetahuan }}</td>
+                                            <td class="py-2 px-4 border-r">{{ $item->nilai_keterampilan }}</td>
                                             <td class="py-2 px-4 border-r">{{ $item->huruf_keterampilan }}</td>
                                         </tr>
                                         @endforeach
